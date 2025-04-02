@@ -1,0 +1,32 @@
+{
+  "name": "synergy-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "axios": "^1.7.5",
+    "bootstrap": "^5.3.3",
+    "formik": "^2.4.6",
+    "moment": "^2.30.1",
+    "next": "14.2.6",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-google-reviews": "^1.2.0",
+    "react-simple-typewriter": "^5.0.1",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1",
+    "wowjs": "^1.1.3",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.6"
+  }
+}
