@@ -27,7 +27,7 @@ const Banner = ({ data }) => {
     <>
       <section className="banner-section">
         <div className="banner-slider">
-          {/* {!videoLoaded && (
+          {!videoLoaded && (
             <div className="absolute inset-0 z-10">
               <Image
                 src={
@@ -39,13 +39,13 @@ const Banner = ({ data }) => {
                 priority
               />
             </div>
-          )} */}
+          )}
           <video
             autoPlay
             loop
             ref={videoRef}
             onLoadedData={handleVideoLoad}
-            // poster="https://chevaldemo.xyz/demo/synergy/wp-content/uploads/2025/04/about-banner.png"
+            poster="https://chevaldemo.xyz/demo/synergy/wp-content/uploads/2025/04/about-banner.png"
             id="video-background"
             muted
             playsInline
