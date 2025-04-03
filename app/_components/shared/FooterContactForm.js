@@ -17,7 +17,7 @@ const FooterContactForm = () => {
 
     const formData = new FormData();
     formData.append("text-fname", values.name);
-    formData.append("text-lname", "");
+    formData.append("text-subject", values.subject);
     formData.append("tel-phone", values.phone);
     formData.append("email-address", values.email);
     formData.append("textarea-message", values.message);
@@ -99,7 +99,7 @@ const FooterContactForm = () => {
                     </div>
                     <div className="col">
                       <Field
-                        type="text"
+                        type="email"
                         name="email"
                         className="form-control"
                         id="email"
@@ -125,7 +125,7 @@ const FooterContactForm = () => {
                     </div>
                     <div className="col">
                       <Field
-                        type="text"
+                        type="number"
                         name="phone"
                         className="form-control"
                         id="phone"

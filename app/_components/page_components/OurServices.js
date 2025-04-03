@@ -3,14 +3,9 @@ import React from "react";
 import { object } from "yup";
 
 const OurServices = ({ data }) => {
-  // let [section_data_3] = data.sections.filter(
-  //   (item) => item.section_name == "Section 3"
-  // );
   let servicesList = data.posts;
   let servicesListKeys = Object.keys(servicesList);
-  // console.log(servicesListKeys, "jjjj");
 
-  // console.log(Object.values(servicesList), "this is the services");
   const services = Object.values(servicesList);
   let top = 210;
   return (

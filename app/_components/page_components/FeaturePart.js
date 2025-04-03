@@ -18,14 +18,6 @@ const FeaturePart = ({ data }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [onLoopDone, setonLoopDone] = useState(false);
 
-  // let [section_data_1] = data.sections.filter(
-  //   (item) => item.section_name == "Section 1"
-  // );
-  // let [section_data_2] = data.sections.filter(
-  //   (item) => item.section_name == "Section 2"
-  // );
-  // let collaborators = data.collaborators;
-
   const settings = {
     dots: false,
     infinite: true,

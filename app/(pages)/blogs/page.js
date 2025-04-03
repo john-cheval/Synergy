@@ -110,7 +110,7 @@ export default async function PageBlogs({ params }) {
                   <div key={item.id} className="col-lg-4">
                     <div className="blog-box">
                       <div className="blog-img">
-                        <Link href={`/blogs/${item.slug}`}>
+                        <Link href={`/blogs/${item.post_name}`}>
                           <img src={item?.image} alt={item.post_title} />
                         </Link>
                       </div>

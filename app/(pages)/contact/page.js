@@ -1,8 +1,5 @@
 import Bredcumb from "@/app/_components/page_components/Bredcumb";
 import ContactMap from "@/app/_components/page_components/ContactMap";
-import InnerBanner from "@/app/_components/page_components/InnerBanner";
-import Solution from "@/app/_components/page_components/Solution";
-import Testimonials from "@/app/_components/page_components/Testimonials";
 
 export default async function PageContactUs() {
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -32,9 +29,6 @@ export default async function PageContactUs() {
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-12 col-md-12 text-left">
                   <div className="inner-banner-content">
-                    {/* <!-- <span className="promo-text" data-animation="fadeInDown" data-delay="0.8s">
-									Stop Being a Fantasy Player
-								</span> --> */}
                     <div className="h_w contact_page_desc">
                       <h1 data-animation="fadeInUp" data-delay="1s">
                         {small_heading}
@@ -46,24 +40,11 @@ export default async function PageContactUs() {
                     <Bredcumb title="Contact" />
                   </div>
                 </div>
-
-                {/* <div className="col-lg-3 col-md-3 text-right">
-                  <div className="bredcumb">
-                    <ul>
-                      <li>
-                        
-                        <a href="/"> Home </a>
-                      </li>
-                      <li> - </li>
-                      <li> Contact </li>
-                    </ul>
-                  </div>
-                </div> */}
               </div>
 
               <div className="row justify-content-center text-white row-eq-height mt-5">
                 <div className="col-lg-7 pr-0">
-                  <ContactMap />
+                  <ContactMap list={address_list} />
                 </div>
                 <div className="col-lg-5 d-flex flex-column">
                   <div className="contact-col h-100">

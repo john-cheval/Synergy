@@ -4,6 +4,9 @@ import { WOW } from "wowjs";
 import Bredcumb from "./Bredcumb";
 const InnerBanner = ({ data, additionalClass = "" }) => {
   const { short_description, small_heading, top_banner } = data;
+
+  const header = short_description?.split("<br>");
+  console.log(header, "kihuihhu");
   useEffect(() => {
     new WOW().init();
   }, []);
@@ -24,11 +27,10 @@ const InnerBanner = ({ data, additionalClass = "" }) => {
                         className="wow fadeInUp"
                         data-animation="fadeInUp"
                         data-delay="1s"
-                        // dangerouslySetInnerHTML={{
-                        //   __html: data?.heading?.replace(/<\/?p>/g, ""),
-                        // }}
-                        dangerouslySetInnerHTML={{ __html: short_description }}
-                      ></h1>
+                      >
+                        {header?.[0]}{" "}
+                        <span class="inner-baaner-title">{header?.[1]}</span>
+                      </h1>
                     </div>
                     <Bredcumb title={small_heading} />
                   </div>

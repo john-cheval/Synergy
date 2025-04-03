@@ -1,43 +1,6 @@
-"use client";
-import React, { useEffect, useState } from "react";
-let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 const OurProcess = ({ data }) => {
   const { our_process_description, our_process_heading, our_process_list } =
     data;
-
-  const [allProcess, setallProcess] = useState(data.process);
-  const [loading, setloading] = useState(false);
-  const [orderingdata, setorderingdata] = useState([]);
-  // let [section_data_4] = data.sections.filter(
-  //   (item) => item.section_name == "Section 4"
-  // );
-  // let process = data.process;
-
-  // useEffect(() => {
-  //   setallProcess(data?.process);
-  //   getorderingdata();
-  // }, [data]);
-
-  // const getorderingdata = async (selectedID) => {
-  //   setloading(true);
-  //   const { data } = await fetch(`${APIURL}/cms/reorderProcess`, {
-  //     cache: "no-store",
-  //   }).then((res) => res.json());
-  //   setorderingdata(data);
-  //   setReorder(data);
-  // };
-
-  // const setReorder = (orderingdata) => {
-  //   console.log(orderingdata);
-  //   if (orderingdata.length > 0) {
-  //     const reorderedArray = orderingdata
-  //       .map((orderItem) =>
-  //         allProcess.find((mainItem) => mainItem.id === orderItem.process_id)
-  //       )
-  //       .filter((item) => item);
-  //     setallProcess(reorderedArray);
-  //   }
-  // };
 
   return (
     <>
