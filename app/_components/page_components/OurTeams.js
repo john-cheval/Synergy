@@ -4,12 +4,12 @@ import { useRef, useState } from "react";
 
 import Slider from "react-slick";
 import { NextArrow, PrevArrow } from "../shared/CustomArrows";
+import Image from "next/image";
 
 const OurTeams = ({ data }) => {
   const { team_list } = data;
   const teamModal = useRef(null);
   const [activeteam, setactiveteam] = useState(null);
-  // let teams = data?.teams;
   const settings = {
     dots: false,
     infinite: true,
@@ -90,10 +90,14 @@ const OurTeams = ({ data }) => {
                           className="slider-items"
                         >
                           <div className="team-col">
-                            <img
+                            <Image
                               src={item?.image}
                               alt={item?.member_name}
-                              className="img-fluid"
+                              className="img-fluid image"
+                              width={0}
+                              height={0}
+                              sizes="100vw"
+                              priority={false}
                             />
                             <div className="team-content">
                               <div className="team-content-left">

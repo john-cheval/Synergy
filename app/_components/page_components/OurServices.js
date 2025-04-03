@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { object } from "yup";
 
 const OurServices = ({ data }) => {
   let servicesList = data.posts;
@@ -48,7 +48,15 @@ const OurServices = ({ data }) => {
                 <div className="col-lg-6 col-md-12 order-lg-2">
                   <div className="service-img-box service-img-box-left">
                     {services[0].image.indexOf(".mp4") < 0 ? (
-                      <img src={services[0]?.image} type={data?.media_type} />
+                      <Image
+                        src={services[0]?.image}
+                        alt={services[0]?.post_title}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="image"
+                        priority={false}
+                      />
                     ) : (
                       <video autoPlay loop className="video-solution" muted>
                         <source
@@ -77,7 +85,15 @@ const OurServices = ({ data }) => {
                     >
                       Read More
                       <span className="btn-icon">
-                        <img src="/img/btn-icon.png" />
+                        <Image
+                          src="/img/btn-icon.png"
+                          alt="icon"
+                          width={0}
+                          height={0}
+                          sizes="100vw"
+                          className="image"
+                          priority={false}
+                        />
                       </span>
                     </Link>
                   </div>
@@ -112,7 +128,15 @@ const OurServices = ({ data }) => {
                         <div className="col-lg-6 col-md-12">
                           <div className="service-img-box service-img-box-right">
                             {item.image.indexOf(".mp4") < 0 ? (
-                              <img src={item?.image} type={data?.media_type} />
+                              <Image
+                                src={item?.image}
+                                alt={item?.post_title}
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                className="image"
+                                priority={false}
+                              />
                             ) : (
                               <video
                                 autoPlay
@@ -147,7 +171,15 @@ const OurServices = ({ data }) => {
                             >
                               Read More
                               <span className="btn-icon">
-                                <img src="/img/btn-icon.png" />
+                                <Image
+                                  src="/img/btn-icon.png"
+                                  alt="icon"
+                                  width={0}
+                                  height={0}
+                                  sizes="100vw"
+                                  className="image"
+                                  priority={false}
+                                />
                               </span>
                             </Link>
                           </div>
@@ -174,7 +206,16 @@ const OurServices = ({ data }) => {
                         <div className="col-lg-6 col-md-12 order-lg-2">
                           <div className="service-img-box service-img-box-left">
                             {item.image.indexOf(".mp4") < 0 ? (
-                              <img src={item?.image} type={data?.media_type} />
+                              <Image
+                                src={item?.image}
+                                type={data?.media_type}
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                className="image"
+                                alt={item?.post_title}
+                                priority={false}
+                              />
                             ) : (
                               <video
                                 autoPlay
@@ -209,7 +250,15 @@ const OurServices = ({ data }) => {
                             >
                               Read More
                               <span className="btn-icon">
-                                <img src="/img/btn-icon.png" />
+                                <Image
+                                  src="/img/btn-icon.png"
+                                  alt="icon"
+                                  width={0}
+                                  height={0}
+                                  sizes="100vw"
+                                  className="image"
+                                  priority={false}
+                                />
                               </span>
                             </Link>
                           </div>

@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import Slider from "react-slick";
 import { Typewriter } from "react-simple-typewriter";
+import Image from "next/image";
 const FeaturePart = ({ data }) => {
   const {
     who_we_are_heading,
@@ -60,7 +61,7 @@ const FeaturePart = ({ data }) => {
 
   // Trigger typing effect when the section is visible
   useEffect(() => {
-    console.log(isVisible);
+    // console.log(isVisible);
     if (isVisible && index < text.length) {
       const timeout = setTimeout(() => {
         setDisplayedText((prev) => prev + text[index]);
@@ -141,7 +142,14 @@ const FeaturePart = ({ data }) => {
                         return (
                           <div className="logos_item_i" key={item.id}>
                             <div className="mr-4" href="#">
-                              <img src={`${item?.image}`} />
+                              <Image
+                                src={`${item?.image}`}
+                                className="image"
+                                width={0}
+                                height={0}
+                                alt={index + 1}
+                                sizes="100vw"
+                              />
                             </div>
                           </div>
                         );

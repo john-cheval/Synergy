@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import FooterContactForm from "./FooterContactForm";
+import Image from "next/image";
 
 const Footer = () => {
   const [openMenus, setOpenMenus] = useState({});
@@ -79,7 +80,15 @@ const Footer = () => {
                   <div className="footer-logo">
                     <a href="/">
                       {" "}
-                      <img src="/img/footer-logo.png" alt="images" />{" "}
+                      <Image
+                        src="/img/footer-logo.png"
+                        alt="images"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="image"
+                        priority={false}
+                      />{" "}
                     </a>
                   </div>
 
