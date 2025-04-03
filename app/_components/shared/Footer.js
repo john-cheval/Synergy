@@ -34,8 +34,7 @@ const Footer = () => {
     }).then((res) => res.json());
     setFooterContent(data);
   };
-
-  console.log(footerContent, "this is a footer");
+  const header = footerContent?.request_a_free_heading?.split("<br>");
 
   return (
     <>
@@ -50,20 +49,15 @@ const Footer = () => {
               >
                 <div className="section-title mb-40 left-border">
                   <h2 className="title mb-3">
-                    {" "}
-                    Request a free{" "}
-                    <span className="color-text"> Consultation </span>{" "}
+                    {header?.[0]} <br />
+                    <span className="color-text">{header?.[1]}</span>
                   </h2>
-                  <p>
-                    {" "}
-                    Would you like to speak to one of our financial advisers
-                    over the phone?{" "}
-                  </p>
-                  <p>
-                    {" "}
-                    Just submit your details and we’ll be in touch shortly.You
-                    can also email us if you would prefer.{" "}
-                  </p>
+
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: footerContent?.request_a_free_description,
+                    }}
+                  ></div>
                 </div>
               </div>
 
@@ -108,9 +102,12 @@ const Footer = () => {
                         {services.map((service) => {
                           return (
                             <li key={service.id}>
-                              <a href={`${service.url}`}>
-                                {service.title.replace(/<[^>]*>/g, "")}{" "}
-                              </a>
+                              <a
+                                href={`${service.url}`}
+                                dangerouslySetInnerHTML={{
+                                  __html: service.title,
+                                }}
+                              />
                             </li>
                           );
                         })}
@@ -140,23 +137,19 @@ const Footer = () => {
                         {slpservices.map((service) => {
                           return (
                             <li key={service.id}>
-                              <a href={`${service.url}`}>
-                                {service.title.replace(/<[^>]*>/g, "")}{" "}
-                              </a>
+                              <a
+                                href={`${service.url}`}
+                                dangerouslySetInnerHTML={{
+                                  __html: service.title,
+                                }}
+                              />
+                              {/* {service.title.replace(/<[^>]*>/g, "")}{" "}
+                              </a> */}
                             </li>
                           );
                         })}
                       </ul>
                     )}
-                    {/* <ul>
-							  	<li> <a href="#"> Feasibility Report </a> </li>
-							  	<li> <a href="#"> Due Diligence </a> </li>
-							  	<li> <a href="#"> Business Modeling </a> </li>
-							  	<li> <a href="#"> Business Valuation </a> </li>
-							  	<li> <a href="#"> Market Research </a> </li>
-							  	<li> <a href="#"> Risk Assessment </a> </li>
-                                <li> <a href="#"> Investor Deck </a> </li>
-							  </ul> */}
                   </div>
                 </div>
               </div>
@@ -176,23 +169,38 @@ const Footer = () => {
                     <ul>
                       <li>
                         <span>T :</span>
-                        <a href="tel:+97145139095"> +971 4 513 9095 </a>
-                      </li>
-                      <li>
-                        <span>T :</span>
-                        <a href="tel:+971522215052"> +971 52 221 5052 </a>
-                      </li>
-                      <li>
-                        <span>E :</span>
-                        <a href="emailto:info@consultsynergy.ae">
-                          info@consultsynergy.ae
+                        <a
+                          href={`tel:${footerContent?.phone_number?.replace(
+                            /\s+/g,
+                            ""
+                          )}`}
+                        >
+                          {" "}
+                          {footerContent?.phone_number}{" "}
                         </a>
                       </li>
                       <li>
-                        <span style={{ color: "#fff" }}>PO</span>{" "}
+                        <span>T :</span>
+                        <a
+                          href={`tel:${footerContent?.whatsapp_number?.replace(
+                            /\s+/g,
+                            ""
+                          )}`}
+                        >
+                          {footerContent?.whatsapp_number}{" "}
+                        </a>
+                      </li>
+                      <li>
+                        <span>E :</span>
+                        <a href={`emailto:${footerContent?.email_address}`}>
+                          {footerContent?.email_address}
+                        </a>
+                      </li>
+                      <li>
+                        {/* <span style={{ color: "#fff" }}>PO</span>{" "} */}
                         <span style={{ color: "#fff" }}>
                           {" "}
-                          Box: 413174, Dubai, UAE{" "}
+                          {footerContent?.address}
                         </span>{" "}
                       </li>
                     </ul>
