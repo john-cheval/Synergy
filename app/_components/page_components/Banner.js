@@ -1,8 +1,24 @@
 "use client";
-import React, { useEffect } from "react";
+import Image from "next/image";
+import React, { useEffect, useRef, useState } from "react";
 import { WOW } from "wowjs";
 
 const Banner = ({ data }) => {
+  const videoRef = useRef(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  const handleVideoLoad = () => {
+    setVideoLoaded(true);
+
+    if (
+      typeof window !== "undefined" &&
+      window.performance &&
+      window.performance.mark
+    ) {
+      window.performance.mark("video-loaded");
+    }
+  };
+
   useEffect(() => {
     new WOW().init();
   }, []);
@@ -11,16 +27,33 @@ const Banner = ({ data }) => {
     <>
       <section className="banner-section">
         <div className="banner-slider">
+          {/* {!videoLoaded && (
+            <div className="absolute inset-0 z-10">
+              <Image
+                src={
+                  "https://chevaldemo.xyz/demo/synergy/wp-content/uploads/2025/04/about-banner.png"
+                }
+                alt="Hero Fallback"
+                layout="fill"
+                objectFit="cover"
+                priority
+              />
+            </div>
+          )} */}
           <video
             autoPlay
             loop
+            ref={videoRef}
+            onLoadedData={handleVideoLoad}
+            // poster="https://chevaldemo.xyz/demo/synergy/wp-content/uploads/2025/04/about-banner.png"
             id="video-background"
             muted
             playsInline
             preload="auto"
-          >
-            <source src={data[0]?.video?.url} type={"video/mp4"} />
-          </video>
+            src={data[0]?.video?.url}
+          />
+          {/* <source src={data[0]?.video?.url} type={"video/mp4"} /> */}
+          {/* </video> */}
           <div className="single-banner">
             <div className="container container-xl">
               <div className="row justify-content-center align-items-center">

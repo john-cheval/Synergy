@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Solution = ({ data }) => {
@@ -58,7 +59,15 @@ const Solution = ({ data }) => {
                               />
                             </video>
                           ) : (
-                            <img src={item?.file} alt={item?.media_type} />
+                            <Image
+                              src={item?.file}
+                              alt={item?.title || "image"}
+                              width={0}
+                              height={0}
+                              sizes="100vw"
+                              className="image"
+                              priority={false}
+                            />
                           )}
                         </div>
                       </div>

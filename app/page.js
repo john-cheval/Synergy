@@ -2,12 +2,19 @@ import dynamic from "next/dynamic";
 const Banner = dynamic(() => import("./_components/page_components/Banner"), {
   ssr: false,
 });
+const Solution = dynamic(() =>
+  import("./_components/page_components/Solution")
+);
+const Industries = dynamic(() =>
+  import("./_components/page_components/Industries")
+);
+const OurTeams = dynamic(() =>
+  import("./_components/page_components/OurTeams")
+);
 import FeaturePart from "./_components/page_components/FeaturePart";
 import OurServices from "./_components/page_components/OurServices";
 import OurProcess from "./_components/page_components/OurProcess";
-import Solution from "./_components/page_components/Solution";
-import Industries from "./_components/page_components/Industries";
-import OurTeams from "./_components/page_components/OurTeams";
+// import OurTeams from "./_components/page_components/OurTeams";
 import Testimonials from "./_components/page_components/Testimonials";
 
 export const metadata = {

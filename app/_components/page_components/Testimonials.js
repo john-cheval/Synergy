@@ -92,7 +92,15 @@ const Testimonials = () => {
                 </div> */}
                 <div className="google-rating-wrap">
                   <div className="google-rating-img-col">
-                    <img src="/img/google-rating.png" />
+                    <Image
+                      src="/img/google-rating.png"
+                      alt="googleImage"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      className="image"
+                      priority={false}
+                    />
                   </div>
                   <div className="google-rating-bottom">
                     <span className="reviews-rating">
@@ -137,6 +145,9 @@ const Testimonials = () => {
                                         height={50}
                                         src={`${item?.profile_photo_url}`}
                                         alt={item?.author_name}
+                                        sizes="100vw"
+                                        className="image"
+                                        priority={false}
                                       />
                                     </div>
                                     <div className="testimonial_box-name">

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const Header = () => {
   const pathname = usePathname();
@@ -120,7 +121,14 @@ const Header = () => {
       {isloading && (
         <div className="mainLoader">
           {" "}
-          <img src="/img/logo.png" alt="Logo" />{" "}
+          <Image
+            src="/img/logo.png"
+            alt="Logo"
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="image"
+          />{" "}
           <div className="spinner-border text-primary" role="status">
             <span className="sr-only">Loading...</span>
           </div>

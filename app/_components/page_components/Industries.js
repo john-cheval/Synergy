@@ -2,10 +2,10 @@
 import React from "react";
 import Slider from "react-slick";
 import { NextArrow, PrevArrow } from "../shared/CustomArrows";
+import Image from "next/image";
 
 const Industries = ({ data }) => {
   const { industries_list } = data;
-  // let industries = data.industries;
   const settings = {
     dots: false,
     infinite: true,
@@ -77,10 +77,14 @@ const Industries = ({ data }) => {
                       return (
                         <div key={item.id} className="slider-items">
                           <div className="industries-col">
-                            <img
+                            <Image
                               src={item?.file}
                               alt={item?.title}
-                              className="img-fluid"
+                              className="img-fluid image"
+                              width={0}
+                              height={0}
+                              sizes="100vw"
+                              priority={false}
                             />
                             <h4>{item?.title}</h4>
                           </div>
