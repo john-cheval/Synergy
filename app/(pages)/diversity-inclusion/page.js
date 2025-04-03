@@ -9,13 +9,21 @@ export const metadata = {
 
 export default async function PageDiversityInclusion() {
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const { data } = await fetch(`${APIURL}/cms/pages/diversity`, {
-    cache: "no-store",
-  }).then((res) => res.json());
-  console.log(data.meta_data);
+  const { post_content, top_banner } = await fetch(
+    `${APIURL}/full_details?ID=153`,
+    {
+      cache: "no-store",
+    }
+  ).then((res) => res.json());
+
+  const data = {
+    short_description: "Diversity & Inclusion",
+    top_banner: top_banner,
+    small_heading: "Diversity & Inclusion",
+  };
   return (
     <>
-      <InnerBanner data={data?.meta_data} />
+      <InnerBanner data={data} />
 
       <section
         className="inner-content-section section-gap wow fadeInUp divercity-page"
@@ -33,7 +41,7 @@ export default async function PageDiversityInclusion() {
               <div
                 className="inner-content-box"
                 dangerouslySetInnerHTML={{
-                  __html: data.meta_data?.description,
+                  __html: post_content,
                 }}
               ></div>
             </div>

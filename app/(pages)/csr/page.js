@@ -9,13 +9,22 @@ export const metadata = {
 
 export default async function PageCsr() {
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const { data } = await fetch(`${APIURL}/cms/pages/csr`, {
-    cache: "no-store",
-  }).then((res) => res.json());
+  const { post_title, top_banner, post_content } = await fetch(
+    `${APIURL}/full_details?ID=342`,
+    {
+      cache: "no-store",
+    }
+  ).then((res) => res.json());
+
+  const data = {
+    small_heading: post_title,
+    top_banner,
+    short_description: post_title,
+  };
 
   return (
     <>
-      <InnerBanner data={data?.meta_data} />
+      <InnerBanner data={data} />
 
       <section
         className="inner-content-section section-gap csr_page wow fadeInUp"
@@ -26,14 +35,14 @@ export default async function PageCsr() {
           <div className="row justify-content-center">
             <div className="col-lg-4">
               <div className="inner-content-title">
-                <h5> {data?.meta_data?.title} </h5>
+                <h5>{post_title} </h5>
               </div>
             </div>
             <div className="col-lg-8">
               <div
                 className="inner-content-box"
                 dangerouslySetInnerHTML={{
-                  __html: data?.meta_data?.description,
+                  __html: post_content,
                 }}
               ></div>
             </div>

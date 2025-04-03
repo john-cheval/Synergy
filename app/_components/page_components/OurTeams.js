@@ -6,9 +6,10 @@ import Slider from "react-slick";
 import { NextArrow, PrevArrow } from "../shared/CustomArrows";
 
 const OurTeams = ({ data }) => {
+  const { team_list } = data;
   const teamModal = useRef(null);
   const [activeteam, setactiveteam] = useState(null);
-  let teams = data?.teams;
+  // let teams = data?.teams;
   const settings = {
     dots: false,
     infinite: true,
@@ -80,8 +81,8 @@ const OurTeams = ({ data }) => {
             >
               <div id="team" className="slider">
                 <Slider {...settings}>
-                  {teams.length > 0 &&
-                    teams.map((item) => {
+                  {team_list.length > 0 &&
+                    team_list.map((item) => {
                       return (
                         <div
                           key={item.id}
@@ -90,7 +91,7 @@ const OurTeams = ({ data }) => {
                         >
                           <div className="team-col">
                             <img
-                              src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${item?.image}`}
+                              src={item?.image}
                               alt={item?.member_name}
                               className="img-fluid"
                             />
@@ -143,7 +144,7 @@ const OurTeams = ({ data }) => {
                         <div className="team-modal-left">
                           {activeteam?.image != "" && (
                             <img
-                              src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${activeteam?.image}`}
+                              src={activeteam?.image}
                               alt={activeteam?.member_name}
                               className="img-fluid"
                             />
@@ -171,7 +172,7 @@ const OurTeams = ({ data }) => {
                           </div>
                           <p
                             dangerouslySetInnerHTML={{
-                              __html: activeteam?.description,
+                              __html: activeteam?.section_content,
                             }}
                           ></p>
                         </div>

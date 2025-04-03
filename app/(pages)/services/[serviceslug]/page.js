@@ -10,8 +10,8 @@ export default async function PageCsr({ params }) {
   let top = 80;
   let left = 0;
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const { data } = await fetch(
-    `${APIURL}/cms/getBySlug/${params.serviceslug}`,
+  const data = await fetch(
+    `${APIURL}/full_details?slug=${params.serviceslug}&meta_type=service`,
     { cache: "no-store" }
   ).then((res) => res.json());
 
@@ -47,7 +47,7 @@ export default async function PageCsr({ params }) {
                       </h1>
                     </div>
                     <Bredcumb
-                      title={data.meta_data?.title.replace(/<[^>]*>/g, "")}
+                      title={data?.post_title.replace(/<[^>]*>/g, "")}
                     />
                   </div>
                 </div>
@@ -56,21 +56,12 @@ export default async function PageCsr({ params }) {
               <div className="row justify-content-center text-white row-eq-height mt-5">
                 <div className="col-lg-7 p-lg-0">
                   <div className="blog-banner h-100">
-                    {data?.meta_data?.image.indexOf(".mp4") < 0 ? (
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${data?.meta_data?.image}`}
-                        type={data?.media_type}
-                      />
-                    ) : (
-                      // <img
-                      //   src="/img/blog-banner.png"
-                      // />
+                    {data?.image.endsWith(".mp4") ? (
                       <video autoPlay loop className="video-solution" muted>
-                        <source
-                          src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${data?.meta_data?.image}`}
-                          type={data?.meta_data?.media_type}
-                        />
+                        <source src={data?.image} type={"video/mp4"} />
                       </video>
+                    ) : (
+                      <img src={data?.image} alt={data?.post_title} />
                     )}
                   </div>
                 </div>
@@ -78,20 +69,25 @@ export default async function PageCsr({ params }) {
                   <div className="service-content-title service-content-page h-100">
                     <h3
                       dangerouslySetInnerHTML={{
-                        __html: data?.meta_data?.title,
+                        __html: data?.post_title,
                       }}
                     ></h3>
-                    <p>{data.meta_data.detail_short_description}</p>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: data?.home_description,
+                      }}
+                    >
+                      {/* {data?.short_description} */}
+                    </p>
                     <div className="service-content-top-btn">
                       <a href="/contact" className="contact">
                         Contact us
                       </a>
                       <a
-                        href={`tel:${data?.meta_data?.call_number}`}
+                        href={`tel:${data?.phone_number}`}
                         className="contact-number"
                       >
-                        Call Now:{" "}
-                        {formatPhoneNumber(data?.meta_data?.call_number)}
+                        Call Now: {formatPhoneNumber(data?.phone_number)}
                       </a>
                     </div>
                   </div>
@@ -105,7 +101,7 @@ export default async function PageCsr({ params }) {
       {/* <!--====== Feature Part start ======--> */}
       <section
         className={`inner-content-section section-gap  wow fadeInUp ${
-          data?.sections?.length > 0 ? "has_padding" : ""
+          data?.section_list?.length > 0 ? "has_padding" : ""
         }`}
         data-wow-duration="1500ms"
         data-wow-delay="500ms"
@@ -114,17 +110,16 @@ export default async function PageCsr({ params }) {
           <div className="row justify-content-center">
             <div className="col-lg-4">
               <div className="inner-content-title">
-                <h5> {data.meta_data?.title.replace(/<[^>]*>/g, "")} </h5>
+                <h5> {data?.post_title.replace(/<[^>]*>/g, "")} </h5>
               </div>
             </div>
             <div className="col-lg-8">
               <div className="inner-content-box">
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: data?.meta_data?.description,
+                    __html: data?.short_description,
                   }}
                 ></div>
-                {/* <p> {data.meta_data?.description.replace(/<[^>]*>/g, "")}</p> */}
               </div>
             </div>
           </div>

@@ -14,7 +14,7 @@ const JobItem = ({ data }) => {
         <div className="row justify-content-center align-items-center">
           <div className="col-lg-9">
             <div className="careers-top-title">
-              <h3> {data?.job_title} </h3>
+              <h3> {data?.post_title} </h3>
             </div>
           </div>
           <div className="col-lg-3">

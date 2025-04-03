@@ -18,7 +18,7 @@ const Header = () => {
   const [menu3, setmenu3] = useState(false);
   useEffect(() => {
     getData();
-    getSplServicesData();
+    // getSplServicesData();
   }, []);
 
   const toggleMenu = (index) => {
@@ -44,17 +44,18 @@ const Header = () => {
   };
 
   const getData = async () => {
-    const { data } = await fetch(`${APIURL}/cms/getAll/Services`, {
+    const data = await fetch(`${APIURL}/menu/primary`, {
       cache: "no-store",
     }).then((res) => res.json());
-    setServices(data);
+    setServices(data["119"]);
   };
-  const getSplServicesData = async () => {
-    const { data } = await fetch(`${APIURL}/cms/getAll/Specialised_Services`, {
-      cache: "no-store",
-    }).then((res) => res.json());
-    setslpServices(data);
-  };
+
+  // const getSplServicesData = async () => {
+  //   const { data } = await fetch(`${APIURL}/cms/getAll/Specialised_Services`, {
+  //     cache: "no-store",
+  //   }).then((res) => res.json());
+  //   setslpServices(data);
+  // };
 
   useEffect(() => {
     setisloading(false);
@@ -236,14 +237,17 @@ const Header = () => {
                               <li
                                 key={service.id}
                                 className={
-                                  pathname == `/services/${service.slug}`
-                                    ? "active"
-                                    : ""
+                                  pathname == `${service.url}` ? "active" : ""
                                 }
                               >
-                                <a href={`/services/${service.slug}`}>
-                                  {service.title.replace(/<[^>]*>/g, "")}{" "}
-                                </a>
+                                <a
+                                  href={`${service.url}`}
+                                  dangerouslySetInnerHTML={{
+                                    __html: service.title,
+                                  }}
+                                />
+                                {/* {service.title.replace(/<[^>]*>/g, "")}{" "} */}
+                                {/* </a> */}
                               </li>
                             );
                           })}
@@ -251,7 +255,7 @@ const Header = () => {
                       )}
                     </li>
 
-                    <li
+                    {/* <li
                       className={
                         pathname == "/services"
                           ? `${
@@ -259,11 +263,7 @@ const Header = () => {
                                 ? "active show has-submemu"
                                 : "active has-submemu"
                             }`
-                          : `${
-                              menu3
-                                ? "show has-submemu"
-                                : "has-submemu"
-                            }`
+                          : `${menu3 ? "show has-submemu" : "has-submemu"}`
                       }
                     >
                       <Link
@@ -301,7 +301,7 @@ const Header = () => {
                           })}
                         </ul>
                       )}
-                    </li>
+                    </li> */}
                     <li className={pathname == "/transactions" ? "active" : ""}>
                       <a onClick={handleCloseMenu} href="/transactions">
                         Transactions{" "}

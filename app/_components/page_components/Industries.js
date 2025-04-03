@@ -4,8 +4,9 @@ import Slider from "react-slick";
 import { NextArrow, PrevArrow } from "../shared/CustomArrows";
 
 const Industries = ({ data }) => {
-  let industries = data.industries;
-  const settings = {  
+  const { industries_list } = data;
+  // let industries = data.industries;
+  const settings = {
     dots: false,
     infinite: true,
     speed: 500,
@@ -34,7 +35,7 @@ const Industries = ({ data }) => {
       },
       {
         breakpoint: 400,
-        settings: {          
+        settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
         },
@@ -71,21 +72,21 @@ const Industries = ({ data }) => {
             >
               <div id="Industries" className="slider">
                 <Slider {...settings}>
-                  {industries.length > 0 &&
-                    industries.map((item) => {
+                  {industries_list.length > 0 &&
+                    industries_list.map((item) => {
                       return (
                         <div key={item.id} className="slider-items">
-                          <div className="industries-col">                          
+                          <div className="industries-col">
                             <img
-                             src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${item?.image}`} 
-                             alt={item?.industry_name}
+                              src={item?.file}
+                              alt={item?.title}
                               className="img-fluid"
                             />
-                            <h4>{item?.industry_name}</h4>
+                            <h4>{item?.title}</h4>
                           </div>
                         </div>
                       );
-                    })}                  
+                    })}
                 </Slider>
               </div>
             </div>

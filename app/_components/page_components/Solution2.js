@@ -1,11 +1,8 @@
 import React from "react";
 
-const Solution = ({ data }) => {
-  const { one_stop_solution_description, one_stop_solution_list } = data;
-  const isImage = (media_type) => {
-    console.log(media_type);
-    return media_type.indexOf("image") > 0;
-  };
+const Solution2 = ({ data }) => {
+  const { section_list, our_values } = data;
+
   return (
     <>
       <section className="solution-section section-gap">
@@ -17,48 +14,50 @@ const Solution = ({ data }) => {
               data-wow-delay="300ms"
             >
               <div className="section-title mb-40 left-border">
-                <h2 className="title mb-3">
-                  <p>
-                    One-Stop <br />
-                    <span class="color-text">Solution&nbsp;</span>
-                  </p>
-                </h2>
-                {one_stop_solution_description && (
+                {/* <h2
+                  className="title mb-3"
+                  dangerouslySetInnerHTML={{
+                    __html: section_list[2]?.section_title,
+                  }}
+                ></h2> */}
+
+                <h3 className="title mb-3">
+                  Our <br /> <span class="color-text"> Values&nbsp;</span>
+                </h3>
+
+                {section_list[2]?.section_content && (
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: one_stop_solution_description,
+                      __html: section_list[2]?.section_content,
                     }}
                   ></div>
                 )}
               </div>
             </div>
-            {one_stop_solution_list &&
-              one_stop_solution_list.length > 0 &&
-              one_stop_solution_list.map((item, index) => {
+            {our_values &&
+              our_values.length > 0 &&
+              our_values?.map((item, index) => {
                 return (
                   <>
-                    {item?.file ? (
+                    {item?.image ? (
                       <div
                         className="col-lg-3 col-md-12 d-flex flex-column text-left wow fadeInRight mb-4 wow fadeInUp"
                         data-wow-duration="1500ms"
                         data-wow-delay={`${index * 300}ms`}
-                        key={item.id}
+                        key={item?.id || index}
                       >
                         <div className="box-solution-img h-100">
-                          {item?.file && item?.file?.endsWith(".mp4") ? (
+                          {item?.image && item?.image?.endsWith(".mp4") ? (
                             <video
                               autoPlay
                               loop
                               className="video-solution"
                               muted
                             >
-                              <source
-                                src={item?.file}
-                                type={item?.media_type}
-                              />
+                              <source src={item?.image} type={"video/mp4"} />
                             </video>
                           ) : (
-                            <img src={item?.file} alt={item?.media_type} />
+                            <img src={item?.image} alt={item?.heading} />
                           )}
                         </div>
                       </div>
@@ -67,11 +66,11 @@ const Solution = ({ data }) => {
                         className="col-lg-3 col-md-12 d-flex flex-column text-left wow fadeInRight mb-4 wow fadeInUp"
                         data-wow-duration="1500ms"
                         data-wow-delay={`${index * 300}ms`}
-                        key={item.id}
+                        key={item?.id || index}
                       >
                         <div className="box-solution h-100">
-                          <h4 className="title mb-3"> {item?.title} </h4>
-                          <div
+                          <h4 className="title mb-3"> {item?.heading} </h4>
+                          <p
                             dangerouslySetInnerHTML={{
                               __html: item?.description,
                             }}
@@ -89,4 +88,4 @@ const Solution = ({ data }) => {
   );
 };
 
-export default Solution;
+export default Solution2;

@@ -16,27 +16,22 @@ export const metadata = {
 };
 
 export default async function Home() {
-  let APIURL = process.env.API_BASE_URL;
-  const { data } = await fetch(
-    `https://chevaldemo.xyz/demo/synergy/wp-json/custom/v1/full_details?ID=10`,
-    {
-      cache: "no-store",
-    }
-  ).then((res) => res.json());
+  let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const data = await fetch(`${APIURL}/full_details?ID=10`, {
+    cache: "no-store",
+  }).then((res) => res.json());
 
-  console.log(data, "this is the data");
-
-  let [section_data_5] = data.sections.filter(
-    (item) => item.section_name == "Section 5"
-  );
+  const services = await fetch(`${APIURL}/services`, {
+    cache: "no-store",
+  }).then((res) => res.json());
 
   return (
     <>
-      <Banner data={data?.meta_data} />
+      <Banner data={data?.slider_list} />
       <FeaturePart data={data} />
-      <OurServices data={data} />
+      <OurServices data={services} />
       <OurProcess data={data} />
-      <Solution data={data?.solutions} sectionsData={section_data_5} />
+      <Solution data={data} />
       <Industries data={data} />
       <OurTeams data={data} />
       <Testimonials />

@@ -2,21 +2,22 @@ import Teams from "@/app/_components/page_components/Teams";
 import Bredcumb from "@/app/_components/page_components/Bredcumb";
 
 export const metadata = {
-	title: "Synergy | Our Team",
-	description: "Your Strategic Partner for Business Excellence",
-  };
+  title: "Synergy | Our Team",
+  description: "Your Strategic Partner for Business Excellence",
+};
 
 export default async function PageAboutUs() {
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const { data } = await fetch(`${APIURL}/cms/pages/team`, {cache: 'no-store' }).then((res) =>
-    res.json()
-  );
-  
+  const { post_title, short_description, team_list } = await fetch(
+    `${APIURL}/full_details?ID=150`,
+    {
+      cache: "no-store",
+    }
+  ).then((res) => res.json());
 
   return (
     <>
-    
-     <section className={`banner-section  team-banner-section wow fadeInUp`}>
+      <section className={`banner-section  team-banner-section wow fadeInUp`}>
         <div className="inner-banner">
           <div className="inner-banner-bg">
             <img src="/img/inner-banner.png" />
@@ -25,12 +26,34 @@ export default async function PageAboutUs() {
             <div className="container">
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-12 col-md-12 text-left">
-                  <div className="inner-banner-content">  
+                  <div className="inner-banner-content">
                     <div className="h_w">
-                    <h1 data-animation="fadeInUp" data-delay="1s" dangerouslySetInnerHTML={{ __html: data.meta_data?.heading.replace(/<\/?p>/g, '') }}></h1>
-                    {data.meta_data.description !="" &&<p dangerouslySetInnerHTML={{ __html: data.meta_data?.description.replace(/<\/?p>/g, '') }}></p>}
-                    </div>   
-                    <Bredcumb title={data.meta_data?.title}/>              
+                      <h1
+                        data-animation="fadeInUp"
+                        data-delay="1s"
+                        // dangerouslySetInnerHTML={{
+                        //   __html: data.meta_data?.heading.replace(
+                        //     /<\/?p>/g,
+                        //     ""
+                        //   ),
+                        // }}
+                      >
+                        {post_title}
+                      </h1>
+                      {short_description != "" && (
+                        <p
+                        // dangerouslySetInnerHTML={{
+                        //   __html: data.meta_data?.description.replace(
+                        //     /<\/?p>/g,
+                        //     ""
+                        //   ),
+                        // }}
+                        >
+                          {short_description}
+                        </p>
+                      )}
+                    </div>
+                    <Bredcumb title={post_title} />
                   </div>
                 </div>
 
@@ -49,22 +72,25 @@ export default async function PageAboutUs() {
               </div>
 
               <div className="row justify-content-center align-items-center">
-                <div className="col-lg-12 col-md-12">
-                {data.meta_data?.image != '' &&<div className="inner-banner-img">
-                    <img src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${data.meta_data?.image}`} alt={data.meta_data?.title}/>
-                  </div>}
-                </div>
+                {/* <div className="col-lg-12 col-md-12">
+                  {data.meta_data?.image != "" && (
+                    <div className="inner-banner-img">
+                      <img
+                        src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${data.meta_data?.image}`}
+                        alt={data.meta_data?.title}
+                      />
+                    </div>
+                  )}
+                </div> */}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-    {/* <!--====== Feature Part start ======--> */}
-	<Teams/>
-	{/* <!--====== Feature Part end ======--> */}
-
-     
+      {/* <!--====== Feature Part start ======--> */}
+      <Teams />
+      {/* <!--====== Feature Part end ======--> */}
     </>
   );
 }

@@ -79,13 +79,13 @@ export const metadata = {
 
 export default async function PageTransactions() {
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const { data } = await fetch(`${APIURL}/cms/pages/transactions`, {
+  const data = await fetch(`${APIURL}/full_details?ID=239`, {
     cache: "no-store",
   }).then((res) => res.json());
-  const transactionsResult = await fetch(`${APIURL}/cms/getAll/Transactions`, {
-    cache: "no-store",
-  }).then((res) => res.json());
-  const transactions = transactionsResult.data;
+  // const transactionsResult = await fetch(`${APIURL}/cms/getAll/Transactions`, {
+  //   cache: "no-store",
+  // }).then((res) => res.json());
+  // const transactions = transactionsResult.data;
 
   return (
     <>
@@ -105,14 +105,11 @@ export default async function PageTransactions() {
                         data-animation="fadeInUp"
                         data-delay="1s"
                         dangerouslySetInnerHTML={{
-                          __html: data?.meta_data?.heading?.replace(
-                            /<\/?p>/g,
-                            ""
-                          ),
+                          __html: data?.post_title?.replace(/<\/?p>/g, ""),
                         }}
                       ></h1>
                     </div>
-                    <Bredcumb title={data?.meta_data?.title} />
+                    <Bredcumb title={data?.post_title} />
                   </div>
                 </div>
               </div>
@@ -121,10 +118,7 @@ export default async function PageTransactions() {
                 <div className="col-lg-12 col-md-12">
                   <div className="inner-banner-img wow fadeInDown">
                     {data?.image != "" && (
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${data?.meta_data?.image}`}
-                        alt={data?.meta_data?.title}
-                      />
+                      <img src={data?.top_banner} alt={data?.post_title} />
                     )}
                   </div>
                 </div>
@@ -141,7 +135,7 @@ export default async function PageTransactions() {
       >
         <div className="container transactions-section">
           <div className="wrapper">
-            {transactions.map((item, index) => (
+            {data?.section_list.map((item, index) => (
               <div
                 className="card-item wow fadeInUp"
                 data-wow-duration="1500ms"
@@ -149,18 +143,15 @@ export default async function PageTransactions() {
                 key={item}
               >
                 <div className="card-img">
-                  <img
-                    src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${item.image}`}
-                    alt=""
-                  />
+                  <img src={item.image} alt={item?.section_title} />
                 </div>
                 <div className="card-content">
                   <div>
-                    <div className="title">{item.title}</div>
+                    <div className="title">{item.section_title}</div>
                     <div
                       className="content"
                       dangerouslySetInnerHTML={{
-                        __html: item.content,
+                        __html: item.section_content,
                       }}
                     ></div>
                   </div>

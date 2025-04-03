@@ -5,6 +5,7 @@ import FooterContactForm from "./FooterContactForm";
 const Footer = () => {
   const [openMenus, setOpenMenus] = useState({});
   const [services, setServices] = useState([]);
+  const [footerContent, setFooterContent] = useState([]);
   const [slpservices, setslpServices] = useState([]);
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
   const toggleMenu = (index) => {
@@ -16,21 +17,26 @@ const Footer = () => {
 
   useEffect(() => {
     getServicesData();
-    getSplServicesData();
+    getFooterContent();
   }, []);
 
   const getServicesData = async () => {
-    const { data } = await fetch(`${APIURL}/cms/getAll/Services`, {
+    const data = await fetch(`${APIURL}/menu/footer`, {
       cache: "no-store",
     }).then((res) => res.json());
-    setServices(data);
+    setServices(data["350"]);
+    setslpServices(data["351"]);
   };
-  const getSplServicesData = async () => {
-    const { data } = await fetch(`${APIURL}/cms/getAll/Specialised_Services`, {
+
+  const getFooterContent = async () => {
+    const data = await fetch(`${APIURL}/full_details?ID=23`, {
       cache: "no-store",
     }).then((res) => res.json());
-    setslpServices(data);
+    setFooterContent(data);
   };
+
+  console.log(footerContent, "this is a footer");
+
   return (
     <>
       <footer id="footer-id">
@@ -84,13 +90,7 @@ const Footer = () => {
                   </div>
 
                   <p style={{ fontSize: "13px" }}>
-                    {" "}
-                    Synergy Consulting is an advisory firm with extensive
-                    industry and commercial experience in Fund Raising across
-                    the Middle East, Asia Pacific and Indian sub-continent. We
-                    help companies access capital from a wide variety of
-                    Institutional lenders, Mezzanine Funds, Private Equity &
-                    Investment firms.{" "}
+                    {footerContent?.footer_desccription}
                   </p>
                 </div>
               </div>
@@ -108,7 +108,7 @@ const Footer = () => {
                         {services.map((service) => {
                           return (
                             <li key={service.id}>
-                              <a href={`/services/${service.slug}`}>
+                              <a href={`${service.url}`}>
                                 {service.title.replace(/<[^>]*>/g, "")}{" "}
                               </a>
                             </li>
@@ -140,7 +140,7 @@ const Footer = () => {
                         {slpservices.map((service) => {
                           return (
                             <li key={service.id}>
-                              <a href={`/services/${service.slug}`}>
+                              <a href={`${service.url}`}>
                                 {service.title.replace(/<[^>]*>/g, "")}{" "}
                               </a>
                             </li>
