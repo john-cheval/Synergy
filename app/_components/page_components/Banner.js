@@ -11,11 +11,15 @@ const Banner = ({ data }) => {
     <>
       <section className="banner-section">
         <div className="banner-slider">
-          <video autoPlay loop id="video-background" muted playsInline preload="auto"> 
-            <source
-              src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${data?.image}`}
-              type={"video/mp4"}
-            />
+          <video
+            autoPlay
+            loop
+            id="video-background"
+            muted
+            playsInline
+            preload="auto"
+          >
+            <source src={data[0]?.video?.url} type={"video/mp4"} />
           </video>
           <div className="single-banner">
             <div className="container container-xl">
@@ -27,10 +31,9 @@ const Banner = ({ data }) => {
                       data-animation="fadeInUp"
                       data-wow-duration="1500ms"
                       data-wow-delay="300ms"
-                      dangerouslySetInnerHTML={{
-                        __html: data?.heading?.replace(/<[^>]*>/g, ""),
-                      }}
-                    ></h1>
+                    >
+                      {data[0]?.title}
+                    </h1>
                   </div>
                 </div>
               </div>

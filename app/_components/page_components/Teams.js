@@ -18,11 +18,11 @@ const Teams = () => {
 
   const getData = async () => {
     setloading(true);
-    const { data } = await fetch(`${APIURL}/cms/getAll/Team`, {
+    const { team_list } = await fetch(`${APIURL}/full_details?ID=150`, {
       cache: "no-store",
     }).then((res) => res.json());
     setloading(false);
-    setteams(data);
+    setteams(team_list);
   };
   const handleClick = (item) => {
     setactiveteam(item);
@@ -57,7 +57,7 @@ const Teams = () => {
                 <div className="team-modal-left">
                   {activeteam?.image != "" && (
                     <img
-                      src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${activeteam?.image}`}
+                      src={activeteam?.image}
                       alt={activeteam?.member_name}
                       className="img-fluid"
                     />
@@ -85,7 +85,7 @@ const Teams = () => {
                   </div>
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: activeteam?.description,
+                      __html: activeteam?.section_content,
                     }}
                   ></p>
                 </div>
@@ -123,7 +123,7 @@ const Teams = () => {
                       >
                         {item.image != "" && (
                           <img
-                            src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${item?.image}`}
+                            src={item?.image}
                             alt={item?.member_name}
                             className="img-fluid"
                           />

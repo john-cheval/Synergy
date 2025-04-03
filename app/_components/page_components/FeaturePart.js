@@ -1,10 +1,16 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 
-import aboutBg from "../../../public/img/about-bg.png";
 import Slider from "react-slick";
 import { Typewriter } from "react-simple-typewriter";
 const FeaturePart = ({ data }) => {
+  const {
+    who_we_are_heading,
+    who_we_are_description,
+    who_we_are_image,
+    collaborators_heading,
+    collaborators_list,
+  } = data;
   const sectionRef = useRef(null);
   const text = "finance and funding solutions";
   const [displayedText, setDisplayedText] = useState("");
@@ -12,13 +18,13 @@ const FeaturePart = ({ data }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [onLoopDone, setonLoopDone] = useState(false);
 
-  let [section_data_1] = data.sections.filter(
-    (item) => item.section_name == "Section 1"
-  );
-  let [section_data_2] = data.sections.filter(
-    (item) => item.section_name == "Section 2"
-  );
-  let collaborators = data.collaborators;
+  // let [section_data_1] = data.sections.filter(
+  //   (item) => item.section_name == "Section 1"
+  // );
+  // let [section_data_2] = data.sections.filter(
+  //   (item) => item.section_name == "Section 2"
+  // );
+  // let collaborators = data.collaborators;
 
   const settings = {
     dots: false,
@@ -80,7 +86,7 @@ const FeaturePart = ({ data }) => {
     <>
       <section
         className="feature-section section-gap"
-        style={{ background: `url(${aboutBg.src})` }}
+        style={{ background: `url(${who_we_are_image})` }}
         ref={sectionRef}
       >
         <div className="container">
@@ -121,7 +127,7 @@ const FeaturePart = ({ data }) => {
               data-wow-duration="1500ms"
               data-wow-delay="600ms"
               dangerouslySetInnerHTML={{
-                __html: section_data_1?.section_content,
+                __html: who_we_are_description,
               }}
             ></div>
           </div>
@@ -133,26 +139,17 @@ const FeaturePart = ({ data }) => {
               data-wow-delay="1000ms"
             >
               <div className="patner-box">
-                <h4
-                  dangerouslySetInnerHTML={{
-                    __html: section_data_2?.section_title?.replace(
-                      /<[^>]*>/g,
-                      ""
-                    ),
-                  }}
-                ></h4>
+                <h4>{collaborators_heading}</h4>
                 <div className="patner-logo-col">
                   {/* <ul> */}
                   <Slider {...settings}>
-                    {collaborators &&
-                      collaborators.length > 0 &&
-                      collaborators.map((item) => {
+                    {collaborators_list &&
+                      collaborators_list.length > 0 &&
+                      collaborators_list.map((item) => {
                         return (
                           <div className="logos_item_i" key={item.id}>
                             <div className="mr-4" href="#">
-                              <img
-                                src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${item?.image}`}
-                              />
+                              <img src={`${item?.image}`} />
                             </div>
                           </div>
                         );

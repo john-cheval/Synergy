@@ -2,45 +2,45 @@
 import React, { useEffect, useState } from "react";
 
 const ServiceDetailsSection = ({ data }) => {
-    let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+  let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
   let top = 80;
   let left = 0;
-  const [allSections, setallSections] = useState(data.sections);
+  const [allSections, setallSections] = useState(data?.section_list);
   const [loading, setloading] = useState(false);
   const [orderingdata, setorderingdata] = useState([]);
-  useEffect(() => {    
-    setallSections(data?.sections);
-    getorderingdata(data?.meta_data?.id);
+  useEffect(() => {
+    setallSections(data?.section_list);
+    // getorderingdata(data?.meta_data?.id);
   }, [data]);
 
-//   useEffect(() => {
-//     if (data?.meta_data?.id) {
-//       getorderingdata(data?.meta_data?.id);
-//     }
-//   }, [data?.meta_data?.id]);
-  const getorderingdata = async (selectedID) => {
-    setloading(true);
-    const { data } = await fetch(
-      `${APIURL}/cms/reorderServices/${selectedID}`,
-      { cache: "no-store" }
-    ).then((res) => res.json());
-    setorderingdata(data);
-    setReorder(data);
-  };
+  //   useEffect(() => {
+  //     if (data?.meta_data?.id) {
+  //       getorderingdata(data?.meta_data?.id);
+  //     }
+  //   }, [data?.meta_data?.id]);
+  // const getorderingdata = async (selectedID) => {
+  //   setloading(true);
+  //   const { data } = await fetch(
+  //     `${APIURL}/cms/reorderServices/${selectedID}`,
+  //     { cache: "no-store" }
+  //   ).then((res) => res.json());
+  //   setorderingdata(data);
+  //   setReorder(data);
+  // };
 
-  const setReorder = (orderingdata) => {
-    console.log(orderingdata)
-    if (orderingdata.length > 0) {
-      const reorderedArray = orderingdata
-        .map((orderItem) =>
-          allSections.find(
-            (mainItem) => mainItem.id === orderItem.service_section_id
-          )
-        )
-        .filter((item) => item);
-      setallSections(reorderedArray);
-    }
-  };
+  // const setReorder = (orderingdata) => {
+  //   console.log(orderingdata);
+  //   if (orderingdata.length > 0) {
+  //     const reorderedArray = orderingdata
+  //       .map((orderItem) =>
+  //         allSections.find(
+  //           (mainItem) => mainItem.id === orderItem.service_section_id
+  //         )
+  //       )
+  //       .filter((item) => item);
+  //     setallSections(reorderedArray);
+  //   }
+  // };
 
   return (
     <>
@@ -59,21 +59,29 @@ const ServiceDetailsSection = ({ data }) => {
             >
               <div className="container">
                 <div
-                  className={`row row-eq-height service-content-row-${item?.bg_type}`}
+                  className={`row row-eq-height service-content-row-${
+                    index + 1
+                  }`}
                   style={{ transform: `translateX(${left}px)` }}
                 >
                   <div className="col-lg-5 col-md-12 d-flex flex-column p-lg-0">
                     <div
-                      className={`service-content service-box-content h-100 service-content-${item?.bg_type}`}
-                      dangerouslySetInnerHTML={{ __html: item?.description }}
-                    ></div>
+                      className={`service-content service-box-content h-100 service-content-${
+                        index + 1
+                      }`}
+                    >
+                      <h3>{item?.section_title}</h3>
+
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: item?.section_content,
+                        }}
+                      ></div>
+                    </div>
                   </div>
                   <div className="col-lg-5 p-lg-0">
                     <div className="blog-banner h-100">
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${item?.image}`}
-                        alt={data?.meta_data?.title?.replace(/<[^>]*>/g, "")}
-                      />
+                      <img src={item?.image} alt={data?.section_title} />
                     </div>
                   </div>
                 </div>

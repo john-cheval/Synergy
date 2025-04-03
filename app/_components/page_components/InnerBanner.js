@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { WOW } from "wowjs";
 import Bredcumb from "./Bredcumb";
 const InnerBanner = ({ data, additionalClass = "" }) => {
+  const { short_description, small_heading, top_banner } = data;
   useEffect(() => {
     new WOW().init();
   }, []);
@@ -23,12 +24,13 @@ const InnerBanner = ({ data, additionalClass = "" }) => {
                         className="wow fadeInUp"
                         data-animation="fadeInUp"
                         data-delay="1s"
-                        dangerouslySetInnerHTML={{
-                          __html: data?.heading?.replace(/<\/?p>/g, ""),
-                        }}
+                        // dangerouslySetInnerHTML={{
+                        //   __html: data?.heading?.replace(/<\/?p>/g, ""),
+                        // }}
+                        dangerouslySetInnerHTML={{ __html: short_description }}
                       ></h1>
                     </div>
-                    <Bredcumb title={data?.title} />
+                    <Bredcumb title={small_heading} />
                   </div>
                 </div>
               </div>
@@ -37,10 +39,7 @@ const InnerBanner = ({ data, additionalClass = "" }) => {
                 <div className="col-lg-12 col-md-12">
                   <div className="inner-banner-img wow fadeInDown">
                     {data?.image != "" && (
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${data?.image}`}
-                        alt={data?.title}
-                      />
+                      <img src={top_banner} alt={small_heading} />
                     )}
                   </div>
                 </div>

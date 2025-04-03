@@ -15,12 +15,12 @@ const Testimonials = () => {
   }, []);
 
   const getData = async () => {
-    const { data } = await fetch(`${APIURL}/cms/getGoogleReviews`, {
+    const data = await fetch(`${APIURL}/google_reviews`, {
       cache: "no-store",
     }).then((res) => res.json());
     setreviews(data.reviews);
-    settotal_rev(data.user_ratings_total);
-    settotal_rating(data.rating);
+    settotal_rev(data.data[0]?.review_count);
+    settotal_rating(data.data[0]?.rating);
   };
   const truncateText = (text, length = 200) => {
     if (text.length <= length) {

@@ -1,11 +1,17 @@
 import Link from "next/link";
 import React from "react";
+import { object } from "yup";
 
 const OurServices = ({ data }) => {
-  let [section_data_3] = data.sections.filter(
-    (item) => item.section_name == "Section 3"
-  );
-  let services = data.services;
+  // let [section_data_3] = data.sections.filter(
+  //   (item) => item.section_name == "Section 3"
+  // );
+  let servicesList = data.posts;
+  let servicesListKeys = Object.keys(servicesList);
+  // console.log(servicesListKeys, "jjjj");
+
+  // console.log(Object.values(servicesList), "this is the services");
+  const services = Object.values(servicesList);
   let top = 210;
   return (
     <>
@@ -37,7 +43,9 @@ const OurServices = ({ data }) => {
           </div>
           {services && services.length > 0 && (
             <div
-              className={`wow fadeInUp services-box services-box-${services[0]?.homepage_bg_type}`}
+              className={`wow fadeInUp services-box services-box-${Number(
+                servicesListKeys[0]
+              )}`}
               data-wow-duration="1500ms"
               data-wow-delay="600ms"
             >
@@ -45,14 +53,11 @@ const OurServices = ({ data }) => {
                 <div className="col-lg-6 col-md-12 order-lg-2">
                   <div className="service-img-box service-img-box-left">
                     {services[0].image.indexOf(".mp4") < 0 ? (
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${services[0]?.image}`}
-                        type={data?.media_type}
-                      />
+                      <img src={services[0]?.image} type={data?.media_type} />
                     ) : (
                       <video autoPlay loop className="video-solution" muted>
                         <source
-                          src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${services[0]?.image}`}
+                          src={services[0]?.image}
                           type={services[0].media_type}
                         />
                       </video>
@@ -62,10 +67,19 @@ const OurServices = ({ data }) => {
                 <div className="col-lg-6 col-md-12 order-lg-1">
                   <div className="service-content">
                     <h3
-                      dangerouslySetInnerHTML={{ __html: services[0]?.title }}
-                    ></h3>
-                    <p>{services[0]?.short_description}</p>
-                    <Link href={`/services/${services[0]?.slug}`} className="d_btn">
+                      dangerouslySetInnerHTML={{
+                        __html: services[0]?.post_title,
+                      }}
+                    />
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: services[0]?.contact_description,
+                      }}
+                    ></p>
+                    <Link
+                      href={`/services/${services[0]?.post_name}`}
+                      className="d_btn"
+                    >
                       Read More
                       <span className="btn-icon">
                         <img src="/img/btn-icon.png" />
@@ -95,16 +109,15 @@ const OurServices = ({ data }) => {
                 >
                   <div className="container">
                     <div
-                      className={`services-box services-box-${item?.homepage_bg_type}`}
+                      className={`services-box services-box-${Number(
+                        servicesListKeys[index + 1]
+                      )}`}
                     >
                       <div className="row align-items-center justify-content-center">
                         <div className="col-lg-6 col-md-12">
                           <div className="service-img-box service-img-box-right">
                             {item.image.indexOf(".mp4") < 0 ? (
-                              <img
-                                src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${item?.image}`}
-                                type={data?.media_type}
-                              />
+                              <img src={item?.image} type={data?.media_type} />
                             ) : (
                               <video
                                 autoPlay
@@ -113,7 +126,7 @@ const OurServices = ({ data }) => {
                                 muted
                               >
                                 <source
-                                  src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${item?.image}`}
+                                  src={item?.image}
                                   type={item.media_type}
                                 />
                               </video>
@@ -123,11 +136,17 @@ const OurServices = ({ data }) => {
                         <div className="col-lg-6 col-md-12 pl-lg-5">
                           <div className="service-content">
                             <h3
-                              dangerouslySetInnerHTML={{ __html: item?.title }}
-                            ></h3>
-                            <p>{item?.short_description}</p>
+                              dangerouslySetInnerHTML={{
+                                __html: item?.post_title,
+                              }}
+                            />
+                            <p
+                              dangerouslySetInnerHTML={{
+                                __html: item?.contact_description,
+                              }}
+                            ></p>
                             <Link
-                              href={`/services/${item?.slug}`}
+                              href={`/services/${item?.post_name}`}
                               prefetch={true}
                               className="d_btn"
                             >
@@ -152,16 +171,15 @@ const OurServices = ({ data }) => {
                 >
                   <div className="container">
                     <div
-                      className={`services-box services-box-${item?.homepage_bg_type}`}
+                      className={`services-box services-box-${Number(
+                        servicesListKeys[index + 1]
+                      )}`}
                     >
                       <div className="row align-items-center justify-content-center">
                         <div className="col-lg-6 col-md-12 order-lg-2">
                           <div className="service-img-box service-img-box-left">
                             {item.image.indexOf(".mp4") < 0 ? (
-                              <img
-                                src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${item?.image}`}
-                                type={data?.media_type}
-                              />
+                              <img src={item?.image} type={data?.media_type} />
                             ) : (
                               <video
                                 autoPlay
@@ -170,7 +188,7 @@ const OurServices = ({ data }) => {
                                 muted
                               >
                                 <source
-                                  src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${item?.image}`}
+                                  src={item?.image}
                                   type={item.media_type}
                                 />
                               </video>
@@ -180,11 +198,17 @@ const OurServices = ({ data }) => {
                         <div className="col-lg-6 col-md-12 order-lg-1">
                           <div className="service-content">
                             <h3
-                              dangerouslySetInnerHTML={{ __html: item?.title }}
-                            ></h3>
-                            <p>{item?.short_description}</p>
+                              dangerouslySetInnerHTML={{
+                                __html: item?.post_title,
+                              }}
+                            />
+                            <p
+                              dangerouslySetInnerHTML={{
+                                __html: item?.contact_description,
+                              }}
+                            ></p>
                             <Link
-                              href={`/services/${item?.slug}`}
+                              href={`/services/${item?.post_name}`}
                               prefetch={true}
                               className="d_btn"
                             >
