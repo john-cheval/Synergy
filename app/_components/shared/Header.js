@@ -10,7 +10,6 @@ const Header = () => {
   const [menuOpened, setmenuOpened] = useState(false);
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
   const [services, setServices] = useState([]);
-  const [slpservices, setslpServices] = useState([]);
   const [openMenus, setOpenMenus] = useState({});
   const [isloading, setisloading] = useState(true);
 
@@ -19,7 +18,6 @@ const Header = () => {
   const [menu3, setmenu3] = useState(false);
   useEffect(() => {
     getData();
-    // getSplServicesData();
   }, []);
 
   const toggleMenu = (index) => {
@@ -50,13 +48,6 @@ const Header = () => {
     }).then((res) => res.json());
     setServices(data["119"]);
   };
-
-  // const getSplServicesData = async () => {
-  //   const { data } = await fetch(`${APIURL}/cms/getAll/Specialised_Services`, {
-  //     cache: "no-store",
-  //   }).then((res) => res.json());
-  //   setslpServices(data);
-  // };
 
   useEffect(() => {
     setisloading(false);
@@ -135,7 +126,9 @@ const Header = () => {
         </div>
       )}
       <header
-        className={`sticky-header ${pathname === "/" ? "header-homepage" : ""}`}
+        className={`sticky-header relative ${
+          pathname === "/" ? "header-homepage" : ""
+        }`}
       >
         <div className="header-nav">
           <div className="container">
@@ -167,7 +160,7 @@ const Header = () => {
                       height={0}
                       sizes="100vw"
                       className="image"
-                      // priority={false}
+                      priority
                     />
                   </a>
                   <div className="navbar-close" onClick={handleCloseMenu}>
@@ -270,8 +263,6 @@ const Header = () => {
                                     __html: service.title,
                                   }}
                                 />
-                                {/* {service.title.replace(/<[^>]*>/g, "")}{" "} */}
-                                {/* </a> */}
                               </li>
                             );
                           })}
@@ -279,53 +270,6 @@ const Header = () => {
                       )}
                     </li>
 
-                    {/* <li
-                      className={
-                        pathname == "/services"
-                          ? `${
-                              menu3
-                                ? "active show has-submemu"
-                                : "active has-submemu"
-                            }`
-                          : `${menu3 ? "show has-submemu" : "has-submemu"}`
-                      }
-                    >
-                      <Link
-                        href="#"
-                        className="no_link"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setmenu1(false);
-                          setmenu2(false);
-                          setmenu3(!menu3);
-                        }}
-                      >
-                        Specialized
-                      </Link>
-                      <button className="dropArrow">
-                        <i className="fa fa-angle-down"></i>
-                      </button>
-                      {slpservices && slpservices.length > 0 && (
-                        <ul>
-                          {slpservices.map((service) => {
-                            return (
-                              <li
-                                key={service.id}
-                                className={
-                                  pathname == `/services/${service.slug}`
-                                    ? "active"
-                                    : ""
-                                }
-                              >
-                                <a href={`/services/${service.slug}`}>
-                                  {service.title.replace(/<[^>]*>/g, "")}{" "}
-                                </a>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      )}
-                    </li> */}
                     <li className={pathname == "/transactions" ? "active" : ""}>
                       <a onClick={handleCloseMenu} href="/transactions">
                         Transactions{" "}
@@ -406,6 +350,8 @@ const Header = () => {
             </div>
           </div>
         </div>
+
+        {pathname === "/" && <div className="header-grad" />}
       </header>
     </>
   );
