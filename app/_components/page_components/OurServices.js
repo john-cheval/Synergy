@@ -7,8 +7,7 @@ const OurServices = ({ data }) => {
   let servicesListKeys = Object.keys(servicesList);
 
   const services = Object.values(servicesList);
-  let top = 260;
-  // let top= 210
+  let top = 210;
 
   const getVideoType = (url) => {
     if (url?.endsWith(".mp4")) return "video/mp4";
@@ -122,7 +121,7 @@ const OurServices = ({ data }) => {
               {!isOdd && (
                 <section
                   className="stickyWrapper wow fadeInUp"
-                  style={{ "--top": `${top}px` }}
+                  style={{ "--top": `${top}px` /* , zIndex: index + 10 */ }}
                   key={item?.ID || index}
                   data-wow-duration="1500ms"
                   data-wow-delay={`${index * 200}ms`}
@@ -205,7 +204,7 @@ const OurServices = ({ data }) => {
               {isOdd && (
                 <section
                   className="stickyWrapper wow fadeInUp"
-                  style={{ "--top": `${top}px` }}
+                  style={{ "--top": `${top}px` /* zIndex: index + 10 */ }}
                   data-wow-duration="1500ms"
                   data-wow-delay={`${index * 200}ms`}
                 >
