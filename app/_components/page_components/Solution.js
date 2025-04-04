@@ -56,6 +56,8 @@ const Solution = ({ data }) => {
                               <video
                                 autoPlay
                                 loop
+                                playsInline
+                                preload="auto"
                                 className="video-solution"
                                 muted
                               >
@@ -73,7 +75,7 @@ const Solution = ({ data }) => {
                                 height={0}
                                 sizes="100vw"
                                 className="image"
-                                // priority={false}
+                                priority={false}
                               />
                             )
                           }

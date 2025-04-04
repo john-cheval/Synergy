@@ -3,7 +3,7 @@ const Banner = dynamic(() => import("./_components/page_components/Banner"), {
   ssr: false,
 });
 const Solution = dynamic(() =>
-  import("./_components/page_components/Solution")
+  import("./_components/page_components/Solution", { ssr: false })
 );
 const Industries = dynamic(() =>
   import("./_components/page_components/Industries")
@@ -11,6 +11,7 @@ const Industries = dynamic(() =>
 const OurTeams = dynamic(() =>
   import("./_components/page_components/OurTeams")
 );
+
 import FeaturePart from "./_components/page_components/FeaturePart";
 import OurServices from "./_components/page_components/OurServices";
 import OurProcess from "./_components/page_components/OurProcess";
