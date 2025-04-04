@@ -30,9 +30,7 @@ const Banner = ({ data }) => {
           {!videoLoaded && (
             <div className="absolute inset-0 z-10">
               <Image
-                src={
-                  "https://chevaldemo.xyz/demo/synergy/wp-content/uploads/2025/04/about-banner.png"
-                }
+                src={"/about-banner.webp"}
                 alt="Hero Fallback"
                 layout="fill"
                 objectFit="cover"
@@ -45,7 +43,7 @@ const Banner = ({ data }) => {
             loop
             ref={videoRef}
             onLoadedData={handleVideoLoad}
-            poster="https://chevaldemo.xyz/demo/synergy/wp-content/uploads/2025/04/about-banner.png"
+            poster="/about-banner.webp"
             id="video-background"
             muted
             playsInline
