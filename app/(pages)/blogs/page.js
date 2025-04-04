@@ -61,23 +61,11 @@ export default async function PageBlogs({ params }) {
                     <Bredcumb title={post_title} />
                   </div>
                 </div>
-
-                {/* <div className="col-lg-3 col-md-3 text-right">
-                  <div className="bredcumb">
-                    <ul>
-                      <li>
-                        <a href="/"> Home </a>
-                      </li>
-                      <li> - </li>
-                      <li> Blog </li>
-                    </ul>
-                  </div>
-                </div> */}
               </div>
 
-              <div className="row justify-content-center text-white blog-title-row mt-5">
-                <div className="col-xl-8 col-lg-8 pl-lg-0">
-                  <div className="blog-banner h-100">
+              <div className="row justify-content-center text-white blog-title-row--   mt-5">
+                <div className="col-xl-8 col-lg-8  pl-lg-0--  pbl-0 pbr-0">
+                  <div className="blog-banner h-100 ">
                     <Image
                       src={firstBlog?.image}
                       alt={firstBlog?.post_title}
@@ -88,7 +76,7 @@ export default async function PageBlogs({ params }) {
                     />
                   </div>
                 </div>
-                <div className="col-xl-4 col-lg-4 d-flex flex-column p-lg-5">
+                <div className="col-xl-4 col-lg-4 d-flex flex-column p-lg-5 blog-title-row ">
                   <div className="blog-title-content mb-2">
                     <h3>{firstBlog?.post_title}</h3>
                     <p>

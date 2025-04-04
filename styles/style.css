@@ -7131,3 +7131,18 @@ ul.allErrs li {
   left: 0;
   top: 0;
 }
+
+@media (min-width: 770px) {
+  .pbr-0 {
+    padding-right: 0 !important;
+  }
+}
+
+/* @media only screen and (min-width: 769px) and (max-width: 991px) {
+  .pbl-0 {
+    padding-left: 0 !important;
+  }
+  .pbr-0 {
+    padding-right: 0 !important;
+  }
+} */
