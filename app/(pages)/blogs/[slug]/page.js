@@ -100,7 +100,8 @@ export default async function PageBlogDetails({ params }) {
                       <ul>
                         <li className="actives">
                           <a href={`tel:${phone_number}`}>
-                            Call: {phone_number}{" "}
+                            <span className="gradient-text ">Call:</span>{" "}
+                            {phone_number}{" "}
                           </a>
                         </li>
                         <li>
@@ -112,13 +113,15 @@ export default async function PageBlogDetails({ params }) {
                             )}?text=hello`}
                           >
                             {" "}
-                            Whatsapp: {whatsapp_number}{" "}
+                            <span className="gradient-text "> Whatsapp: </span>
+                            {whatsapp_number}{" "}
                           </a>
                         </li>
                         <li>
                           <a target="_blank" href={`mailto:${email_address}`}>
                             {" "}
-                            Email: {email_address}{" "}
+                            <span className="gradient-text ">Email: </span>
+                            {email_address}{" "}
                           </a>
                         </li>
                       </ul>

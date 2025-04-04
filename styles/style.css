@@ -2284,8 +2284,8 @@ header.header-three .header-nav::before {
 }
 
 ul.locationTabHeaders li {
-  border: 1px solid;
-  border: 1px solid #005ba8;
+  /* border: 1px solid; */
+  border: 1px solid transparent;
   border-radius: 50px;
   font-size: 16px;
   text-transform: uppercase;
@@ -2296,6 +2296,10 @@ ul.locationTabHeaders li {
   cursor: pointer;
   box-sizing: border-box;
   font-family: "Power Grotesk";
+
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(270deg, #005ba8 0%, #00cccb 100%) border-box;
+  border: 1px solid transparent;
 }
 
 ul.locationTabHeaders li:hover,
@@ -4683,7 +4687,7 @@ footer.grey-bg-footer .footer-copyright .back-to-top:hover {
   padding: 13px;
   border-radius: 35px;
   color: #005ba8;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .blog-contact-col ul li a {
@@ -4716,6 +4720,22 @@ footer.grey-bg-footer .footer-copyright .back-to-top:hover {
   color: #fff;
 }
 
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    rgba(0, 91, 168, 1) 0%,
+    rgba(0, 204, 203, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: 600;
+}
+.blog-contact-col ul li:hover .gradient-text {
+  background: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: white;
+}
 .contact-col h3 {
   color: #fff;
   margin-bottom: 12px;
@@ -4778,7 +4798,7 @@ footer.grey-bg-footer .footer-copyright .back-to-top:hover {
   top: 0;
   bottom: 0;
   background: linear-gradient(
-    to right,
+    to bottom,
     rgba(0, 91, 168, 1) 0%,
     rgba(0, 204, 203, 1) 100%
   );
@@ -5159,7 +5179,8 @@ button:disabled {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1085px;
+    /* max-width: 1085px; */
+    max-width: 90%;
   }
 }
 
@@ -7146,3 +7167,9 @@ ul.allErrs li {
     padding-right: 0 !important;
   }
 } */
+
+@media (min-width: 600px) and (max-width: 1200px) {
+  .container {
+    max-width: 85% !important;
+  }
+}
