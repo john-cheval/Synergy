@@ -7,8 +7,6 @@ export const metadata = {
 };
 
 export default async function PageCsr({ params }) {
-  let top = 80;
-  let left = 0;
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
   const data = await fetch(
     `${APIURL}/full_details?slug=${params.serviceslug}&meta_type=service`,
@@ -65,8 +63,8 @@ export default async function PageCsr({ params }) {
                 </div>
               </div>
 
-              <div className="row justify-content-center text-white row-eq-height mt-5">
-                <div className="col-lg-7 p-lg-0">
+              <div className="banner_image row justify-content-center text-white row-eq-height mt-5 ">
+                <div className="col-lg-7 p-lg-0--">
                   <div className="blog-banner h-100">
                     {[".mp4", ".mov"].some((ext) =>
                       data?.image.endsWith(ext)
@@ -90,7 +88,7 @@ export default async function PageCsr({ params }) {
                     )}
                   </div>
                 </div>
-                <div className="col-lg-5 d-flex flex-column">
+                <div className="col-lg-5 d-flex flex-column p-lg-0">
                   <div className="service-content-title service-content-page h-100">
                     <h3
                       dangerouslySetInnerHTML={{
@@ -150,38 +148,8 @@ export default async function PageCsr({ params }) {
           </div>
         </div>
       </section>
-      {/* <!--====== Feature Part end ======-->    */}
 
       <ServiceDetailsSection data={data} />
-
-      {/* {data?.sections?.length > 0 &&
-        data?.sections.map( (item,index) => {
-          let pindex = index + 1;
-          top = index > 0 ? top + 20 : top;
-          left = index > 0 ? left + 50 : left;
-          return (
-            <section
-              className="service-section section-gap stickyWrapper service_sticky detailssspage  wow fadeInUp"
-              style={{ "--top": `${top}px` }}
-              key={item.id}
-              data-wow-duration="1500ms" data-wow-delay={`${index+1 * 500}ms`}
-            >
-              <div className="container">
-                <div className={`row row-eq-height service-content-row-${item?.bg_type}`} style={{ "transform": `translateX(${left}px)` }}>
-                  <div className="col-lg-5 col-md-5 d-flex flex-column p-lg-0">
-                    <div className={`service-content service-box-content h-100 service-content-${item?.bg_type}`}  dangerouslySetInnerHTML={{ __html: item?.description }}></div>
-                  </div>
-                  <div className="col-lg-5 p-lg-0">
-                    <div className="blog-banner h-100">
-                      <img src={`${process.env.NEXT_PUBLIC_MEDIA_URL}/${item?.image}`} alt={data?.meta_data?.title?.replace(/<[^>]*>/g, '')} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          );
-        })} */}
-      {/* <div className="testwrap"><Testimonials /></div> */}
     </>
   );
 }
