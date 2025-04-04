@@ -28,7 +28,7 @@ const FeaturePart = ({ data }) => {
     autoplay: true,
     autoplaySpeed: 2000,
     arrows: false,
-    adaptiveHeight: true,
+    adaptiveHeight: false,
     responsive: [
       {
         breakpoint: 1200,

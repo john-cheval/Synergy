@@ -27,7 +27,7 @@ const Banner = ({ data }) => {
     <>
       <section className="banner-section">
         <div className="banner-slider">
-          {!videoLoaded && (
+          {/* {!videoLoaded && (
             <div className="absolute inset-0 z-10">
               <Image
                 src={"/about-banner.webp"}
@@ -37,13 +37,13 @@ const Banner = ({ data }) => {
                 priority
               />
             </div>
-          )}
+          )} */}
           <video
             autoPlay
             loop
             ref={videoRef}
             onLoadedData={handleVideoLoad}
-            poster="/about-banner.webp"
+            // poster="/about-banner.webp"
             id="video-background"
             muted
             playsInline

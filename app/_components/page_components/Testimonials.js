@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { NextArrow, PrevArrow } from "../shared/CustomArrows";
 import Image from "next/image";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 const Testimonials = () => {
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -44,8 +47,8 @@ const Testimonials = () => {
     //centerMode: true,
     centerPadding: "35%",
     adaptiveHeight: false,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow color="true" />,
+    prevArrow: <PrevArrow color="true" />,
     responsive: [
       {
         breakpoint: 1600,
@@ -149,7 +152,7 @@ const Testimonials = () => {
                                   </div>
                                   <div className="testimonial_top-right">
                                     <span className="testimonial-day">
-                                      {item?.relative_time_description}
+                                      {dayjs.unix(item?.time).fromNow()}
                                     </span>
                                     <ul>
                                       {Array.from({
