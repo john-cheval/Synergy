@@ -142,7 +142,15 @@ const Header = () => {
             <div className="nav-container">
               <div className="site-logo">
                 <a href="/">
-                  <img src="/img/logo.png" alt="Logo" />
+                  <Image
+                    src="/img/logo.png"
+                    alt="Logo"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="image"
+                    // priority={false}
+                  />
                 </a>
               </div>
 
@@ -152,7 +160,15 @@ const Header = () => {
               >
                 <div className="mobile_nav_header">
                   <a href="/">
-                    <img src="/img/logo.png" alt="Logo" />
+                    <Image
+                      src="/img/logo.png"
+                      alt="Logo"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      className="image"
+                      // priority={false}
+                    />
                   </a>
                   <div className="navbar-close" onClick={handleCloseMenu}>
                     <div className="cross-wrap">

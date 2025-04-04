@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const ServiceDetailsSection = ({ data }) => {
@@ -60,14 +61,14 @@ const ServiceDetailsSection = ({ data }) => {
               <div className="container">
                 <div
                   className={`row row-eq-height service-content-row-${
-                    index + 1
+                    item?.bg_Type ? item.bg_Type : 1
                   }`}
                   style={{ transform: `translateX(${left}px)` }}
                 >
                   <div className="col-lg-5 col-md-12 d-flex flex-column p-lg-0">
                     <div
                       className={`service-content service-box-content h-100 service-content-${
-                        index + 1
+                        item?.bg_Type ? item.bg_Type : 1
                       }`}
                     >
                       <h3>{item?.section_title}</h3>
@@ -81,7 +82,15 @@ const ServiceDetailsSection = ({ data }) => {
                   </div>
                   <div className="col-lg-5 p-lg-0">
                     <div className="blog-banner h-100">
-                      <img src={item?.image} alt={data?.section_title} />
+                      <Image
+                        src={item?.image}
+                        alt={data?.section_title}
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="image"
+                        // priority={false}
+                      />
                     </div>
                   </div>
                 </div>

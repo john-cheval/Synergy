@@ -1,5 +1,5 @@
-import Testimonials from "@/app/_components/page_components/Testimonials";
 import Bredcumb from "@/app/_components/page_components/Bredcumb";
+import Image from "next/image";
 
 export const metadata = {
   title: "Synergy | Privacy Policy",
@@ -20,7 +20,14 @@ export default async function PagePrivacyPolicy() {
       <section className={`banner-section`}>
         <div className="inner-banner">
           <div className="inner-banner-bg">
-            <img src="/img/inner-banner.png" />
+            <Image
+              src="/img/inner-banner.png"
+              alt="banner_image"
+              sizes="100vw"
+              width={0}
+              height={0}
+              className="image"
+            />
           </div>
           <div className="single-banner">
             <div className="container">
@@ -41,7 +48,14 @@ export default async function PagePrivacyPolicy() {
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-12 col-md-12">
                   <div className="inner-banner-img">
-                    <img src={top_banner} alt={post_title} />
+                    <Image
+                      src={top_banner}
+                      alt={post_title}
+                      sizes="100vw"
+                      width={0}
+                      height={0}
+                      className="image"
+                    />
                   </div>
                 </div>
               </div>

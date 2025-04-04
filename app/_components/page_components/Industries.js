@@ -84,7 +84,7 @@ const Industries = ({ data }) => {
                               width={0}
                               height={0}
                               sizes="100vw"
-                              priority={false}
+                              // priority={false}
                             />
                             <h4>{item?.title}</h4>
                           </div>

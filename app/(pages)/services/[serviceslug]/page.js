@@ -1,6 +1,6 @@
-import Testimonials from "@/app/_components/page_components/Testimonials";
 import Bredcumb from "@/app/_components/page_components/Bredcumb";
 import ServiceDetailsSection from "@/app/_components/page_components/ServiceDetailsSection";
+import Image from "next/image";
 export const metadata = {
   title: "Synergy | Services",
   description: "Your Strategic Partner for Business Excellence",
@@ -29,12 +29,26 @@ export default async function PageCsr({ params }) {
     return `+${countryCode} ${areaCode} ${part1} ${part2}`;
   };
 
+  const getVideoType = (url) => {
+    if (url?.endsWith(".mp4")) return "video/mp4";
+    if (url?.endsWith(".mov")) return "video/quicktime";
+    return "";
+  };
+
   return (
     <>
       <section className="banner-section wow fadeInUp">
         <div className="inner-banner">
           <div className="inner-banner-bg">
-            <img src="/img/inner-banner.png" />
+            <Image
+              src="/img/inner-banner.png"
+              alt="banner"
+              className="image"
+              width={0}
+              height={0}
+              sizes="100vw"
+              // priority={false}
+            />
           </div>
           <div className="single-banner">
             <div className="container">
@@ -46,9 +60,7 @@ export default async function PageCsr({ params }) {
                         Services
                       </h1>
                     </div>
-                    <Bredcumb
-                      title={data?.post_title.replace(/<[^>]*>/g, "")}
-                    />
+                    <Bredcumb title={data?.post_title} />
                   </div>
                 </div>
               </div>
@@ -56,12 +68,25 @@ export default async function PageCsr({ params }) {
               <div className="row justify-content-center text-white row-eq-height mt-5">
                 <div className="col-lg-7 p-lg-0">
                   <div className="blog-banner h-100">
-                    {data?.image.endsWith(".mp4") ? (
+                    {[".mp4", ".mov"].some((ext) =>
+                      data?.image.endsWith(ext)
+                    ) ? (
                       <video autoPlay loop className="video-solution" muted>
-                        <source src={data?.image} type={"video/mp4"} />
+                        <source
+                          src={data?.image}
+                          type={getVideoType(data?.image)}
+                        />
                       </video>
                     ) : (
-                      <img src={data?.image} alt={data?.post_title} />
+                      <Image
+                        src={data?.image}
+                        alt={data?.post_title}
+                        className="image"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        // priority={false}
+                      />
                     )}
                   </div>
                 </div>
@@ -71,7 +96,7 @@ export default async function PageCsr({ params }) {
                       dangerouslySetInnerHTML={{
                         __html: data?.post_title,
                       }}
-                    ></h3>
+                    />
                     <p
                       dangerouslySetInnerHTML={{
                         __html: data?.home_description,
@@ -110,7 +135,7 @@ export default async function PageCsr({ params }) {
           <div className="row justify-content-center">
             <div className="col-lg-4">
               <div className="inner-content-title">
-                <h5> {data?.post_title.replace(/<[^>]*>/g, "")} </h5>
+                <h5 dangerouslySetInnerHTML={{ __html: data?.post_title }} />
               </div>
             </div>
             <div className="col-lg-8">

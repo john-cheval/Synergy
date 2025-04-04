@@ -2,11 +2,11 @@
 import React, { useEffect } from "react";
 import { WOW } from "wowjs";
 import Bredcumb from "./Bredcumb";
+import Image from "next/image";
 const InnerBanner = ({ data, additionalClass = "" }) => {
   const { short_description, small_heading, top_banner } = data;
 
   const header = short_description?.split("<br>");
-  console.log(header, "kihuihhu");
   useEffect(() => {
     new WOW().init();
   }, []);
@@ -15,7 +15,15 @@ const InnerBanner = ({ data, additionalClass = "" }) => {
       <section className={`banner-section ${additionalClass}`}>
         <div className="inner-banner">
           <div className="inner-banner-bg">
-            <img src="/img/inner-banner.png" />
+            <Image
+              src="/img/inner-banner.png"
+              alt="banner"
+              className="image"
+              width={0}
+              height={0}
+              sizes="100vw"
+              priority
+            />
           </div>
           <div className="single-banner">
             <div className="container">
@@ -41,7 +49,14 @@ const InnerBanner = ({ data, additionalClass = "" }) => {
                 <div className="col-lg-12 col-md-12">
                   <div className="inner-banner-img wow fadeInDown">
                     {data?.image != "" && (
-                      <img src={top_banner} alt={small_heading} />
+                      <Image
+                        src={top_banner}
+                        alt={small_heading}
+                        className="image"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                      />
                     )}
                   </div>
                 </div>

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { WOW } from "wowjs";
 import Loading from "../shared/Loading";
+import Image from "next/image";
 
 const Teams = () => {
   const teamModal = useRef(null);
@@ -56,10 +57,14 @@ const Teams = () => {
               <div className="team-modal-box">
                 <div className="team-modal-left">
                   {activeteam?.image != "" && (
-                    <img
+                    <Image
                       src={activeteam?.image}
                       alt={activeteam?.member_name}
-                      className="img-fluid"
+                      className="img-fluid image"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      // priority={false}
                     />
                   )}
                 </div>
@@ -122,10 +127,14 @@ const Teams = () => {
                         data-target="#myM2"
                       >
                         {item.image != "" && (
-                          <img
+                          <Image
                             src={item?.image}
                             alt={item?.member_name}
-                            className="img-fluid"
+                            className="img-fluid image"
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            // priority={false}
                           />
                         )}
                       </div>

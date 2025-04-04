@@ -1,4 +1,5 @@
 import Bredcumb from "@/app/_components/page_components/Bredcumb";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
@@ -38,7 +39,14 @@ export default async function PageBlogs({ params }) {
       <section className="banner-section wow fadeInUp blog-banner-sec">
         <div className="inner-banner">
           <div className="inner-banner-bg">
-            <img src="/img/inner-banner.png" />
+            <Image
+              src="/img/inner-banner.png"
+              alt="banner"
+              sizes="100vw"
+              width={0}
+              height={0}
+              className="image"
+            />
           </div>
           <div className="single-banner">
             <div className="container">
@@ -70,7 +78,14 @@ export default async function PageBlogs({ params }) {
               <div className="row justify-content-center text-white blog-title-row mt-5">
                 <div className="col-xl-8 col-lg-8 pl-lg-0">
                   <div className="blog-banner h-100">
-                    <img src={firstBlog?.image} alt={firstBlog?.post_title} />
+                    <Image
+                      src={firstBlog?.image}
+                      alt={firstBlog?.post_title}
+                      sizes="100vw"
+                      width={0}
+                      height={0}
+                      className="image"
+                    />
                   </div>
                 </div>
                 <div className="col-xl-4 col-lg-4 d-flex flex-column p-lg-5">
@@ -111,7 +126,14 @@ export default async function PageBlogs({ params }) {
                     <div className="blog-box">
                       <div className="blog-img">
                         <Link href={`/blogs/${item.post_name}`}>
-                          <img src={item?.image} alt={item.post_title} />
+                          <Image
+                            src={item?.image}
+                            alt={item.post_title}
+                            sizes="100vw"
+                            width={0}
+                            height={0}
+                            className="image"
+                          />
                         </Link>
                       </div>
                       <div className="blog-content">

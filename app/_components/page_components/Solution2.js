@@ -1,7 +1,14 @@
+import Image from "next/image";
 import React from "react";
 
 const Solution2 = ({ data }) => {
   const { section_list, our_values } = data;
+
+  const getVideoType = (url) => {
+    if (url.endsWith(".mp4")) return "video/mp4";
+    if (url.endsWith(".mov")) return "video/quicktime";
+    return "";
+  };
 
   return (
     <>
@@ -47,18 +54,33 @@ const Solution2 = ({ data }) => {
                         key={item?.id || index}
                       >
                         <div className="box-solution-img h-100">
-                          {item?.image && item?.image?.endsWith(".mp4") ? (
-                            <video
-                              autoPlay
-                              loop
-                              className="video-solution"
-                              muted
-                            >
-                              <source src={item?.image} type={"video/mp4"} />
-                            </video>
-                          ) : (
-                            <img src={item?.image} alt={item?.heading} />
-                          )}
+                          {
+                            /* item?.image && item?.image?.endsWith(".mp4") */ [
+                              ".mp4",
+                              ".mov",
+                            ].some((ext) => item?.image.endsWith(ext)) ? (
+                              <video
+                                autoPlay
+                                loop
+                                className="video-solution"
+                                muted
+                              >
+                                type=
+                                {getVideoType(item?.image)}
+                                <source src={item?.image} />
+                              </video>
+                            ) : (
+                              <Image
+                                src={item?.image}
+                                alt={item?.heading}
+                                className="image"
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                // priority={false}
+                              />
+                            )
+                          }
                         </div>
                       </div>
                     ) : (

@@ -87,7 +87,7 @@ const Footer = () => {
                         height={0}
                         sizes="100vw"
                         className="image"
-                        priority={false}
+                        // priority={false}
                       />{" "}
                     </a>
                   </div>
