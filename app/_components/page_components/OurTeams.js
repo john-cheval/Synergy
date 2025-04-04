@@ -97,7 +97,7 @@ const OurTeams = ({ data }) => {
                               width={0}
                               height={0}
                               sizes="100vw"
-                              // priority={false}
+                              priority={false}
                             />
                             <div className="team-content">
                               <div className="team-content-left">

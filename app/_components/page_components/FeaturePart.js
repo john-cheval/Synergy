@@ -105,13 +105,6 @@ const FeaturePart = ({ data }) => {
                 )}
               </em>
             </h2>
-
-            {/* <h2
-              className="title"
-              dangerouslySetInnerHTML={{
-                __html: section_data_1?.section_title?.replace(/<[^>]*>/g, ""),
-              }}
-            ></h2> */}
           </div>
 
           <div className="feature-boxes row justify-content-center">
@@ -134,7 +127,6 @@ const FeaturePart = ({ data }) => {
               <div className="patner-box">
                 <h4>{collaborators_heading}</h4>
                 <div className="patner-logo-col">
-                  {/* <ul> */}
                   <Slider {...settings}>
                     {collaborators_list &&
                       collaborators_list.length > 0 &&
@@ -149,13 +141,13 @@ const FeaturePart = ({ data }) => {
                                 height={0}
                                 alt={index + 1}
                                 sizes="100vw"
+                                priority={false}
                               />
                             </div>
                           </div>
                         );
                       })}
                   </Slider>
-                  {/* </ul> */}
                 </div>
               </div>
             </div>
