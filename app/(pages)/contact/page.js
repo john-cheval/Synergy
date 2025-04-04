@@ -1,5 +1,6 @@
 import Bredcumb from "@/app/_components/page_components/Bredcumb";
 import ContactMap from "@/app/_components/page_components/ContactMap";
+import Image from "next/image";
 
 export default async function PageContactUs() {
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -22,7 +23,14 @@ export default async function PageContactUs() {
       >
         <div className="inner-banner">
           <div className="inner-banner-bg">
-            <img src="/img/inner-banner.png" />
+            <Image
+              src="/img/inner-banner.png"
+              alt="banner"
+              sizes="100vw"
+              width={0}
+              height={0}
+              className="image"
+            />
           </div>
           <div className="single-banner">
             <div className="container">

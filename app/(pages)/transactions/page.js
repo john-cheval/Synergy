@@ -1,4 +1,5 @@
 import Bredcumb from "@/app/_components/page_components/Bredcumb";
+import Image from "next/image";
 
 export const metadata = {
   title: "Synergy | Transactions",
@@ -16,7 +17,14 @@ export default async function PageTransactions() {
       <section className={`banner-section`}>
         <div className="inner-banner">
           <div className="inner-banner-bg">
-            <img src="/img/inner-banner.png" />
+            <Image
+              src="/img/inner-banner.png"
+              alt="banner"
+              sizes="100vw"
+              width={0}
+              height={0}
+              className="image"
+            />
           </div>
           <div className="single-banner">
             <div className="container">
@@ -42,7 +50,14 @@ export default async function PageTransactions() {
                 <div className="col-lg-12 col-md-12">
                   <div className="inner-banner-img wow fadeInDown">
                     {data?.image != "" && (
-                      <img src={data?.top_banner} alt={data?.post_title} />
+                      <Image
+                        src={data?.top_banner}
+                        alt={data?.post_title}
+                        sizes="100vw"
+                        width={0}
+                        height={0}
+                        className="image"
+                      />
                     )}
                   </div>
                 </div>
@@ -67,7 +82,14 @@ export default async function PageTransactions() {
                 key={index + 1}
               >
                 <div className="card-img">
-                  <img src={item.image} alt={item?.section_title} />
+                  <Image
+                    src={item.image}
+                    alt={item?.section_title}
+                    sizes="100vw"
+                    width={0}
+                    height={0}
+                    className="image"
+                  />
                 </div>
                 <div className="card-content">
                   <div>

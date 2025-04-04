@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { NextArrow, PrevArrow } from "../shared/CustomArrows";
-import moment from "moment";
 import Image from "next/image";
 
 const Testimonials = () => {
@@ -83,13 +82,6 @@ const Testimonials = () => {
               style={{ marginBottom: "20px" }}
             >
               <div className="">
-                {/* <div className="section-title mb-40 left-border">
-                  <h2 className="title mb-3">
-                    Renowned
-                    <span className="color-text"> Client Experience </span>
-                  </h2>
-                  <p> Proven success with globally recognized institutions </p>
-                </div> */}
                 <div className="google-rating-wrap">
                   <div className="google-rating-img-col">
                     <Image
@@ -99,7 +91,7 @@ const Testimonials = () => {
                       height={0}
                       sizes="100vw"
                       className="image"
-                      priority={false}
+                      // priority={false}
                     />
                   </div>
                   <div className="google-rating-bottom">
@@ -147,7 +139,7 @@ const Testimonials = () => {
                                         alt={item?.author_name}
                                         sizes="100vw"
                                         className="image"
-                                        priority={false}
+                                        // priority={false}
                                       />
                                     </div>
                                     <div className="testimonial_box-name">
@@ -172,7 +164,6 @@ const Testimonials = () => {
                                 </div>
                                 <div className="testimonial_box-top">
                                   <div className="testimonial_box-text">
-                                    {/* <h4>{item?.reviewer?.displayName}</h4> */}
                                     <p>{truncateText(item?.text, 400)}</p>
                                   </div>
                                 </div>

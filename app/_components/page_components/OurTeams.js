@@ -97,7 +97,7 @@ const OurTeams = ({ data }) => {
                               width={0}
                               height={0}
                               sizes="100vw"
-                              priority={false}
+                              // priority={false}
                             />
                             <div className="team-content">
                               <div className="team-content-left">
@@ -147,10 +147,13 @@ const OurTeams = ({ data }) => {
                       <div className="team-modal-box">
                         <div className="team-modal-left">
                           {activeteam?.image != "" && (
-                            <img
+                            <Image
                               src={activeteam?.image}
                               alt={activeteam?.member_name}
-                              className="img-fluid"
+                              className="img-fluid image"
+                              sizes="100vw"
+                              width={0}
+                              height={0}
                             />
                           )}
                         </div>
@@ -190,7 +193,14 @@ const OurTeams = ({ data }) => {
                 <a className="__our-team-btn" href={`/our-team`}>
                   Read More
                   <span style={{ marginLeft: "60px" }} className="btn-icon">
-                    <img src="/img/btn-icon.png" />
+                    <Image
+                      src="/img/btn-icon.png"
+                      alt="button"
+                      sizes="100vw"
+                      width={0}
+                      height={0}
+                      className="image"
+                    />
                   </span>
                 </a>
               </div>

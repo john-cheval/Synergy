@@ -1,4 +1,5 @@
 import Bredcumb from "@/app/_components/page_components/Bredcumb";
+import Image from "next/image";
 
 export const metadata = {
   title: "Synergy | Services",
@@ -29,7 +30,14 @@ export default async function PageBlogDetails({ params }) {
       >
         <div className="inner-banner">
           <div className="inner-banner-bg">
-            <img src="/img/inner-banner.png" />
+            <Image
+              src="/img/inner-banner.png"
+              alt="banner"
+              sizes="100vw"
+              width={0}
+              height={0}
+              className="image"
+            />
           </div>
           <div className="single-banner">
             <div className="container">
@@ -49,7 +57,14 @@ export default async function PageBlogDetails({ params }) {
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-12 col-md-12">
                   <div className="inner-banner-img">
-                    <img src={image} alt={post_title} />
+                    <Image
+                      src={image}
+                      alt={post_title}
+                      sizes="100vw"
+                      width={0}
+                      height={0}
+                      className="image"
+                    />
                   </div>
                 </div>
               </div>

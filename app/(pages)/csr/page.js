@@ -1,6 +1,4 @@
 import InnerBanner from "@/app/_components/page_components/InnerBanner";
-import Solution from "@/app/_components/page_components/Solution";
-import Testimonials from "@/app/_components/page_components/Testimonials";
 
 export const metadata = {
   title: "Synergy | CSR",

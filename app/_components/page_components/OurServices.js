@@ -7,7 +7,14 @@ const OurServices = ({ data }) => {
   let servicesListKeys = Object.keys(servicesList);
 
   const services = Object.values(servicesList);
-  let top = 210;
+  let top = 260;
+  // let top= 210
+
+  const getVideoType = (url) => {
+    if (url?.endsWith(".mp4")) return "video/mp4";
+    if (url?.endsWith(".mov")) return "video/quicktime";
+    return "";
+  };
   return (
     <>
       <section
@@ -26,12 +33,6 @@ const OurServices = ({ data }) => {
                   <h2 className="title">
                     Our <span className="color-text">&nbsp;Services</span>
                   </h2>
-                  {/* <h2
-                    className="title"
-                    dangerouslySetInnerHTML={{
-                      __html: section_data_3?.section_title,
-                    }}
-                  ></h2> */}
                 </div>
               </div>
             </div>
@@ -47,7 +48,22 @@ const OurServices = ({ data }) => {
               <div className="row align-items-center justify-content-center">
                 <div className="col-lg-6 col-md-12 order-lg-2">
                   <div className="service-img-box service-img-box-left">
-                    {services[0].image.indexOf(".mp4") < 0 ? (
+                    {[".mp4", ".mov"].some((ext) =>
+                      services[0]?.image.endsWith(ext)
+                    ) ? (
+                      <video
+                        autoPlay
+                        loop
+                        playsInline
+                        className="video-solution"
+                        muted
+                      >
+                        <source
+                          src={services[0]?.image}
+                          type={getVideoType(services[0]?.image)}
+                        />
+                      </video>
+                    ) : (
                       <Image
                         src={services[0]?.image}
                         alt={services[0]?.post_title}
@@ -55,15 +71,8 @@ const OurServices = ({ data }) => {
                         height={0}
                         sizes="100vw"
                         className="image"
-                        priority={false}
+                        // priority={false}
                       />
-                    ) : (
-                      <video autoPlay loop className="video-solution" muted>
-                        <source
-                          src={services[0]?.image}
-                          type={services[0].media_type}
-                        />
-                      </video>
                     )}
                   </div>
                 </div>
@@ -92,7 +101,7 @@ const OurServices = ({ data }) => {
                           height={0}
                           sizes="100vw"
                           className="image"
-                          priority={false}
+                          // priority={false}
                         />
                       </span>
                     </Link>
@@ -114,7 +123,7 @@ const OurServices = ({ data }) => {
                 <section
                   className="stickyWrapper wow fadeInUp"
                   style={{ "--top": `${top}px` }}
-                  key={item.id}
+                  key={item?.ID || index}
                   data-wow-duration="1500ms"
                   data-wow-delay={`${index * 200}ms`}
                 >
@@ -127,7 +136,23 @@ const OurServices = ({ data }) => {
                       <div className="row align-items-center justify-content-center">
                         <div className="col-lg-6 col-md-12">
                           <div className="service-img-box service-img-box-right">
-                            {item.image.indexOf(".mp4") < 0 ? (
+                            {[".mp4", ".mov"].some((ext) =>
+                              item?.image.endsWith(ext)
+                            ) ? (
+                              <video
+                                autoPlay
+                                loop
+                                playsInline
+                                className="video-solution"
+                                muted
+                              >
+                                <source
+                                  src={item?.image}
+                                  // type={item.media_type}
+                                  type={getVideoType(item.media_type)}
+                                />
+                              </video>
+                            ) : (
                               <Image
                                 src={item?.image}
                                 alt={item?.post_title}
@@ -135,20 +160,8 @@ const OurServices = ({ data }) => {
                                 height={0}
                                 sizes="100vw"
                                 className="image"
-                                priority={false}
+                                // priority={false}
                               />
-                            ) : (
-                              <video
-                                autoPlay
-                                loop
-                                className="video-solution"
-                                muted
-                              >
-                                <source
-                                  src={item?.image}
-                                  type={item.media_type}
-                                />
-                              </video>
                             )}
                           </div>
                         </div>
@@ -178,7 +191,7 @@ const OurServices = ({ data }) => {
                                   height={0}
                                   sizes="100vw"
                                   className="image"
-                                  priority={false}
+                                  // priority={false}
                                 />
                               </span>
                             </Link>
@@ -205,7 +218,22 @@ const OurServices = ({ data }) => {
                       <div className="row align-items-center justify-content-center">
                         <div className="col-lg-6 col-md-12 order-lg-2">
                           <div className="service-img-box service-img-box-left">
-                            {item.image.indexOf(".mp4") < 0 ? (
+                            {[".mp4", ".mov"].some((ext) =>
+                              item?.image.endsWith(ext)
+                            ) ? (
+                              <video
+                                autoPlay
+                                loop
+                                playsInline
+                                className="video-solution"
+                                muted
+                              >
+                                <source
+                                  src={item?.image}
+                                  type={getVideoType(item?.image)}
+                                />
+                              </video>
+                            ) : (
                               <Image
                                 src={item?.image}
                                 type={data?.media_type}
@@ -214,20 +242,8 @@ const OurServices = ({ data }) => {
                                 sizes="100vw"
                                 className="image"
                                 alt={item?.post_title}
-                                priority={false}
+                                // priority={false}
                               />
-                            ) : (
-                              <video
-                                autoPlay
-                                loop
-                                className="video-solution"
-                                muted
-                              >
-                                <source
-                                  src={item?.image}
-                                  type={item.media_type}
-                                />
-                              </video>
                             )}
                           </div>
                         </div>
@@ -257,7 +273,7 @@ const OurServices = ({ data }) => {
                                   height={0}
                                   sizes="100vw"
                                   className="image"
-                                  priority={false}
+                                  // priority={false}
                                 />
                               </span>
                             </Link>
@@ -271,98 +287,6 @@ const OurServices = ({ data }) => {
             </>
           );
         })}
-
-      {/* <section className="stickyWrapper" style={{ "--top": `265px` }}>
-        <div className="container">
-          <div className="services-box services-box-2">
-            <div className="row align-items-center justify-content-center">
-              <div className="col-lg-6 col-md-12">
-                <div className="service-img-box service-img-box-right">
-                  <video autoPlay loop className="video-solution" muted>
-                    <source src="/video/home-service-2.mp4" type="video/mp4" />
-                  </video>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-12 pl-lg-5">
-                <div className="service-content">
-                  <h3>
-                    Private <br /> Equity
-                  </h3>
-                  <p>
-                    Private equity (PE) is an asset class consisting of <br />
-                    equity securities
-                  </p>
-                  <a href="#">
-                    Read More
-                    <span className="btn-icon">
-                      <img src="/img/btn-icon.png" />
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="stickyWrapper" style={{ "--top": `330px` }}>
-        <div className="container">
-          <div className="services-box services-box-3">
-            <div className="row align-items-center justify-content-center">
-              <div className="col-lg-6 col-md-12 order-lg-2">
-                <div className="service-img-box service-img-box-left">
-                  <video autoPlay loop className="video-solution" muted>
-                    <source src="/video/home-service-3.mp4" type="video/mp4" />
-                  </video>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-12 order-lg-1">
-                <div className="service-content">
-                  <h3>
-                    Merger & <br /> Acquisition
-                  </h3>
-                  <p>
-                    Strategic Alliance is a relationship with one or more <br />
-                    other companies
-                  </p>
-                  <a href="#">
-                    Read More
-                    <span className="btn-icon">
-                      <img src="/img/btn-icon.png" />
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="stickyWrapper" style={{ "--top": `395px` }}>
-        <div className="container">
-          <div className="services-box services-box-4">
-            <div className="row align-items-center justify-content-center">
-              <div className="col-lg-6 col-md-12">
-                <img src="/img/service-4.png" />
-              </div>
-              <div className="col-lg-6 col-md-12 pl-lg-5">
-                <div className="service-content">
-                  <h3>
-                    Bilateral & <br /> Trade Loans
-                  </h3>
-                  <p>
-                    We arrange bilateral and trade loans <br /> for banks
-                  </p>
-                  <a href="#">
-                    Read More
-                    <span className="btn-icon">
-                      <img src="/img/btn-icon.png" />
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 };

@@ -1,5 +1,6 @@
 import Teams from "@/app/_components/page_components/Teams";
 import Bredcumb from "@/app/_components/page_components/Bredcumb";
+import Image from "next/image";
 
 export const metadata = {
   title: "Synergy | Our Team",
@@ -20,7 +21,14 @@ export default async function PageAboutUs() {
       <section className={`banner-section  team-banner-section wow fadeInUp`}>
         <div className="inner-banner">
           <div className="inner-banner-bg">
-            <img src="/img/inner-banner.png" />
+            <Image
+              src="/img/inner-banner.png"
+              alt="banner"
+              sizes="100vw"
+              width={0}
+              height={0}
+              className="image"
+            />
           </div>
           <div className="single-banner">
             <div className="container">

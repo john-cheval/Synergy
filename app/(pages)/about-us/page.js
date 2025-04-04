@@ -5,6 +5,7 @@ const InnerBanner = dynamic(
 );
 
 import Solution2 from "@/app/_components/page_components/Solution2";
+import Image from "next/image";
 
 export const metadata = {
   title: "Synergy | Who We Are",
@@ -16,6 +17,12 @@ export default async function PageAboutUs() {
   const data = await fetch(`${APIURL}/full_details?ID=14`, {
     cache: "no-store",
   }).then((res) => res.json());
+
+  // const getVideoType = (url) => {
+  //   if (url.endsWith(".mp4")) return "video/mp4";
+  //   if (url.endsWith(".mov")) return "video/quicktime";
+  //   return "";
+  // };
 
   return (
     <>
@@ -55,18 +62,31 @@ export default async function PageAboutUs() {
           >
             <div className="col-lg-6 col-md-6 p-2 order-lg-2">
               <div className="mission-video h-100">
-                {data?.section_list[0]?.image.endsWith(".mp4") ? (
-                  <video autoPlay loop className="video-mission" muted>
+                {[".mp4", ".mov"].some((ext) =>
+                  data?.section_list[0]?.image.endsWith(ext)
+                ) ? (
+                  <video
+                    autoPlay
+                    playsInline
+                    loop
+                    className="video-mission"
+                    muted
+                  >
                     <source
                       src={data?.section_list[0]?.image}
-                      type={"video/mp4"}
-                      poster={data?.section_list[0]?.image}
+                      // type={getVideoType(data?.section_list[0]?.image)}
+                      // poster={data?.section_list[0]?.image}
                     />
                   </video>
                 ) : (
-                  <img
+                  <Image
                     src={data?.section_list[0]?.image}
                     alt={data?.section_list[0]?.section_title}
+                    className="image"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    // priority={false}
                   />
                 )}
               </div>
@@ -93,9 +113,14 @@ export default async function PageAboutUs() {
           >
             <div className="col-lg-6 col-md-6 p-2">
               <div className="mission-video h-100">
-                <img
+                <Image
                   src={data?.section_list[1]?.image}
                   alt={data?.section_list[1]?.section_title}
+                  className="image"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  // priority={false}
                 />
               </div>
             </div>

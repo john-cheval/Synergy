@@ -1,6 +1,6 @@
-import Link from "next/link";
 import JobItem from "@/app/_components/page_components/JobItem";
 import Bredcumb from "@/app/_components/page_components/Bredcumb";
+import Image from "next/image";
 
 export const metadata = {
   title: "Synergy | Career",
@@ -25,7 +25,14 @@ export default async function PageCareer({ params }) {
       <section className="banner-section wow fadeInUp">
         <div className="inner-banner">
           <div className="inner-banner-bg">
-            <img src="/img/inner-banner.png" />
+            <Image
+              src="/img/inner-banner.png"
+              alt="banner"
+              sizes="100vw"
+              width={0}
+              height={0}
+              className="image"
+            />
           </div>
           <div className="single-banner">
             <div className="container">
@@ -45,7 +52,14 @@ export default async function PageCareer({ params }) {
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-12 col-md-12">
                   <div className="inner-banner-img">
-                    <img src={top_banner} alt={post_title} />
+                    <Image
+                      src={top_banner}
+                      alt={post_title}
+                      sizes="100vw"
+                      width={0}
+                      height={0}
+                      className="image"
+                    />
                   </div>
                 </div>
               </div>

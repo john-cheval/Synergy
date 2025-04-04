@@ -3,9 +3,11 @@ import React from "react";
 
 const Solution = ({ data }) => {
   const { one_stop_solution_description, one_stop_solution_list } = data;
-  const isImage = (media_type) => {
-    console.log(media_type);
-    return media_type.indexOf("image") > 0;
+
+  const getVideoType = (url) => {
+    if (url.endsWith(".mp4")) return "video/mp4";
+    if (url.endsWith(".mov")) return "video/quicktime";
+    return "";
   };
   return (
     <>
@@ -46,29 +48,35 @@ const Solution = ({ data }) => {
                         key={item.id}
                       >
                         <div className="box-solution-img h-100">
-                          {item?.file && item?.file?.endsWith(".mp4") ? (
-                            <video
-                              autoPlay
-                              loop
-                              className="video-solution"
-                              muted
-                            >
-                              <source
+                          {
+                            /* item?.file && item?.file?.endsWith(".mp4") */ [
+                              ".mp4",
+                              ".mov",
+                            ].some((ext) => item?.file.endsWith(ext)) ? (
+                              <video
+                                autoPlay
+                                loop
+                                className="video-solution"
+                                muted
+                              >
+                                <source
+                                  src={item?.file}
+                                  // type={item?.media_type}
+                                  type={getVideoType(item?.file)}
+                                />
+                              </video>
+                            ) : (
+                              <Image
                                 src={item?.file}
-                                type={item?.media_type}
+                                alt={item?.title || "image"}
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                className="image"
+                                // priority={false}
                               />
-                            </video>
-                          ) : (
-                            <Image
-                              src={item?.file}
-                              alt={item?.title || "image"}
-                              width={0}
-                              height={0}
-                              sizes="100vw"
-                              className="image"
-                              priority={false}
-                            />
-                          )}
+                            )
+                          }
                         </div>
                       </div>
                     ) : (
