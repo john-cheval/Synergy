@@ -7,7 +7,7 @@ const ContactMap = ({ list }) => {
   return (
     <>
       <div className="blog-banner h-100 locations-wraper">
-        <ul className="locationTabHeaders">
+        <ul className="locationTabHeaders ">
           {list?.map((map, i) => (
             <li
               key={i}
