@@ -38,7 +38,7 @@ export default async function PageContactUs() {
                 <div className="col-lg-12 col-md-12 text-left">
                   <div className="inner-banner-content">
                     <div className="h_w contact_page_desc">
-                      <h1 data-animation="fadeInUp" data-delay="1s">
+                      <h1 data-animation="fadeInUp " data-delay="1s">
                         {small_heading}
                       </h1>
                       <p
@@ -57,7 +57,7 @@ export default async function PageContactUs() {
                 <div className="col-lg-5 d-flex flex-column">
                   <div className="contact-col h-100">
                     <div className="contact-callus">
-                      <h3> Call Us </h3>
+                      <h3 className="color-text"> Call Us </h3>
                       <ul>
                         <li>
                           <a href="tel:+97145139095"> +971 4 5139095 </a>
@@ -69,9 +69,9 @@ export default async function PageContactUs() {
                       <p>{office_hours}</p>
                     </div>
                     <div className="contact-whatsapp">
-                      <p>
-                        <strong> Whatsapp </strong>
-                      </p>
+                      <span>
+                        <strong className="color-text"> Whatsapp </strong>
+                      </span>
 
                       <a
                         href={`https://wa.me/${whatsapp_number.replace(
@@ -83,9 +83,9 @@ export default async function PageContactUs() {
                       </a>
                     </div>
                     <div className="contact-emailus">
-                      <p>
-                        <strong> Email us </strong>
-                      </p>
+                      <span>
+                        <strong className="color-text"> Email us </strong>
+                      </span>
                       <a href={`mailto:${email_address}`}> {email_address}</a>
                       <p>
                         Response to email sent over the weekend will take up 2
@@ -93,9 +93,12 @@ export default async function PageContactUs() {
                       </p>
                     </div>
                     <div className="contact-other">
-                      <p>
-                        <strong> Marketing, PR & Other Enquiries </strong>
-                      </p>
+                      <span>
+                        <strong className="color-text">
+                          {" "}
+                          Marketing, PR & Other Enquiries{" "}
+                        </strong>
+                      </span>
                       <a href={`mailto:${email_address}`}>{email_address}</a>
                     </div>
                   </div>

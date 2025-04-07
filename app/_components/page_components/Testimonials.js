@@ -80,8 +80,8 @@ const Testimonials = () => {
           <div className="row justify-content-center">
             <div
               className="col-lg-12 col-md-12 text-left wow fadeInRight googleReviewFlex"
-              data-wow-duration="1500ms"
-              data-wow-delay="500ms"
+              data-wow-duration="1000ms"
+              data-wow-delay="300ms"
               style={{ marginBottom: "20px" }}
             >
               <div className="">
@@ -120,8 +120,8 @@ const Testimonials = () => {
 
             <div
               className="col-lg-12 col-md-12 p-0 text-left wow fadeInRight"
-              data-wow-duration="1500ms"
-              data-wow-delay="500ms"
+              data-wow-duration="1000ms"
+              data-wow-delay="300ms"
             >
               <div className="testimonial__inner">
                 <div id="testimonial" className="testimonial-slider">

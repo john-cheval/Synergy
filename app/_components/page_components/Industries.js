@@ -49,8 +49,8 @@ const Industries = ({ data }) => {
           <div className="row justify-content-center">
             <div
               className="col-lg-12 col-md-12 text-left wow fadeInRight"
-              data-wow-duration="1500ms"
-              data-wow-delay="500ms"
+              data-wow-duration="1000ms"
+              data-wow-delay="300ms"
             >
               <div className="skill-text">
                 <div className="section-title mb-40 left-border">
@@ -67,8 +67,8 @@ const Industries = ({ data }) => {
           <div className="row justify-content-center">
             <div
               className="col-lg-12 col-md-12 text-left wow fadeInRight"
-              data-wow-duration="1500ms"
-              data-wow-delay="500ms"
+              data-wow-duration="1000ms"
+              data-wow-delay="300ms"
             >
               <div id="Industries" className="slider">
                 <Slider {...settings}>

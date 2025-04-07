@@ -35,7 +35,7 @@ export default async function PageTransactions() {
                       <h1
                         className="wow fadeInUp"
                         data-animation="fadeInUp"
-                        data-delay="1s"
+                        data-delay="300ms"
                         dangerouslySetInnerHTML={{
                           __html: data?.post_title?.replace(/<\/?p>/g, ""),
                         }}
@@ -69,16 +69,16 @@ export default async function PageTransactions() {
 
       <section
         className="inner-content-section section-gap csr_page wow fadeInUp"
-        data-wow-duration="1500ms"
-        data-wow-delay="1000ms"
+        data-wow-duration="1000ms"
+        data-wow-delay="300ms"
       >
         <div className="container transactions-section">
           <div className="wrapper">
             {data?.section_list.map((item, index) => (
               <div
                 className="card-item wow fadeInUp"
-                data-wow-duration="1500ms"
-                data-wow-delay="1000ms"
+                data-wow-duration="1000ms"
+                data-wow-delay="300ms"
                 key={index + 1}
               >
                 <div className="card-img">

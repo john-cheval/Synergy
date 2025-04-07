@@ -85,7 +85,7 @@ const FeaturePart = ({ data }) => {
         <div className="container">
           <div
             className="section-title text-center both-border mb-50 wow fadeInUp"
-            data-wow-duration="1500ms"
+            data-wow-duration="1000ms"
             data-wow-delay="300ms"
           >
             <h2 className={onLoopDone ? "loopDone title" : "title"}>
@@ -110,8 +110,8 @@ const FeaturePart = ({ data }) => {
           <div className="feature-boxes row justify-content-center">
             <div
               className="col-lg-12 col-md-12 col-12 col-tiny-12 white-text text-center wow fadeInUp"
-              data-wow-duration="1500ms"
-              data-wow-delay="600ms"
+              data-wow-duration="1000ms"
+              data-wow-delay="400ms"
               dangerouslySetInnerHTML={{
                 __html: who_we_are_description,
               }}
@@ -121,8 +121,8 @@ const FeaturePart = ({ data }) => {
           <div className="row justify-content-center mt-5">
             <div
               className="col-lg-12 col-md-12 col-12 col-tiny-12 text-center wow fadeInUp"
-              data-wow-duration="1500ms"
-              data-wow-delay="1000ms"
+              data-wow-duration="1000ms"
+              data-wow-delay="400ms"
             >
               <div className="patner-box">
                 <h4>{collaborators_heading}</h4>

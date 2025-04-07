@@ -322,12 +322,12 @@ const Header = ({ addressList }) => {
                         Transactions{" "}
                       </Link>
                     </li>
-                    <li className={pathname == "/careers" ? "active" : ""}>
+                    <li className={pathname == "/career" ? "active" : ""}>
                       <Link
                         /* prefetch */ onClick={handleCloseMenu}
                         href="/career"
                       >
-                        Careers{" "}
+                        Career{" "}
                       </Link>
                     </li>
                     <li className={pathname == "/blogs" ? "active" : ""}>

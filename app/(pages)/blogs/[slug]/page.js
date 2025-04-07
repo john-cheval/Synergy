@@ -25,7 +25,7 @@ export default async function PageBlogDetails({ params }) {
       {/* <!--====== Banner part start ======--> */}
       <section
         className="banner-section wow fadeInUp"
-        data-wow-duration="1500ms"
+        data-wow-duration="1000ms"
         data-wow-delay="500ms"
       >
         <div className="inner-banner">
@@ -81,8 +81,8 @@ export default async function PageBlogDetails({ params }) {
               <div className="blog-details-content">
                 <div
                   className="blog-content wow fadeInUp"
-                  data-wow-duration="1500ms"
-                  data-wow-delay="1500ms"
+                  data-wow-duration="1000ms"
+                  data-wow-delay="500ms"
                 >
                   <div
                     dangerouslySetInnerHTML={{
@@ -91,8 +91,8 @@ export default async function PageBlogDetails({ params }) {
                   ></div>
                   <div
                     className="wow fadeInUp mt-4"
-                    data-wow-duration="1500ms"
-                    data-wow-delay="1000ms"
+                    data-wow-duration="1000ms"
+                    data-wow-delay="400ms"
                   >
                     <h3> Contact Us </h3>
 

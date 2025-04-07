@@ -26,8 +26,8 @@ export default async function PageCsr() {
 
       <section
         className="inner-content-section section-gap csr_page wow fadeInUp"
-        data-wow-duration="1500ms"
-        data-wow-delay="1000ms"
+        data-wow-duration="1000ms"
+        data-wow-delay="300ms"
       >
         <div className="container">
           <div className="row justify-content-center">

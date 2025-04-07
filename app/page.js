@@ -1,7 +1,9 @@
 import dynamic from "next/dynamic";
-const Banner = dynamic(() => import("./_components/page_components/Banner"), {
+const Banner = dynamic(
+  () => import("./_components/page_components/Banner") /* , {
   ssr: false,
-});
+} */
+);
 const Solution = dynamic(() =>
   import("./_components/page_components/Solution")
 );
@@ -12,8 +14,8 @@ const OurTeams = dynamic(() =>
   import("./_components/page_components/OurTeams")
 );
 const FeaturePart = dynamic(
-  () => import("./_components/page_components/FeaturePart"),
-  { ssr: false }
+  () => import("./_components/page_components/FeaturePart") /* ,
+  { ssr: false } */
 );
 const OurServices = dynamic(() =>
   import("./_components/page_components/OurServices")

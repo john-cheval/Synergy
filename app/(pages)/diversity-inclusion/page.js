@@ -25,7 +25,7 @@ export default async function PageDiversityInclusion() {
 
       <section
         className="inner-content-section section-gap wow fadeInUp divercity-page"
-        data-wow-duration="1500ms"
+        data-wow-duration="1000ms"
         data-wow-delay="300ms"
       >
         <div className="container">

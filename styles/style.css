@@ -309,6 +309,40 @@ a:hover {
   color: #ffffff;
 }
 
+.contact-col ul li a {
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.contact-col p,
+.contact-emailus p {
+  font-size: 18px !important;
+  margin: 10px 0 0;
+  /* font-weight: 600; */
+}
+
+.contact-col span {
+  display: block;
+  font-size: 22px !important;
+  margin: 10px 0 0;
+  font-weight: 600;
+}
+
+.contact-col a {
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  transition: background 0.4s ease /* , -webkit-text-fill-color 0.4s ease */;
+  transition-duration: 300ms;
+}
+
+.contact-col a:hover {
+  background: linear-gradient(to right, #00cccb 0%, #005ba8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 @media (max-width: 1199px) {
   .main-btn {
     padding: 0 40px;
@@ -4764,14 +4798,29 @@ footer.grey-bg-footer .footer-copyright .back-to-top:hover {
 }
 
 .contact-col p {
-  font-size: 14px;
-  margin: 10px 0;
+  font-size: 16px;
+  margin: 10px 0 0;
+  /* font-weight: 600; */
 }
+
+/* .contact-col span {
+  font-size: 20px !important;
+  margin: 10px 0 0;
+  font-weight: 600;
+} */
 
 .contact-col a {
   color: #fff;
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: background 0.4s ease /* , -webkit-text-fill-color 0.4s ease */;
+  transition-duration: 300ms;
+}
+
+.contact-col a:hover {
+  background: linear-gradient(to right, #00cccb 0%, #005ba8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .inner-banner-content p {
@@ -5002,13 +5051,15 @@ button:disabled {
 }
 
 .service-content {
-  padding: 50px;
+  padding: 30px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   /* flex-basis: content; */
 }
-
+.service-content h4 {
+  text-align: center;
+}
 .service-content h3 {
   color: #005ba8;
   font-size: 36px;
@@ -5426,7 +5477,7 @@ button:disabled {
 
   .contact-col p {
     font-size: 18px;
-    margin: 10px 0;
+    margin: 10px 0 0;
     line-height: 28px;
   }
 
@@ -5642,12 +5693,12 @@ ul.bredcumb-inline a {
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 25px;
-  padding-top: 70px;
+  /* gap: 25px; */
+  /* padding-top: 70px; */
 }
 
 .testimonial_box-inner {
-  /* min-height: 330px; */
+  min-height: 250px;
 }
 
 .mobile_nav_header {

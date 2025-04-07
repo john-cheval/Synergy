@@ -9,8 +9,8 @@ const OurProcess = ({ data }) => {
           <div className="row justify-content-center">
             <div
               className="col-lg-4 col-md-12 text-left wow fadeInUp stickyLeftDesktop"
-              data-wow-duration="1500ms"
-              data-wow-delay="1000ms"
+              data-wow-duration="1000ms"
+              data-wow-delay="300ms"
             >
               <div className="skill-text">
                 <div className="section-title mb-40 left-border">
@@ -42,8 +42,8 @@ const OurProcess = ({ data }) => {
                     <div
                       key={item.id}
                       className="Process-list-col wow fadeInUp"
-                      data-wow-duration="1500ms"
-                      data-wow-delay={`${index * 200}ms`}
+                      data-wow-duration="1000ms"
+                      data-wow-delay={`${index * 100}ms`}
                     >
                       <div className="Process-list-number">
                         <h5> {index <= 9 ? `0` + (index + 1) : index + 1} </h5>

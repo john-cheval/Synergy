@@ -69,8 +69,8 @@ export default async function PageCareer({ params }) {
       </section>
       <section
         className="inner-content-section section-gap wow fadeInUp"
-        data-wow-duration="1500ms"
-        data-wow-delay="500ms"
+        data-wow-duration="1000ms"
+        data-wow-delay="300ms"
       >
         <div className="container">
           <div className="row justify-content-center">

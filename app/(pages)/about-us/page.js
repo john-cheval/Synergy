@@ -30,8 +30,8 @@ export default async function PageAboutUs() {
 
       <section
         className="inner-content-section section-gap wow fadeInUp"
-        data-wow-duration="1500ms"
-        data-wow-delay="1500ms"
+        data-wow-duration="1000ms"
+        data-wow-delay="400ms"
       >
         <div className="container">
           <div className="row justify-content-center">
@@ -57,8 +57,8 @@ export default async function PageAboutUs() {
         <div className="container">
           <div
             className="row justify-content-center row-eq-height wow fadeInUp"
-            data-wow-duration="1500ms"
-            data-wow-delay="500ms"
+            data-wow-duration="1000ms"
+            data-wow-delay="300ms"
           >
             <div className="col-lg-6 col-md-6 p-2 order-lg-2">
               <div className="mission-video h-100">
@@ -109,8 +109,8 @@ export default async function PageAboutUs() {
 
           <div
             className="row justify-content-center row-eq-height wow fadeInUp"
-            data-wow-duration="1500ms"
-            data-wow-delay="1000ms"
+            data-wow-duration="1000ms"
+            data-wow-delay="300ms"
           >
             <div className="col-lg-6 col-md-6 p-2">
               <div className="mission-video h-100">

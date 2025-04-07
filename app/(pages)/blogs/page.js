@@ -20,8 +20,6 @@ export default async function PageBlogs({ params }) {
   }).then((res) => {
     return res.json();
   });
-  // data.reverse();
-  // let [firstBlog] = data;
 
   const blog = Object.values(posts);
   blog.reverse();
@@ -35,7 +33,6 @@ export default async function PageBlogs({ params }) {
   };
   return (
     <>
-      {/* <!--====== Banner part start ======--> */}
       <section className="banner-section wow fadeInUp blog-banner-sec">
         <div className="inner-banner">
           <div className="inner-banner-bg">
@@ -84,10 +81,7 @@ export default async function PageBlogs({ params }) {
                         firstBlog.post_content.replace(/<[^>]*>/g, "")
                       )}
                     </p>
-                    <Link href={`/blogs/${firstBlog.post_name}`}>
-                      {" "}
-                      Read More{" "}
-                    </Link>
+                    <a href={`/blogs/${firstBlog.post_name}`}> Read More </a>
                   </div>
                 </div>
               </div>
@@ -95,13 +89,10 @@ export default async function PageBlogs({ params }) {
           </div>
         </div>
       </section>
-      {/* <!--====== Banner part end ======--> */}
-
-      {/* <!--====== Feature Part start ======--> */}
 
       <section
         className="blog-section section-gap wow fadeInUp"
-        data-wow-duration="1500ms"
+        data-wow-duration="1000ms"
         data-wow-delay="500ms"
       >
         <div className="container">
@@ -113,7 +104,7 @@ export default async function PageBlogs({ params }) {
                   <div key={item.id} className="col-lg-4">
                     <div className="blog-box">
                       <div className="blog-img">
-                        <Link href={`/blogs/${item.post_name}`}>
+                        <a href={`/blogs/${item.post_name}`}>
                           <Image
                             src={item?.image}
                             alt={item.post_title}
@@ -122,7 +113,7 @@ export default async function PageBlogs({ params }) {
                             height={0}
                             className="image"
                           />
-                        </Link>
+                        </a>
                       </div>
                       <div className="blog-content">
                         <p>{item.post_title}</p>
@@ -135,7 +126,6 @@ export default async function PageBlogs({ params }) {
           </div>
         </div>
       </section>
-      {/* <!--====== Feature Part end ======--> */}
     </>
   );
 }
