@@ -60,10 +60,10 @@ const Banner = ({ data }) => {
                 <div className="col-lg-8 col-md-9 text-center">
                   <div className="banner-content">
                     <h1
-                      className="wow fadeInUp"
-                      data-animation="fadeInUp"
-                      data-wow-duration="1500ms"
-                      data-wow-delay="300ms"
+                    // className="wow fadeInUp"
+                    // data-animation="fadeInUp"
+                    // data-wow-duration="1500ms"
+                    // data-wow-delay="300ms"
                     >
                       {data[0]?.title}
                     </h1>
