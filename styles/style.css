@@ -5983,6 +5983,11 @@ ul.allErrs li {
     transform: translateY(0) !important;
   }
 
+  .team-col-inner .team-content {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
   .dropArrow {
     color: #005ba8 !important;
   }
@@ -6020,6 +6025,9 @@ ul.allErrs li {
     height: 1px;
     background: #fff;
   }
+  .footered {
+    margin-top: 40px !important;
+  }
   .blog-details-content {
     overflow: auto !important;
   }
@@ -6035,6 +6043,10 @@ ul.allErrs li {
     max-width: 360px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .inner-content-box div p strong {
+    font-weight: normal;
   }
 
   .modal-body {
@@ -6102,9 +6114,9 @@ ul.allErrs li {
 
   .banner-section.blog-banner-sec .single-banner a {
     font-family: "TT Satoshi";
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: underline;
+    /* font-size: 16px; */
+    /* font-weight: 600; */
+    /* text-decoration: underline; */
   }
 
   .blog-box {
@@ -7315,4 +7327,7 @@ ul.allErrs li {
   .touch-btn {
     display: none;
   }
+}
+.footered {
+  margin-top: 40px !important;
 }

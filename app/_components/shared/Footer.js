@@ -39,7 +39,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer id="footer-id">
+      <footer id="footer-id" className="footered">
         <div className="container">
           <div className="footer-widget-top">
             <div className="row">

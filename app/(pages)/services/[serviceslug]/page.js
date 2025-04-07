@@ -24,7 +24,7 @@ export default async function PageCsr({ params }) {
     const part2 = numberStr.slice(7); // "9095"
 
     // Format the number
-    return `+${countryCode} ${areaCode} ${part1} ${part2}`;
+    return `${countryCode} ${areaCode} ${part1} ${part2}`;
   };
 
   const getVideoType = (url) => {
