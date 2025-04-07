@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 // import "bootstrap/dist/css/bootstrap.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "animate.css";
 import "./../styles/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
@@ -37,10 +38,10 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link
+        {/* <link
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           rel="stylesheet"
-        />
+        /> */}
         <link
           rel="preload"
           href="/fonts/TT_Satoshi_Regular.woff2"
