@@ -1916,7 +1916,7 @@ header.sticky-header.sticky-on .header-nav {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 11;
+  z-index: 999999;
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   -webkit-animation: sticky 1.2s;
@@ -6035,7 +6035,9 @@ ul.allErrs li {
   .blog-details-content {
     overflow: auto !important;
   }
-
+  .inner-banner-img {
+    margin-bottom: 20px !important;
+  }
   .blog-details-content::-webkit-scrollbar {
     display: none;
   }
