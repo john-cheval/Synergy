@@ -3,9 +3,11 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-const Header = () => {
+const Header = ({ addressList }) => {
   const pathname = usePathname();
+  const router = useRouter();
   const menuRef = useRef(null);
   const [menuOpened, setmenuOpened] = useState(false);
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -49,14 +51,26 @@ const Header = () => {
     setServices(data["119"]);
   };
 
+  const handleClick = (title) => {
+    const address = addressList.find((item) => item?.title === title);
+
+    if (address) {
+      const parser = document.createElement("div");
+      parser.innerHTML = address.google_map;
+      const iframe = parser.querySelector("iframe");
+      const mapSrc = iframe?.getAttribute("src");
+
+      if (mapSrc) {
+        window.open(mapSrc, "_blank");
+      }
+    }
+  };
+
   useEffect(() => {
     setisloading(false);
-    //new WOW().init();
+
     window.addEventListener("load", function () {});
     const navContainer = document.querySelector(".nav-container");
-    // const pushedWrap = document.querySelector(".nav-pushed-item");
-    // const pushItem = document.querySelector(".nav-push-item");
-    // const pushedHtml = pushItem.innerHTML;
 
     window.addEventListener("resize", () => {
       breakpointCheck();
@@ -85,14 +99,6 @@ const Header = () => {
       } else {
         navContainer.classList.remove("breakpoint-on");
       }
-
-      // if (windoWidth <= 767) {
-      //   pushedWrap.innerHTML = pushedHtml;
-      //   pushItem.style.display = "none";
-      // } else {
-      //   pushedWrap.innerHTML = "";
-      //   pushItem.style.display = "block";
-      // }
     };
 
     breakpointCheck();
@@ -142,6 +148,7 @@ const Header = () => {
                     height={0}
                     sizes="100vw"
                     className="image"
+                    priority
                     // priority={false}
                   />
                 </a>
@@ -200,7 +207,15 @@ const Header = () => {
                       >
                         About
                       </a>
-                      <button className="dropArrow">
+                      <button
+                        className="dropArrow"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setmenu1(!menu1);
+                          setmenu2(false);
+                          setmenu3(false);
+                        }}
+                      >
                         <i className="fa fa-angle-down"></i>
                       </button>
                       <ul>
@@ -244,7 +259,15 @@ const Header = () => {
                       >
                         Services
                       </Link>
-                      <button className="dropArrow">
+                      <button
+                        className="dropArrow"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setmenu1(false);
+                          setmenu2(!menu2);
+                          setmenu3(false);
+                        }}
+                      >
                         <i className="fa fa-angle-down"></i>
                       </button>
                       {services && services.length > 0 && (
@@ -310,6 +333,12 @@ const Header = () => {
                   </div>
                 </div>
 
+                <button
+                  onClick={() => router.push("/contact")}
+                  className="touch-btn"
+                >
+                  Get In Touch
+                </button>
                 <div className="nav-pushed-item">
                   <ul>
                     <li>
@@ -331,6 +360,18 @@ const Header = () => {
                   <p style={{ fontSize: "14px" }} className="copyright-text">
                     © <span> Synergy 2024. </span> All Rights Reserved.
                   </p>
+
+                  <span className="sperator"></span>
+
+                  <ul>
+                    {addressList.map((item) => (
+                      <li key={item.title}>
+                        <a href="#" onClick={() => handleClick(item.title)}>
+                          {item.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 

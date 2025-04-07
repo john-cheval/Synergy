@@ -27,7 +27,12 @@ export const metadata = {
   description: "Your Strategic Partner for Business Excellence",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+  const { address_list } = await fetch(`${APIURL}/full_details?ID=23`, {
+    cache: "no-store",
+  }).then((res) => res.json());
   return (
     <html lang="en">
       <head>
@@ -38,7 +43,7 @@ export default function RootLayout({ children }) {
       </head>
       <body suppressHydrationWarning={true}>
         <WowOver />
-        <Header />
+        <Header addressList={address_list} />
         {children}
         <BootstrapClient />
         <Footer />
