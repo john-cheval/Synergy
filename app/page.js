@@ -18,12 +18,15 @@ const FeaturePart = dynamic(
 const OurServices = dynamic(() =>
   import("./_components/page_components/OurServices")
 );
+const Testimonials = dynamic(() =>
+  import("./_components/page_components/Testimonials")
+);
 
 // import FeaturePart from "./_components/page_components/FeaturePart";
 // import OurServices from "./_components/page_components/OurServices";
 import OurProcess from "./_components/page_components/OurProcess";
 // import OurTeams from "./_components/page_components/OurTeams";
-import Testimonials from "./_components/page_components/Testimonials";
+// import Testimonials from "./_components/page_components/Testimonials";
 
 export const metadata = {
   title: "Synergy | Home",
