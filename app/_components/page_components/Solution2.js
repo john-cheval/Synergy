@@ -61,9 +61,11 @@ const Solution2 = ({ data }) => {
                             ].some((ext) => item?.image.endsWith(ext)) ? (
                               <video
                                 autoPlay
+                                playsInline
                                 loop
                                 className="video-solution"
-                                muted
+                                muted={true}
+                                preload="auto"
                               >
                                 type=
                                 {getVideoType(item?.image)}

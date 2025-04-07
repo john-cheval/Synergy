@@ -26,6 +26,7 @@ const OurProcess = ({ data }) => {
                     </p>
                   </h2>
                   <div
+                    className="center"
                     dangerouslySetInnerHTML={{
                       __html: our_process_description,
                     }}

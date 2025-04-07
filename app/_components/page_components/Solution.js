@@ -28,6 +28,7 @@ const Solution = ({ data }) => {
                 </h2>
                 {one_stop_solution_description && (
                   <div
+                    className="center"
                     dangerouslySetInnerHTML={{
                       __html: one_stop_solution_description,
                     }}

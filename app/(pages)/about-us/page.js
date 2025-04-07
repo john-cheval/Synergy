@@ -69,8 +69,9 @@ export default async function PageAboutUs() {
                     autoPlay
                     playsInline
                     loop
+                    preload="auto"
                     className="video-mission"
-                    muted
+                    muted={true}
                   >
                     <source
                       src={data?.section_list[0]?.image}
