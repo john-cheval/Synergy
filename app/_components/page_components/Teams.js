@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { WOW } from "wowjs";
 import Loading from "../shared/Loading";
 import Image from "next/image";
+import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Teams = () => {
   const teamModal = useRef(null);
@@ -74,17 +75,17 @@ const Teams = () => {
                   <div className="team-content-right">
                     {activeteam?.facebook != "" && (
                       <a target="_blank" href={activeteam?.facebook}>
-                        <i className="fab fa-facebook"></i>
+                        <FaFacebook />
                       </a>
                     )}
                     {activeteam?.linkedin != "" && (
                       <a target="_blank" href={activeteam?.linkedin}>
-                        <i className="fab fa-linkedin"></i>
+                        <FaLinkedin />
                       </a>
                     )}
                     {activeteam?.twitter != "" && (
                       <a target="_blank" href={activeteam?.twitter}>
-                        <i className="fab fa-twitter"></i>
+                        <FaTwitter />
                       </a>
                     )}
                   </div>
@@ -150,17 +151,17 @@ const Teams = () => {
                         <div className="team-content-right">
                           {item.facebook != "" && (
                             <a target="_blank" href={item?.facebook}>
-                              <i className="fab fa-facebook"></i>
+                              <FaFacebook />
                             </a>
                           )}
                           {item.linkedin != "" && (
                             <a target="_blank" href={item?.linkedin}>
-                              <i className="fab fa-linkedin"></i>
+                              <FaLinkedin />
                             </a>
                           )}
                           {item.twitter != "" && (
                             <a target="_blank" href={item?.twitter}>
-                              <i className="fab fa-twitter"></i>
+                              <FaTwitter />
                             </a>
                           )}
                         </div>

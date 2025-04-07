@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import Slider from "react-slick";
 import { NextArrow, PrevArrow } from "../shared/CustomArrows";
 import Image from "next/image";
+import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const OurTeams = ({ data }) => {
   const { team_list } = data;
@@ -107,17 +108,17 @@ const OurTeams = ({ data }) => {
                               <div className="team-content-right">
                                 {item.facebook != "" && (
                                   <a target="_blank" href={item?.facebook}>
-                                    <i className="fab fa-facebook"></i>
+                                    <FaFacebook />
                                   </a>
                                 )}
                                 {item.linkedin != "" && (
                                   <a target="_blank" href={item?.linkedin}>
-                                    <i className="fab fa-linkedin"></i>
+                                    <FaLinkedin />
                                   </a>
                                 )}
                                 {item.twitter != "" && (
                                   <a target="_blank" href={item?.twitter}>
-                                    <i className="fab fa-twitter"></i>
+                                    <FaTwitter />
                                   </a>
                                 )}
                               </div>
@@ -163,17 +164,17 @@ const OurTeams = ({ data }) => {
                           <div className="team-content-right">
                             {activeteam?.facebook != "" && (
                               <a target="_blank" href={activeteam?.facebook}>
-                                <i className="fab fa-facebook"></i>
+                                <FaFacebook />
                               </a>
                             )}
                             {activeteam?.linkedin != "" && (
                               <a target="_blank" href={activeteam?.linkedin}>
-                                <i className="fab fa-linkedin"></i>
+                                <FaLinkedin />
                               </a>
                             )}
                             {activeteam?.twitter != "" && (
                               <a target="_blank" href={activeteam?.twitter}>
-                                <i className="fab fa-twitter"></i>
+                                <FaTwitter />
                               </a>
                             )}
                           </div>

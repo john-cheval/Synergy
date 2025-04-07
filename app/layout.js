@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 // import "bootstrap/dist/css/bootstrap.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+// import "@fortawesome/fontawesome-free/css/all.min.css";
 import "animate.css";
 import "./../styles/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";

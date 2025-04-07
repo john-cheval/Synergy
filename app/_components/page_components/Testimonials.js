@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import { NextArrow, PrevArrow } from "../shared/CustomArrows";
 import Image from "next/image";
 import dayjs from "dayjs";
+import { FaStar, FaPaperPlane } from "react-icons/fa6";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
@@ -108,7 +109,7 @@ const Testimonials = () => {
                         length: Math.round(totalRating / reviews.length),
                       }).map((_, index) => (
                         <li key={index}>
-                          <i className="fas fa-star"></i>
+                          <FaStar />
                         </li>
                       ))}
                     </ul>
@@ -159,7 +160,7 @@ const Testimonials = () => {
                                         length: parseInt(item?.rating),
                                       }).map((_, index) => (
                                         <li key={index}>
-                                          <i className="fas fa-star"></i>
+                                          <FaStar />
                                         </li>
                                       ))}
                                     </ul>
@@ -192,7 +193,7 @@ const Testimonials = () => {
                                 View All Reviews{" "}
                                 <span className="btn-icon">
                                   {" "}
-                                  <i className="fas fa-paper-plane"></i>{" "}
+                                  <FaPaperPlane />
                                 </span>{" "}
                               </a>
                             </div>
