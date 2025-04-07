@@ -3,11 +3,9 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 const Header = ({ addressList }) => {
   const pathname = usePathname();
-  const router = useRouter();
   const menuRef = useRef(null);
   const [menuOpened, setmenuOpened] = useState(false);
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -49,21 +47,6 @@ const Header = ({ addressList }) => {
       cache: "no-store",
     }).then((res) => res.json());
     setServices(data["119"]);
-  };
-
-  const handleClick = (title) => {
-    const address = addressList.find((item) => item?.title === title);
-
-    if (address) {
-      const parser = document.createElement("div");
-      parser.innerHTML = address.google_map;
-      const iframe = parser.querySelector("iframe");
-      const mapSrc = iframe?.getAttribute("src");
-
-      if (mapSrc) {
-        window.open(mapSrc, "_blank");
-      }
-    }
   };
 
   useEffect(() => {
@@ -113,6 +96,23 @@ const Header = ({ addressList }) => {
     setmenuOpened(false);
   };
 
+  const handleClick = (title) => {
+    handleCloseMenu();
+
+    const address = addressList.find((item) => item?.title === title);
+
+    if (address) {
+      const parser = document.createElement("div");
+      parser.innerHTML = address.google_map;
+      const iframe = parser.querySelector("iframe");
+      const mapSrc = iframe?.getAttribute("src");
+
+      if (mapSrc) {
+        window.open(mapSrc, "_blank");
+      }
+    }
+  };
+
   return (
     <>
       {isloading && (
@@ -140,7 +140,7 @@ const Header = ({ addressList }) => {
           <div className="container">
             <div className="nav-container">
               <div className="site-logo">
-                <a href="/">
+                <Link href="/">
                   <Image
                     src="/img/logo.png"
                     alt="Logo"
@@ -151,7 +151,7 @@ const Header = ({ addressList }) => {
                     priority
                     // priority={false}
                   />
-                </a>
+                </Link>
               </div>
 
               <div
@@ -159,7 +159,7 @@ const Header = ({ addressList }) => {
                 ref={menuRef}
               >
                 <div className="mobile_nav_header">
-                  <a href="/">
+                  <Link href="/" prefetch>
                     <Image
                       src="/img/logo.png"
                       alt="Logo"
@@ -169,7 +169,7 @@ const Header = ({ addressList }) => {
                       className="image"
                       priority
                     />
-                  </a>
+                  </Link>
                   <div className="navbar-close" onClick={handleCloseMenu}>
                     <div className="cross-wrap">
                       <span></span>
@@ -181,7 +181,7 @@ const Header = ({ addressList }) => {
                 <div className="menu-items">
                   <ul>
                     <li className={pathname == "/" ? "active" : ""}>
-                      <a href="/">Home</a>
+                      <Link href="/">Home</Link>
                     </li>
                     <li
                       className={
@@ -196,7 +196,7 @@ const Header = ({ addressList }) => {
                           : `${menu1 ? "show has-submemu" : "has-submemu"}`
                       }
                     >
-                      <a
+                      <Link
                         onClick={(e) => {
                           e.preventDefault();
                           setmenu1(!menu1);
@@ -206,7 +206,7 @@ const Header = ({ addressList }) => {
                         href="/"
                       >
                         About
-                      </a>
+                      </Link>
                       <button
                         className="dropArrow"
                         onClick={(e) => {
@@ -220,19 +220,23 @@ const Header = ({ addressList }) => {
                       </button>
                       <ul>
                         <li className={pathname == "/about-us" ? "active" : ""}>
-                          <a href="/about-us">Who we are </a>
+                          <Link prefetch href="/about-us">
+                            Who we are{" "}
+                          </Link>
                         </li>
                         <li className={pathname == "/our-team" ? "active" : ""}>
-                          <a href="/our-team">Our team </a>
+                          <Link prefetch href="/our-team">
+                            Our team{" "}
+                          </Link>
                         </li>
                         <li
                           className={
                             pathname == "/diversity-inclusion" ? "active" : ""
                           }
                         >
-                          <a href="/diversity-inclusion">
+                          <Link prefetch href="/diversity-inclusion">
                             Diversity & Inclusion
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </li>
@@ -280,7 +284,8 @@ const Header = ({ addressList }) => {
                                   pathname == `${service.url}` ? "active" : ""
                                 }
                               >
-                                <a
+                                <Link
+                                  prefetch
                                   href={`${service.url}`}
                                   dangerouslySetInnerHTML={{
                                     __html: service.title,
@@ -294,67 +299,74 @@ const Header = ({ addressList }) => {
                     </li>
 
                     <li className={pathname == "/transactions" ? "active" : ""}>
-                      <a onClick={handleCloseMenu} href="/transactions">
+                      <Link
+                        prefetch
+                        onClick={handleCloseMenu}
+                        href="/transactions"
+                      >
                         Transactions{" "}
-                      </a>
+                      </Link>
                     </li>
                     <li className={pathname == "/careers" ? "active" : ""}>
-                      <a onClick={handleCloseMenu} href="/career">
+                      <Link prefetch onClick={handleCloseMenu} href="/career">
                         Careers{" "}
-                      </a>
+                      </Link>
                     </li>
                     <li className={pathname == "/blogs" ? "active" : ""}>
-                      <a onClick={handleCloseMenu} href="/blogs">
+                      <Link prefetch onClick={handleCloseMenu} href="/blogs">
                         {" "}
                         Blogs{" "}
-                      </a>
+                      </Link>
                     </li>
                     <li className={pathname == "/csr" ? "active" : ""}>
-                      <a onClick={handleCloseMenu} href="/csr">
+                      <Link prefetch onClick={handleCloseMenu} href="/csr">
                         {" "}
                         CSR{" "}
-                      </a>
+                      </Link>
                     </li>
                     <li className={pathname == "/contact" ? "active" : ""}>
-                      <a onClick={handleCloseMenu} href="/contact">
+                      <Link prefetch onClick={handleCloseMenu} href="/contact">
                         {" "}
                         Contact Us{" "}
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                   <div className="navbar-btn nav-push-item">
-                    <a
+                    <Link
+                      prefetch
                       onClick={handleCloseMenu}
                       className="main-btn-3"
                       href="#footer-id"
                     >
                       Get in Touch
-                    </a>
+                    </Link>
                   </div>
                 </div>
 
-                <button
-                  onClick={() => router.push("/contact")}
+                <Link
+                  onClick={handleCloseMenu}
+                  href={"contact"}
+                  prefetch
                   className="touch-btn"
                 >
                   Get In Touch
-                </button>
+                </Link>
                 <div className="nav-pushed-item">
                   <ul>
                     <li>
                       {" "}
-                      <a href="/privacy-policy"> Privacy Policy </a>{" "}
+                      <Link href="/privacy-policy"> Privacy Policy </Link>{" "}
                     </li>
                     <li>
                       {" "}
-                      <a href="/terms-conditions">
+                      <Link href="/terms-conditions">
                         {" "}
                         Terms &amp; Conditions{" "}
-                      </a>{" "}
+                      </Link>{" "}
                     </li>
                     <li>
                       {" "}
-                      <a href="/contact"> Contact Us </a>{" "}
+                      <Link href="/contact"> Contact Us </Link>{" "}
                     </li>
                   </ul>
                   <p style={{ fontSize: "14px" }} className="copyright-text">
@@ -366,9 +378,9 @@ const Header = ({ addressList }) => {
                   <ul>
                     {addressList.map((item) => (
                       <li key={item.title}>
-                        <a href="#" onClick={() => handleClick(item.title)}>
+                        <Link href="#" onClick={() => handleClick(item.title)}>
                           {item.title}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
