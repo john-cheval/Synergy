@@ -33,6 +33,7 @@ export default async function RootLayout({ children }) {
   const { address_list } = await fetch(`${APIURL}/full_details?ID=23`, {
     cache: "no-store",
   }).then((res) => res.json());
+
   return (
     <html lang="en">
       <head>
@@ -40,6 +41,14 @@ export default async function RootLayout({ children }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           rel="stylesheet"
         />
+        <link
+          rel="preload"
+          href="/fonts/TT_Satoshi_Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        ;
       </head>
       <body suppressHydrationWarning={true}>
         <WowOver />
