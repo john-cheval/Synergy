@@ -159,7 +159,7 @@ const Header = ({ addressList }) => {
                 ref={menuRef}
               >
                 <div className="mobile_nav_header">
-                  <Link href="/" prefetch onClick={handleCloseMenu}>
+                  <Link href="/" onClick={handleCloseMenu}>
                     <Image
                       src="/img/logo.png"
                       alt="Logo"
@@ -223,7 +223,7 @@ const Header = ({ addressList }) => {
                       <ul>
                         <li className={pathname == "/about-us" ? "active" : ""}>
                           <Link
-                            prefetch
+                            // prefetch
                             href="/about-us"
                             onClick={handleCloseMenu}
                           >
@@ -232,7 +232,7 @@ const Header = ({ addressList }) => {
                         </li>
                         <li className={pathname == "/our-team" ? "active" : ""}>
                           <Link
-                            prefetch
+                            // prefetch
                             href="/our-team"
                             onClick={handleCloseMenu}
                           >
@@ -245,7 +245,7 @@ const Header = ({ addressList }) => {
                           }
                         >
                           <Link
-                            prefetch
+                            // prefetch
                             href="/diversity-inclusion"
                             onClick={handleCloseMenu}
                           >
@@ -300,7 +300,7 @@ const Header = ({ addressList }) => {
                               >
                                 <Link
                                   onClick={handleCloseMenu}
-                                  prefetch
+                                  // prefetch
                                   href={`${service.url}`}
                                   dangerouslySetInnerHTML={{
                                     __html: service.title,
@@ -315,7 +315,7 @@ const Header = ({ addressList }) => {
 
                     <li className={pathname == "/transactions" ? "active" : ""}>
                       <Link
-                        prefetch
+                        // prefetch
                         onClick={handleCloseMenu}
                         href="/transactions"
                       >
@@ -323,24 +323,36 @@ const Header = ({ addressList }) => {
                       </Link>
                     </li>
                     <li className={pathname == "/careers" ? "active" : ""}>
-                      <Link prefetch onClick={handleCloseMenu} href="/career">
+                      <Link
+                        /* prefetch */ onClick={handleCloseMenu}
+                        href="/career"
+                      >
                         Careers{" "}
                       </Link>
                     </li>
                     <li className={pathname == "/blogs" ? "active" : ""}>
-                      <Link prefetch onClick={handleCloseMenu} href="/blogs">
+                      <Link
+                        /* prefetch */ onClick={handleCloseMenu}
+                        href="/blogs"
+                      >
                         {" "}
                         Blogs{" "}
                       </Link>
                     </li>
                     <li className={pathname == "/csr" ? "active" : ""}>
-                      <Link prefetch onClick={handleCloseMenu} href="/csr">
+                      <Link
+                        /* prefetch */ onClick={handleCloseMenu}
+                        href="/csr"
+                      >
                         {" "}
                         CSR{" "}
                       </Link>
                     </li>
                     <li className={pathname == "/contact" ? "active" : ""}>
-                      <Link prefetch onClick={handleCloseMenu} href="/contact">
+                      <Link
+                        /* prefetch */ onClick={handleCloseMenu}
+                        href="/contact"
+                      >
                         {" "}
                         Contact Us{" "}
                       </Link>
@@ -348,7 +360,7 @@ const Header = ({ addressList }) => {
                   </ul>
                   <div className="navbar-btn nav-push-item">
                     <Link
-                      prefetch
+                      // prefetch
                       onClick={handleCloseMenu}
                       className="main-btn-3"
                       href="#footer-id"
@@ -361,7 +373,7 @@ const Header = ({ addressList }) => {
                 <Link
                   onClick={handleCloseMenu}
                   href={"contact"}
-                  prefetch
+                  // prefetch
                   className="touch-btn"
                 >
                   Get In Touch

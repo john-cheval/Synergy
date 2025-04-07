@@ -29,27 +29,31 @@
     url("/fonts/powergrotesk-regular-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "TT Satoshi";
-  src: url("/fonts/TT_Satoshi_Regular.ttf") format("truetype");
+  src: url("/fonts/TT_Satoshi_Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "TT Satoshi";
-  src: url("/fonts/TT_Satoshi_Medium.ttf") format("truetype");
+  src: url("/fonts/TT_Satoshi_Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "TT Satoshi";
-  src: url("/fonts/TT_Satoshi_SemiBold.ttf") format("truetype");
+  src: url("/fonts/TT_Satoshi_SemiBold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 body {
