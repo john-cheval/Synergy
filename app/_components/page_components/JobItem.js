@@ -8,7 +8,7 @@ const JobItem = ({ data }) => {
     <>
       <div
         className={`careers-box ${open ? "open" : ""} wow fadeInUp`}
-        data-wow-duration="1500ms"
+        data-wow-duration="1000ms"
         data-wow-delay="300ms"
       >
         <div className="row justify-content-center align-items-center">

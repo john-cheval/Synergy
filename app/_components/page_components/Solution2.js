@@ -17,7 +17,7 @@ const Solution2 = ({ data }) => {
           <div className="row justify-content-center">
             <div
               className="col-lg-3 col-md-12 text-left wow fadeInUp mb-4"
-              data-wow-duration="1500ms"
+              data-wow-duration="1000ms"
               data-wow-delay="300ms"
             >
               <div className="section-title mb-40 left-border">
@@ -49,8 +49,8 @@ const Solution2 = ({ data }) => {
                     {item?.image ? (
                       <div
                         className="col-lg-3 col-md-12 d-flex flex-column text-left wow fadeInRight mb-4 wow fadeInUp"
-                        data-wow-duration="1500ms"
-                        data-wow-delay={`${index * 300}ms`}
+                        data-wow-duration="1000ms"
+                        data-wow-delay={`${index * 100}ms`}
                         key={item?.id || index}
                       >
                         <div className="box-solution-img h-100">
@@ -88,8 +88,8 @@ const Solution2 = ({ data }) => {
                     ) : (
                       <div
                         className="col-lg-3 col-md-12 d-flex flex-column text-left wow fadeInRight mb-4 wow fadeInUp"
-                        data-wow-duration="1500ms"
-                        data-wow-delay={`${index * 300}ms`}
+                        data-wow-duration="1000ms"
+                        data-wow-delay={`${index * 100}ms`}
                         key={item?.id || index}
                       >
                         <div className="box-solution h-100">

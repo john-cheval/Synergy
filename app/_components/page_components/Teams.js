@@ -103,8 +103,8 @@ const Teams = () => {
 
       <section
         className="team-section section-gap wow fadeInDown"
-        data-wow-duration="1500ms"
-        data-wow-delay="1000ms"
+        data-wow-duration="1000ms"
+        data-wow-delay="300ms"
       >
         <div className="container">
           <div className="row justify-content-center">
@@ -117,8 +117,8 @@ const Teams = () => {
                     key={item?.id}
                     className="col-lg-4 col-md-6 mb-3 wow fadeInUp"
                     onClick={() => handleClick(item)}
-                    data-wow-duration="1500ms"
-                    data-wow-delay={`${index + 1 * 1500}ms`}
+                    data-wow-duration="1000ms"
+                    data-wow-delay={`${index + 1 * 200}ms`}
                   >
                     <div className="team-col-inner">
                       <div

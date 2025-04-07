@@ -41,8 +41,8 @@ const OurServices = ({ data }) => {
               className={`wow fadeInUp services-box services-box-${Number(
                 servicesListKeys[0]
               )}`}
-              data-wow-duration="1500ms"
-              data-wow-delay="600ms"
+              data-wow-duration="1000ms"
+              data-wow-delay="300ms"
             >
               <div className="row align-items-center justify-content-center">
                 <div className="col-lg-6 col-md-12 order-lg-2">
@@ -123,8 +123,8 @@ const OurServices = ({ data }) => {
                   className="stickyWrapper wow fadeInUp"
                   style={{ "--top": `${top}px` /* , zIndex: index + 10 */ }}
                   key={item?.ID || index}
-                  data-wow-duration="1500ms"
-                  data-wow-delay={`${index * 200}ms`}
+                  data-wow-duration="1000ms"
+                  data-wow-delay={`${index * 100}ms`}
                 >
                   <div className="container">
                     <div
@@ -205,8 +205,8 @@ const OurServices = ({ data }) => {
                 <section
                   className="stickyWrapper wow fadeInUp"
                   style={{ "--top": `${top}px` /* zIndex: index + 10 */ }}
-                  data-wow-duration="1500ms"
-                  data-wow-delay={`${index * 200}ms`}
+                  data-wow-duration="1000ms"
+                  data-wow-delay={`${index * 100}ms`}
                 >
                   <div className="container">
                     <div
