@@ -140,7 +140,7 @@ const Header = ({ addressList }) => {
           <div className="container">
             <div className="nav-container">
               <div className="site-logo">
-                <Link href="/">
+                <Link href="/" onClick={handleCloseMenu}>
                   <Image
                     src="/img/logo.png"
                     alt="Logo"
@@ -159,7 +159,7 @@ const Header = ({ addressList }) => {
                 ref={menuRef}
               >
                 <div className="mobile_nav_header">
-                  <Link href="/" prefetch>
+                  <Link href="/" prefetch onClick={handleCloseMenu}>
                     <Image
                       src="/img/logo.png"
                       alt="Logo"
@@ -181,7 +181,9 @@ const Header = ({ addressList }) => {
                 <div className="menu-items">
                   <ul>
                     <li className={pathname == "/" ? "active" : ""}>
-                      <Link href="/">Home</Link>
+                      <Link href="/" onClick={handleCloseMenu}>
+                        Home
+                      </Link>
                     </li>
                     <li
                       className={
@@ -220,12 +222,20 @@ const Header = ({ addressList }) => {
                       </button>
                       <ul>
                         <li className={pathname == "/about-us" ? "active" : ""}>
-                          <Link prefetch href="/about-us">
+                          <Link
+                            prefetch
+                            href="/about-us"
+                            onClick={handleCloseMenu}
+                          >
                             Who we are{" "}
                           </Link>
                         </li>
                         <li className={pathname == "/our-team" ? "active" : ""}>
-                          <Link prefetch href="/our-team">
+                          <Link
+                            prefetch
+                            href="/our-team"
+                            onClick={handleCloseMenu}
+                          >
                             Our team{" "}
                           </Link>
                         </li>
@@ -234,7 +244,11 @@ const Header = ({ addressList }) => {
                             pathname == "/diversity-inclusion" ? "active" : ""
                           }
                         >
-                          <Link prefetch href="/diversity-inclusion">
+                          <Link
+                            prefetch
+                            href="/diversity-inclusion"
+                            onClick={handleCloseMenu}
+                          >
                             Diversity & Inclusion
                           </Link>
                         </li>
@@ -285,6 +299,7 @@ const Header = ({ addressList }) => {
                                 }
                               >
                                 <Link
+                                  onClick={handleCloseMenu}
                                   prefetch
                                   href={`${service.url}`}
                                   dangerouslySetInnerHTML={{
