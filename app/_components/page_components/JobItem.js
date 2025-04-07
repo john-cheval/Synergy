@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 
 const JobItem = ({ data }) => {
   const [open, setopen] = useState(false);
@@ -52,12 +53,14 @@ const JobItem = ({ data }) => {
             <div className="Read-more" onClick={() => setopen(!open)}>
               {!open && (
                 <>
-                  Read more <i className="fa fa-caret-down"></i>
+                  Read more
+                  <TiArrowSortedDown />
                 </>
               )}
               {open && (
                 <>
-                  Read less <i className="fa fa-caret-up"></i>
+                  Read less
+                  <TiArrowSortedUp />
                 </>
               )}
             </div>

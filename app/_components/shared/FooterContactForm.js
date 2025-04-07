@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import axios from "axios";
+import { FaPaperPlane } from "react-icons/fa6";
 
 const FooterContactForm = () => {
   const phoneRegExp =
@@ -162,7 +163,7 @@ const FooterContactForm = () => {
                         Send{" "}
                         <span className="btn-icon">
                           {" "}
-                          <i className="fas fa-paper-plane"></i>{" "}
+                          <FaPaperPlane />
                         </span>{" "}
                       </button>
                     </div>
