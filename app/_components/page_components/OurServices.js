@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const OurServices = ({ data }) => {
-  let servicesList = data.posts;
+const OurServices = ({ /* data */ service }) => {
+  let servicesList = /* data */ service.posts;
   let servicesListKeys = Object.keys(servicesList);
 
   const services = Object.values(servicesList);
@@ -144,6 +144,7 @@ const OurServices = ({ data }) => {
                                 playsInline
                                 className="video-solution"
                                 muted
+                                // onLoadedData={handleLaodedData}
                               >
                                 <source
                                   src={item?.image}
@@ -235,7 +236,7 @@ const OurServices = ({ data }) => {
                             ) : (
                               <Image
                                 src={item?.image}
-                                type={data?.media_type}
+                                // type={item?.media_type}
                                 width={0}
                                 height={0}
                                 sizes="100vw"

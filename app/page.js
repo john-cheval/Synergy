@@ -24,11 +24,8 @@ const Testimonials = dynamic(() =>
   import("./_components/page_components/Testimonials")
 );
 
-// import FeaturePart from "./_components/page_components/FeaturePart";
-// import OurServices from "./_components/page_components/OurServices";
 import OurProcess from "./_components/page_components/OurProcess";
-// import OurTeams from "./_components/page_components/OurTeams";
-// import Testimonials from "./_components/page_components/Testimonials";
+import HomePage from "./page-views/HomePage";
 
 export const metadata = {
   title: "Synergy | Home",
@@ -47,14 +44,15 @@ export default async function Home() {
 
   return (
     <>
-      <Banner data={data?.slider_list} />
+      {/* <Banner data={data?.slider_list} />
       <FeaturePart data={data} />
       <OurServices data={services} />
       <OurProcess data={data} />
       <Solution data={data} />
       <Industries data={data} />
       <OurTeams data={data} />
-      <Testimonials />
+      <Testimonials /> */}
+      <HomePage data={data} services={services} />
     </>
   );
 }
