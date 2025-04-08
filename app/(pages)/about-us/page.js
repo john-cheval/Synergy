@@ -18,12 +18,6 @@ export default async function PageAboutUs() {
     cache: "no-store",
   }).then((res) => res.json());
 
-  // const getVideoType = (url) => {
-  //   if (url.endsWith(".mp4")) return "video/mp4";
-  //   if (url.endsWith(".mov")) return "video/quicktime";
-  //   return "";
-  // };
-
   return (
     <>
       <InnerBanner data={data} />

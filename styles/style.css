@@ -1,28 +1,5 @@
 /*=======  COMMON CSS  =======*/
 
-@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
-/*@import url(https://db.onlinewebfonts.com/c/7bb5c8feb64e9d371178e66b1101775d?family=Power+Grotesk);*/
-
-/* @font-face {
-    font-family: "Power Grotesk";
-    src: url("https://db.onlinewebfonts.com/t/7bb5c8feb64e9d371178e66b1101775d.eot");
-    src: url("https://db.onlinewebfonts.com/t/7bb5c8feb64e9d371178e66b1101775d.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/7bb5c8feb64e9d371178e66b1101775d.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/7bb5c8feb64e9d371178e66b1101775d.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/7bb5c8feb64e9d371178e66b1101775d.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/7bb5c8feb64e9d371178e66b1101775d.svg#Power Grotesk")format("svg");
-} */
-
-/* @font-face {
-    font-family: "TT Satoshi";
-    src: url("https://db.onlinewebfonts.com/t/2bf16335573007d828f4197c2b884c04.eot");
-    src: url("https://db.onlinewebfonts.com/t/2bf16335573007d828f4197c2b884c04.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/2bf16335573007d828f4197c2b884c04.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/2bf16335573007d828f4197c2b884c04.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/2bf16335573007d828f4197c2b884c04.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/2bf16335573007d828f4197c2b884c04.svg#Satoshi")format("svg");
-} */
-
 @font-face {
   font-family: "Power Grotesk";
   src: url("/fonts/powergrotesk-regular-webfont.woff2") format("woff2"),

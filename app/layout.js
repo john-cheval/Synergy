@@ -10,7 +10,7 @@ import "./../styles/flaticon.css";
 import "./../styles/jquery-ui.min.css";
 import "./../styles/magnific-popup.css";
 import "./../styles/style.css";
-import "./globals.css";
+// import "./globals.css";
 import BootstrapClient from "./_components/BootstrapClient.js";
 import Header from "./_components/shared/Header";
 const WowOver = dynamic(() => import("@/app/_components/shared/WowOver"), {
@@ -38,10 +38,6 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-          rel="stylesheet"
-        /> */}
         <link
           rel="preload"
           href="/fonts/TT_Satoshi_Regular.woff2"
@@ -49,7 +45,6 @@ export default async function RootLayout({ children }) {
           type="font/woff2"
           crossOrigin="anonymous"
         />
-        ;
       </head>
       <body suppressHydrationWarning={true}>
         <WowOver />
