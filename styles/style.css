@@ -7080,7 +7080,8 @@ ul.allErrs li {
       background-color: #f1f7ff;
 
       .card-img {
-        width: calc(100% - 240px);
+        width: calc(100% - 50%);
+        /* width: 50%; */
 
         img {
           width: 100%;
@@ -7090,11 +7091,13 @@ ul.allErrs li {
       }
 
       .card-content {
-        width: 240px;
-        padding-top: 24px;
+        /* width: 280px; */
+        width: 50%;
+        /* padding-top: 24px;
         padding-left: 16px;
         padding-right: 16px;
-        padding-bottom: 24px;
+        padding-bottom: 24px; */
+        padding: 24px;
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -7142,6 +7145,12 @@ ul.allErrs li {
         }
       }
     }
+  }
+
+  .service-content-page {
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: column !important;
   }
 }
 
