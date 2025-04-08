@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";
-const Banner = dynamic(() => import("../_components/page_components/Banner"), {
-  ssr: false,
-});
+const Banner = dynamic(() => import("../_components/page_components/Banner"));
 
 const Solution = dynamic(
   () => import("../_components/page_components/Solution"),
