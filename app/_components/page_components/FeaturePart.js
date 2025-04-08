@@ -133,15 +133,15 @@ const FeaturePart = ({ data }) => {
                       collaborators_list.map((item) => {
                         return (
                           <div className="logos_item_i" key={item.id}>
-                            <div className="mr-4" href="#">
-                              <Image
+                            <div className="mr-4--" href="#">
+                              <img
                                 src={`${item?.image}`}
-                                className="image"
-                                width={0}
-                                height={0}
+                                className="feature-image-- image-a"
+                                // width={0}
+                                //height={0}
                                 alt={index + 1}
-                                sizes="100vw"
-                                priority={false}
+                                // sizes="100vw"
+                                // priority={false}
                               />
                             </div>
                           </div>
