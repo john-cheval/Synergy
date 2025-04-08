@@ -89,7 +89,7 @@ export default async function PageCsr({ params }) {
                   </div>
                 </div>
                 <div className="col-lg-5 d-flex flex-column p-lg-0">
-                  <div className="service-content-title service-content-page h-100">
+                  <div className="service-content-title  service-content-page h-100">
                     <h3
                       dangerouslySetInnerHTML={{
                         __html: data?.post_title,
