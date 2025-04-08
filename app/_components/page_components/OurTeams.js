@@ -1,23 +1,40 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRef, useState } from "react";
 
 import Slider from "react-slick";
 import { NextArrow, PrevArrow } from "../shared/CustomArrows";
 import Image from "next/image";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { useInView } from "react-intersection-observer";
 
 const OurTeams = ({ data }) => {
   const { team_list } = data;
   const teamModal = useRef(null);
   const [activeteam, setactiveteam] = useState(null);
+  const sliderRef = useRef(null);
+
+  const { ref: sectionRef, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      const timer = setTimeout(() => {
+        sliderRef.current?.slickPlay();
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [inView]);
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 2000,
     arrows: true,
     adaptiveHeight: true,
@@ -55,7 +72,7 @@ const OurTeams = ({ data }) => {
 
   return (
     <>
-      <section className="Team-section">
+      <section className="Team-section" ref={sectionRef}>
         <div className="container">
           <div className="row justify-content-center">
             <div
@@ -81,7 +98,7 @@ const OurTeams = ({ data }) => {
               data-wow-delay="300ms"
             >
               <div id="team" className="slider">
-                <Slider {...settings}>
+                <Slider ref={sliderRef} {...settings}>
                   {team_list.length > 0 &&
                     team_list.map((item) => {
                       return (
