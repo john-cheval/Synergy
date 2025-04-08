@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "chevaldemo.xyz",
       },
+      {
+        protocol: "https",
+        hostname: "synergydemo.b-cdn.net",
+      },
     ],
   },
 };

@@ -48,9 +48,7 @@ const Banner = ({ data }) => {
             muted
             playsInline
             preload="auto"
-            src={
-              "https://bunny-wp-pullzone-1uo9uvm3si.b-cdn.net/wp-content/uploads/2025/04/synergy.mp4"
-            }
+            src={data[0]?.video?.url}
           />
           {/* <source src={data[0]?.video?.url} type={"video/mp4"} /> */}
           {/* </video> */}
