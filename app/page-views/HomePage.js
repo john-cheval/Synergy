@@ -14,8 +14,9 @@ const Industries = dynamic(() =>
   import("../_components/page_components/Industries")
 );
 
-const OurTeams = dynamic(() =>
-  import("../_components/page_components/OurTeams")
+const OurTeams = dynamic(
+  () => import("../_components/page_components/OurTeams"),
+  { ssr: false }
 );
 const FeaturePart = dynamic(() =>
   import("../_components/page_components/FeaturePart")
