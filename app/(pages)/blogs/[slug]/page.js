@@ -113,14 +113,16 @@ export default async function PageBlogDetails({ params }) {
                             )}?text=hello`}
                           >
                             {" "}
-                            <span className="gradient-text "> Whatsapp: </span>
+                            <span className="gradient-text ">
+                              {" "}
+                              Whatsapp:
+                            </span>{" "}
                             {whatsapp_number}{" "}
                           </a>
                         </li>
                         <li>
                           <a target="_blank" href={`mailto:${email_address}`}>
-                            {" "}
-                            <span className="gradient-text ">Email: </span>
+                            <span className="gradient-text ">Email:</span>{" "}
                             {email_address}{" "}
                           </a>
                         </li>
