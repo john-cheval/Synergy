@@ -3641,6 +3641,7 @@ ul.locationTabHeaders li.active {
 }
 
 .google-rating-bottom .reviews-number {
+  color: #000 !important;
   font-size: 16px;
   font-weight: 400;
 }
@@ -6419,6 +6420,7 @@ ul.allErrs li {
   }
 
   .google-rating-bottom .reviews-number {
+    color: #000 !important;
     font-size: 16px !important;
     font-weight: 500;
   }

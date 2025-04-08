@@ -1,30 +1,30 @@
 import dynamic from "next/dynamic";
-const Banner = dynamic(
-  () => import("./_components/page_components/Banner") /* , {
-  ssr: false,
-} */
-);
-const Solution = dynamic(() =>
-  import("./_components/page_components/Solution")
-);
-const Industries = dynamic(() =>
-  import("./_components/page_components/Industries")
-);
-const OurTeams = dynamic(() =>
-  import("./_components/page_components/OurTeams")
-);
-const FeaturePart = dynamic(
-  () => import("./_components/page_components/FeaturePart") /* ,
-  { ssr: false } */
-);
-const OurServices = dynamic(() =>
-  import("./_components/page_components/OurServices")
-);
-const Testimonials = dynamic(() =>
-  import("./_components/page_components/Testimonials")
-);
+// const Banner = dynamic(
+//   () => import("./_components/page_components/Banner") /* , {
+//   ssr: false,
+// } */
+// );
+// const Solution = dynamic(() =>
+//   import("./_components/page_components/Solution")
+// );
+// const Industries = dynamic(() =>
+//   import("./_components/page_components/Industries")
+// );
+// const OurTeams = dynamic(() =>
+//   import("./_components/page_components/OurTeams")
+// );
+// const FeaturePart = dynamic(
+//   () => import("./_components/page_components/FeaturePart") /* ,
+//   { ssr: false } */
+// );
+// const OurServices = dynamic(() =>
+//   import("./_components/page_components/OurServices")
+// );
+// const Testimonials = dynamic(() =>
+//   import("./_components/page_components/Testimonials")
+// );
 
-import OurProcess from "./_components/page_components/OurProcess";
+// import OurProcess from "./_components/page_components/OurProcess";
 import HomePage from "./page-views/HomePage";
 
 export const metadata = {

@@ -6,6 +6,7 @@ import Image from "next/image";
 import dayjs from "dayjs";
 import { FaStar, FaPaperPlane } from "react-icons/fa6";
 import relativeTime from "dayjs/plugin/relativeTime";
+import Link from "next/link";
 dayjs.extend(relativeTime);
 
 const Testimonials = () => {
@@ -13,6 +14,8 @@ const Testimonials = () => {
   const [reviews, setreviews] = useState([]);
   const [total_rev, settotal_rev] = useState(0);
   const [total_rating, settotal_rating] = useState(0);
+  const [reviewsUrl, setReviewsUrl] = useState(null);
+
   useEffect(() => {
     getData();
   }, []);
@@ -24,7 +27,9 @@ const Testimonials = () => {
     setreviews(data.reviews);
     settotal_rev(data.data[0]?.review_count);
     settotal_rating(data.data[0]?.rating);
+    setReviewsUrl(data?.data[0]?.url);
   };
+
   const truncateText = (text, length = 200) => {
     if (text.length <= length) {
       return text;
@@ -113,7 +118,16 @@ const Testimonials = () => {
                         </li>
                       ))}
                     </ul>
-                    <span className="reviews-number">{total_rev} reviews</span>
+                    <Link
+                      href={
+                        reviewsUrl ||
+                        "https://maps.google.com/?cid=1697073100803569461"
+                      }
+                      target="_blank"
+                      className="reviews-number"
+                    >
+                      {total_rev} reviews
+                    </Link>
                   </div>
                 </div>
               </div>
