@@ -7326,6 +7326,11 @@ ul.allErrs li {
   /* max-height: 500px; */
   object-fit: cover;
 }
+.feature-image {
+  width: 220px;
+  height: 75px;
+  object-fit: cover;
+}
 
 .header-grad {
   background: linear-gradient(180deg, #000 -22.52%, rgba(0, 0, 0, 0) 94.47%);
@@ -7376,3 +7381,12 @@ ul.allErrs li {
 /* .footered {
   margin-top: 40px !important;
 } */
+.slick-track {
+  display: flex;
+}
+.slick-track .slick-slide {
+  display: flex;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+}
