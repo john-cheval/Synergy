@@ -1,18 +1,45 @@
 "use client";
+import useIsMobile from "@/app/hooks/useInMobile";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const ServiceDetailsSection = ({ data }) => {
+  const isMobile = useIsMobile();
+
   let top = 80;
   let left = 10;
+  const sectionRefs = useRef([]);
+
   const [allSections, setallSections] = useState(data?.section_list);
+  const [isSticky, setIsSticky] = useState(true);
 
   useEffect(() => {
     setallSections(data?.section_list);
   }, [data]);
 
+  const handleScroll = () => {
+    sectionRefs.current.forEach((section, index) => {
+      if (section) {
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top <= 0) {
+          setIsSticky(false);
+        } else {
+          setIsSticky(true);
+        }
+      }
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <>
+    <div className="container">
       {allSections?.length > 0 &&
         allSections.map((item, index) => {
           let pindex = index + 1;
@@ -22,11 +49,20 @@ const ServiceDetailsSection = ({ data }) => {
           let cycleIndex = (index % 4) + 1;
           return (
             <section
+              ref={(el) => (sectionRefs.current[index] = el)}
               className="service-section section-gap stickyWrapper service_sticky detailssspage  wow fadeInUp"
-              style={{ "--top": `${top}px` }}
-              key={item.id}
-              data-wow-duration="1500ms"
-              data-wow-delay={`${index + 1 * 500}ms`}
+              style={{
+                position: isSticky
+                  ? isMobile
+                    ? "static"
+                    : "sticky"
+                  : "relative",
+                top: isSticky ? `${top}px` : "auto",
+                // zIndex: 11,
+              }}
+              key={item?.ID}
+              data-wow-duration="1000ms"
+              data-wow-delay={`${index + 1 * 300}ms`}
             >
               <div className="container">
                 <div
@@ -64,7 +100,7 @@ const ServiceDetailsSection = ({ data }) => {
             </section>
           );
         })}
-    </>
+    </div>
   );
 };
 

@@ -7407,6 +7407,12 @@ ul.allErrs li {
     display: none !important;
     height: 0;
   }
+  .mt {
+    margin-top: 40px !important;
+  }
+  section.Process-section.section-gap {
+    padding-top: 0 !important;
+  }
 
   .about-menu:hover button svg,
   .services-menu:hover button svg {
@@ -7427,4 +7433,8 @@ input[type="number"] {
 }
 .form-control:focus {
   box-shadow: none !important;
+}
+
+.ml {
+  margin-left: 20px !important;
 }

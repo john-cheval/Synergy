@@ -128,6 +128,11 @@ const FooterContactForm = () => {
                     id="phone"
                     placeholder="Phone Number"
                     pattern="[0-9+]*"
+                    onInput={(e) => {
+                      if (e.target.value.length > 15) {
+                        e.target.value = e.target.value.slice(0, 15);
+                      }
+                    }}
                     onKeyDown={(e) => {
                       const allowedKeys = [
                         "Backspace",
