@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Header = ({ addressList }) => {
   const pathname = usePathname();
@@ -87,6 +88,36 @@ const Header = ({ addressList }) => {
     breakpointCheck();
   }, []);
 
+  useEffect(() => {
+    const isDesktop = () => window.innerWidth > 769;
+
+    if (isDesktop()) {
+      const aboutLi = document.querySelector(".about-menu");
+      const servicesLi = document.querySelector(".services-menu");
+
+      const handleMouseEnter = (e) => {
+        const ul = e.currentTarget.querySelector("ul");
+        if (ul) ul.classList.add("view");
+      };
+      const handleMouseLeave = (e) => {
+        const ul = e.currentTarget.querySelector("ul");
+        if (ul) ul.classList.remove("view");
+      };
+
+      aboutLi?.addEventListener("mouseenter", handleMouseEnter);
+      aboutLi?.addEventListener("mouseleave", handleMouseLeave);
+      servicesLi?.addEventListener("mouseenter", handleMouseEnter);
+      servicesLi?.addEventListener("mouseleave", handleMouseLeave);
+
+      return () => {
+        aboutLi?.removeEventListener("mouseenter", handleMouseEnter);
+        aboutLi?.removeEventListener("mouseleave", handleMouseLeave);
+        servicesLi?.removeEventListener("mouseenter", handleMouseEnter);
+        servicesLi?.removeEventListener("mouseleave", handleMouseLeave);
+      };
+    }
+  }, []);
+
   const handleMenuToggle = () => {
     menuRef.current.classList.toggle("menu-on");
     setmenuOpened(!menuOpened);
@@ -94,6 +125,12 @@ const Header = ({ addressList }) => {
   const handleCloseMenu = () => {
     menuRef.current.classList.remove("menu-on");
     setmenuOpened(false);
+    const servicesLi = document.querySelector(".services-menu");
+    const submenu = servicesLi?.querySelector("ul");
+    submenu?.classList.remove("view");
+    const aboutLi = document.querySelector(".about-menu");
+    const submenu2 = aboutLi?.querySelector("ul");
+    submenu2?.classList.remove("view");
   };
 
   const handleClick = (title) => {
@@ -186,7 +223,7 @@ const Header = ({ addressList }) => {
                       </Link>
                     </li>
                     <li
-                      className={
+                      className={`about-menu ${
                         pathname == "/about-us" ||
                         pathname == "/our-team" ||
                         pathname == "/diversity-inclusion"
@@ -196,9 +233,9 @@ const Header = ({ addressList }) => {
                                 : "active has-submemu"
                             }`
                           : `${menu1 ? "show has-submemu" : "has-submemu"}`
-                      }
+                      }`}
                     >
-                      <Link
+                      <a
                         onClick={(e) => {
                           e.preventDefault();
                           setmenu1(!menu1);
@@ -208,9 +245,9 @@ const Header = ({ addressList }) => {
                         href="/"
                       >
                         About
-                      </Link>
+                      </a>
                       <button
-                        className="dropArrow"
+                        className={`dropArrow ${menu1 ? "rotated" : ""}`}
                         onClick={(e) => {
                           e.preventDefault();
                           setmenu1(!menu1);
@@ -218,7 +255,7 @@ const Header = ({ addressList }) => {
                           setmenu3(false);
                         }}
                       >
-                        <i className="fa fa-angle-down"></i>
+                        <MdKeyboardArrowDown />
                       </button>
                       <ul>
                         <li className={pathname == "/about-us" ? "active" : ""}>
@@ -255,15 +292,15 @@ const Header = ({ addressList }) => {
                       </ul>
                     </li>
                     <li
-                      className={
-                        pathname == "/services"
+                      className={`services-menu ${
+                        pathname.includes("/services")
                           ? `${
                               menu2
                                 ? "active show has-submemu"
                                 : "active has-submemu"
                             }`
                           : `${menu2 ? "show has-submemu" : "has-submemu"}`
-                      }
+                      }`}
                     >
                       <Link
                         href="#"
@@ -278,7 +315,7 @@ const Header = ({ addressList }) => {
                         Services
                       </Link>
                       <button
-                        className="dropArrow"
+                        className={`dropArrow ${menu2 ? "rotated" : ""}`}
                         onClick={(e) => {
                           e.preventDefault();
                           setmenu1(false);
@@ -286,7 +323,7 @@ const Header = ({ addressList }) => {
                           setmenu3(false);
                         }}
                       >
-                        <i className="fa fa-angle-down"></i>
+                        <MdKeyboardArrowDown />
                       </button>
                       {services && services.length > 0 && (
                         <ul>

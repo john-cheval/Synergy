@@ -9,10 +9,10 @@ const FooterContactForm = () => {
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setsubmitted] = useState(false);
   const [formErrors, seterrors] = useState({});
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, resetForm) => {
     setSubmitting(true);
     let APIURL = process.env.NEXT_PUBLIC_API_FORM_URL;
 
@@ -25,6 +25,8 @@ const FooterContactForm = () => {
     formData.append("_wpcf7_unit_tag", "00b8018");
 
     try {
+      setSubmitting(true);
+      seterrors({});
       const response = await axios.post(
         `${APIURL}/contact-forms/111/feedback`,
         formData,
@@ -33,8 +35,12 @@ const FooterContactForm = () => {
         }
       );
       setSubmitting(false);
-      setsubmitted(true);
-      // console.log(response, "response from form");
+      setSuccessMessageVisible(true);
+      resetForm();
+
+      setTimeout(() => {
+        setSuccessMessageVisible(false);
+      }, 2000);
     } catch (error) {
       setSubmitting(false);
 
@@ -44,144 +50,165 @@ const FooterContactForm = () => {
 
   return (
     <>
-      {submitted && <p>Thank you for Contacting us!</p>}
-      {!submitted && (
-        <Formik
-          enableReinitialize={true}
-          initialValues={{
-            name: "",
-            email: "",
-            subject: "",
-            phone: "",
-            message: "",
-          }}
-          validationSchema={yup.object().shape({
-            name: yup.string().required("Name is required"),
-            // email: yup.string().email().required("Email is Required"),
-            email: yup
-              .string()
-              .email("Invalid email")
-              .required("Email is required"),
-            //subject: yup.string().required("Subject is Required"),
-            phone: yup
-              .string()
-              .matches(phoneRegExp, "Phone number is not valid")
-              .required("Number is Required")
-              .min(10, "Too short")
-              .max(10, "Too long"),
-            message: yup.string().required("Message is Required"),
-          })}
-          onSubmit={(values, { resetForm }) => {
-            handleSubmit(values);
-            resetForm({ values: "" });
-          }}
-        >
-          {({ errors, isValid, touched, setFieldValue }) => (
-            <Form>
-              {submitting && (
-                <div className="spinner-border text-primary" role="status">
-                  <span className="sr-only">Loading...</span>
-                </div>
-              )}
-              {!submitting && (
-                <>
-                  <div className="row">
-                    <div className="col">
-                      <Field
-                        type="text"
-                        name="name"
-                        className="form-control"
-                        id="name"
-                        placeholder="Name"
-                      />
-                      {touched.name && errors.name && (
-                        <div className="form-error">{errors.name}</div>
-                      )}
-                    </div>
-                    <div className="col">
-                      <Field
-                        type="email"
-                        name="email"
-                        className="form-control"
-                        id="email"
-                        placeholder="Email address"
-                      />
-                      {touched.email && errors.email && (
-                        <div className="form-error">{errors.email}</div>
-                      )}
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col">
-                      <Field
-                        type="text"
-                        name="subject"
-                        className="form-control"
-                        id="subject"
-                        placeholder="Subject"
-                      />
-                      {touched.subject && errors.subject && (
-                        <div className="form-error">{errors.subject}</div>
-                      )}
-                    </div>
-                    <div className="col">
-                      <Field
-                        type="number"
-                        name="phone"
-                        className="form-control"
-                        id="phone"
-                        placeholder="Phone Number"
-                      />
-                      {touched.phone && errors.phone && (
-                        <div className="form-error">{errors.phone}</div>
-                      )}
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col">
-                      <Field
-                        as="textarea"
-                        name="message"
-                        className="form-control"
-                        rows="3"
-                        id="message"
-                        placeholder="Message"
-                      />
-                      {touched.message && errors.message && (
-                        <div className="form-error">{errors.message}</div>
-                      )}
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col">
-                      <button
-                        disabled={!isValid}
-                        type="submit"
-                        className="btn btn-primary"
-                      >
-                        {" "}
-                        Send{" "}
-                        <span className="btn-icon">
-                          {" "}
-                          <FaPaperPlane />
-                        </span>{" "}
-                      </button>
-                    </div>
-                  </div>
-                  {Object.keys(formErrors).length > 0 && (
-                    <ul className="allErrs">
-                      {Object.keys(formErrors).map((key, index) => (
-                        <li key={index}>
-                          <strong>{key}:</strong> {formErrors[key]}
-                        </li>
-                      ))}
-                    </ul>
+      <Formik
+        enableReinitialize={true}
+        initialValues={{
+          name: "",
+          email: "",
+          subject: "",
+          phone: "",
+          message: "",
+        }}
+        validationSchema={yup.object().shape({
+          name: yup.string().required("Name is required"),
+          email: yup
+            .string()
+            .email("Invalid email")
+            .required("Email is required"),
+          phone: yup
+            .string()
+            .matches(phoneRegExp, "Phone number is not valid")
+            .required("Number is Required")
+            .min(10, "Too short")
+            .max(15, "Too long"),
+          message: yup.string().required("Message is Required"),
+        })}
+        onSubmit={(values, { resetForm }) => {
+          handleSubmit(values, resetForm);
+          resetForm({ values: "" });
+        }}
+      >
+        {({ errors, isValid, touched, setFieldValue }) => (
+          <Form>
+            <>
+              <div className="row">
+                <div className="col">
+                  <Field
+                    type="text"
+                    name="name"
+                    className="form-control"
+                    id="name"
+                    placeholder="Name"
+                  />
+                  {touched.name && errors.name && (
+                    <div className="form-error">{errors.name}</div>
                   )}
-                </>
+                </div>
+                <div className="col">
+                  <Field
+                    type="email"
+                    name="email"
+                    className="form-control"
+                    id="email"
+                    placeholder="Email address"
+                  />
+                  {touched.email && errors.email && (
+                    <div className="form-error">{errors.email}</div>
+                  )}
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <Field
+                    type="text"
+                    name="subject"
+                    className="form-control"
+                    id="subject"
+                    placeholder="Subject"
+                  />
+                  {touched.subject && errors.subject && (
+                    <div className="form-error">{errors.subject}</div>
+                  )}
+                </div>
+                <div className="col">
+                  <Field
+                    type="number"
+                    name="phone"
+                    className="form-control"
+                    id="phone"
+                    placeholder="Phone Number"
+                    pattern="[0-9+]*"
+                    onKeyDown={(e) => {
+                      const allowedKeys = [
+                        "Backspace",
+                        "ArrowLeft",
+                        "ArrowRight",
+                        "Tab",
+                        "Delete",
+                      ];
+                      const isNumber = /^[0-9+]$/.test(e.key);
+
+                      if (!isNumber && !allowedKeys.includes(e.key)) {
+                        e.preventDefault();
+                      }
+                    }}
+                  />
+                  {touched.phone && errors.phone && (
+                    <div className="form-error">{errors.phone}</div>
+                  )}
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <Field
+                    as="textarea"
+                    name="message"
+                    className="form-control"
+                    rows="3"
+                    id="message"
+                    placeholder="Message"
+                  />
+                  {touched.message && errors.message && (
+                    <div className="form-error">{errors.message}</div>
+                  )}
+                </div>
+              </div>
+              <div className="row">
+                <div className="col">
+                  <button
+                    disabled={submitting || !isValid}
+                    type="submit"
+                    className="btn btn-primary"
+                  >
+                    {submitting ? (
+                      <>
+                        Submitting...{" "}
+                        <span
+                          className="spinner-border spinner-border-sm"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                      </>
+                    ) : (
+                      <>
+                        Send <FaPaperPlane />
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+              {Object?.keys(formErrors).length > 0 && (
+                <ul className="allErrs">
+                  {Object.keys(formErrors).map((key, index) => (
+                    <li key={index}>
+                      <strong>{key}:</strong> {formErrors[key]}
+                    </li>
+                  ))}
+                </ul>
               )}
-            </Form>
-          )}
-        </Formik>
+            </>
+          </Form>
+        )}
+      </Formik>
+
+      {successMessageVisible && (
+        <div className="row mt-2">
+          <div className="col">
+            <div className="alert alert-success py-2" role="alert">
+              Form Submitted successfully!
+            </div>
+          </div>
+        </div>
       )}
     </>
   );
