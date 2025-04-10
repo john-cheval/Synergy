@@ -1260,9 +1260,9 @@ header.sticky-on .header-nav .nav-container .menu-items ul li.has-submemu ul {
   top: 60px;
 }
 
-header .header-nav .nav-container .menu-items ul li.has-submemu:hover > ul {
+/* header .header-nav .nav-container .menu-items ul li.has-submemu:hover > ul {
   display: block;
-}
+} */
 
 header
   .header-nav
@@ -6025,6 +6025,15 @@ ul.allErrs li {
     color: #005ba8 !important;
   }
 
+  .dropArrow svg {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .dropArrow.rotated svg {
+    transform: rotate(180deg);
+  }
+  
+
   header
     .header-nav
     .nav-container.breakpoint-on
@@ -7390,3 +7399,21 @@ ul.allErrs li {
   align-items: center;
   justify-content: center;
 }
+
+@media (min-width: 769px) {
+  .view {
+    display: block !important;
+  }
+  .no-view {
+    display: none !important;
+    height: 0;
+  }
+
+  .about-menu:hover button svg,
+  .services-menu:hover button svg {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+
