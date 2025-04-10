@@ -6028,11 +6028,10 @@ ul.allErrs li {
   .dropArrow svg {
     transition: transform 0.3s ease-in-out;
   }
-  
+
   .dropArrow.rotated svg {
     transform: rotate(180deg);
   }
-  
 
   header
     .header-nav
@@ -7416,4 +7415,16 @@ ul.allErrs li {
   }
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Hide arrows for Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.form-control:focus {
+  box-shadow: none !important;
+}
