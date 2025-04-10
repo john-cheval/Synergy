@@ -2,12 +2,15 @@
 import React, { useEffect, useState } from "react";
 import FooterContactForm from "./FooterContactForm";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
   const [openMenus, setOpenMenus] = useState({});
   const [services, setServices] = useState([]);
   const [footerContent, setFooterContent] = useState([]);
   const [slpservices, setslpServices] = useState([]);
+  const pathname = usePathname();
+
   let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
   const toggleMenu = (index) => {
     setOpenMenus((prevState) => ({
@@ -39,7 +42,10 @@ const Footer = () => {
 
   return (
     <>
-      <footer id="footer-id" className="footered">
+      <footer
+        id="footer-id"
+        className={`footered ${pathname.includes("/services") ? "mt" : ""}`}
+      >
         <div className="container">
           <div className="footer-widget-top">
             <div className="row">
