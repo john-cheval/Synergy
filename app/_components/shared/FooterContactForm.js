@@ -14,6 +14,7 @@ const FooterContactForm = () => {
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
   const recaptchaRef = useRef(null);
   const [token, setToken] = useState("");
+  const [captchaError, setCaptchaError] = useState(false);
 
   // useEffect(() => {
   //   if (token.length) {
@@ -21,7 +22,14 @@ const FooterContactForm = () => {
   //   }
   // }, [token]);
   const handleSubmit = async (values, resetForm) => {
+    if (!token) {
+      setCaptchaError(true);
+      return;
+    }
+
+    setCaptchaError(false);
     setSubmitting(true);
+    seterrors({});
     let APIURL = process.env.NEXT_PUBLIC_API_FORM_URL;
 
     const formData = new FormData();
@@ -34,7 +42,7 @@ const FooterContactForm = () => {
 
     try {
       setSubmitting(true);
-      seterrors({});
+      // seterrors({});
       const response = await axios.post(
         `${APIURL}/contact-forms/111/feedback`,
         formData,
@@ -46,14 +54,14 @@ const FooterContactForm = () => {
       setSuccessMessageVisible(true);
       resetForm();
 
-      if (!token) {
-        // toast.error("Please verify the reCAPTCHA", {
-        //   autoClose: 1500,
-        // });
+      // if (!token) {
+      //   // toast.error("Please verify the reCAPTCHA", {
+      //   //   autoClose: 1500,
+      //   // });
 
-        console.log("Please verify the reCAPTCHA");
-        return;
-      }
+      //   console.log("Please verify the reCAPTCHA");
+      //   return;
+      // }
 
       setTimeout(() => {
         setSuccessMessageVisible(false);
@@ -238,8 +246,15 @@ const FooterContactForm = () => {
                     callback={handleToken}
                     ref={recaptchaRef}
                   />
+
+                  {captchaError && (
+                    <div className="form-error mt-2">
+                      Please verify your reCAPTCHA.
+                    </div>
+                  )}
                   <button
-                    disabled={submitting || !isValid}
+                    // disabled={submitting || !isValid}
+                    disabled={submitting || !isValid || !token}
                     type="submit"
                     className="btn btn-primary mt-3"
                   >
