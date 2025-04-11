@@ -56,7 +56,9 @@ const OurServices = ({ service }) => {
   return (
     <>
       <section
-        className="how-it-work-section section-gap  stickyWrapper--"
+        className={`how-it-work-section section-gap ${
+          isMobile ? "stickyWrapper" : ""
+        } `}
         style={{ "--top": `70px` }}
       >
         <div className="container">
