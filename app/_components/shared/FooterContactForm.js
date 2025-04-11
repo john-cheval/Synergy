@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 import { FaPaperPlane } from "react-icons/fa6";
+import ReCaptcha from "@/app/utils/reCaptcha";
 
 const FooterContactForm = () => {
   const phoneRegExp =
@@ -11,7 +12,14 @@ const FooterContactForm = () => {
   const [submitting, setSubmitting] = useState(false);
   const [formErrors, seterrors] = useState({});
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+  const recaptchaRef = useRef(null);
+  const [token, setToken] = useState("");
 
+  // useEffect(() => {
+  //   if (token.length) {
+  //     setSubmitting(true);
+  //   }
+  // }, [token]);
   const handleSubmit = async (values, resetForm) => {
     setSubmitting(true);
     let APIURL = process.env.NEXT_PUBLIC_API_FORM_URL;
@@ -38,14 +46,31 @@ const FooterContactForm = () => {
       setSuccessMessageVisible(true);
       resetForm();
 
+      if (!token) {
+        // toast.error("Please verify the reCAPTCHA", {
+        //   autoClose: 1500,
+        // });
+
+        console.log("Please verify the reCAPTCHA");
+        return;
+      }
+
       setTimeout(() => {
         setSuccessMessageVisible(false);
       }, 2000);
+      setToken("");
+      if (recaptchaRef.current) {
+        recaptchaRef.current.resetCaptcha();
+      }
     } catch (error) {
       setSubmitting(false);
 
       seterrors(error.response.data.errors);
     }
+  };
+
+  const handleToken = (token) => {
+    setToken(token);
   };
 
   return (
@@ -100,7 +125,7 @@ const FooterContactForm = () => {
                     name="email"
                     className="form-control"
                     id="email"
-                    placeholder="Email address"
+                    placeholder="Email Address"
                   />
                   {touched.email && errors.email && (
                     <div className="form-error">{errors.email}</div>
@@ -121,7 +146,7 @@ const FooterContactForm = () => {
                   )}
                 </div>
                 <div className="col">
-                  <Field
+                  {/* <Field
                     type="number"
                     name="phone"
                     className="form-control"
@@ -147,7 +172,45 @@ const FooterContactForm = () => {
                         e.preventDefault();
                       }
                     }}
+
+
+                  /> */}
+
+                  <Field
+                    type="text"
+                    name="phone"
+                    className="form-control"
+                    id="phone"
+                    placeholder="Phone Number"
+                    onInput={(e) => {
+                      if (e.target.value.length > 15) {
+                        e.target.value = e.target.value.slice(0, 15);
+                      }
+                    }}
+                    onKeyDown={(e) => {
+                      const allowedKeys = [
+                        "Backspace",
+                        "ArrowLeft",
+                        "ArrowRight",
+                        "Tab",
+                        "Delete",
+                      ];
+
+                      const isNumber = /^[0-9]$/.test(e.key);
+                      const isPlus = e.key === "+";
+                      const inputValue = e.currentTarget.value;
+                      const cursorPosition = e.currentTarget.selectionStart;
+
+                      if (
+                        (isPlus &&
+                          (cursorPosition !== 0 || inputValue.includes("+"))) ||
+                        (!isNumber && !isPlus && !allowedKeys.includes(e.key))
+                      ) {
+                        e.preventDefault();
+                      }
+                    }}
                   />
+
                   {touched.phone && errors.phone && (
                     <div className="form-error">{errors.phone}</div>
                   )}
@@ -170,10 +233,15 @@ const FooterContactForm = () => {
               </div>
               <div className="row">
                 <div className="col">
+                  <ReCaptcha
+                    siteKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                    callback={handleToken}
+                    ref={recaptchaRef}
+                  />
                   <button
                     disabled={submitting || !isValid}
                     type="submit"
-                    className="btn btn-primary"
+                    className="btn btn-primary mt-3"
                   >
                     {submitting ? (
                       <>
