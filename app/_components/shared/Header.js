@@ -47,7 +47,7 @@ const Header = ({ addressList }) => {
     const data = await fetch(`${APIURL}/menu/primary`, {
       cache: "no-store",
     }).then((res) => res.json());
-    setServices(data["119"]);
+    setServices(data["554"]);
   };
 
   useEffect(() => {
