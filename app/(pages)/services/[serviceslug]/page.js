@@ -88,33 +88,35 @@ export default async function PageCsr({ params }) {
                     )}
                   </div>
                 </div>
-                <div className="col-lg-5 d-flex flex-column p-lg-0">
-                  <div className="service-content-title  service-content-page h-100">
-                    <h3
-                      dangerouslySetInnerHTML={{
-                        __html: data?.post_title,
-                      }}
-                    />
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: data?.home_description,
-                      }}
-                    >
-                      {/* {data?.short_description} */}
-                    </p>
-                    <div className="service-content-top-btn">
-                      <a href="/contact" className="contact">
-                        Contact us
-                      </a>
-                      <a
-                        href={`tel:${data?.phone_number}`}
-                        className="contact-number"
+                {data?.post_title && (
+                  <div className="col-lg-5 d-flex flex-column p-lg-0">
+                    <div className="service-content-title  service-content-page h-100">
+                      <h3
+                        dangerouslySetInnerHTML={{
+                          __html: data?.post_title,
+                        }}
+                      />
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: data?.home_description,
+                        }}
                       >
-                        Call Now: {formatPhoneNumber(data?.phone_number)}
-                      </a>
+                        {/* {data?.short_description} */}
+                      </p>
+                      <div className="service-content-top-btn">
+                        <a href="/contact" className="contact">
+                          Contact us
+                        </a>
+                        <a
+                          href={`tel:${data?.phone_number}`}
+                          className="contact-number"
+                        >
+                          Call Now: {formatPhoneNumber(data?.phone_number)}
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
