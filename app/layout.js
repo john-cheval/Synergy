@@ -13,15 +13,11 @@ import "./../styles/style.css";
 // import "./globals.css";
 import BootstrapClient from "./_components/BootstrapClient.js";
 import Header from "./_components/shared/Header";
+// import Footer from "./_components/shared/Footer";
+import ServerFooter from "./_components/shared/ServerFooter";
 const WowOver = dynamic(() => import("@/app/_components/shared/WowOver"), {
   ssr: false,
 });
-// import Footer from "./_components/shared/Footer";
-const Footer = dynamic(
-  () => import("./_components/shared/Footer") /* {
-  ssr: false,
-} */
-);
 
 export const metadata = {
   title: "Synergy",
@@ -51,7 +47,7 @@ export default async function RootLayout({ children }) {
         <Header addressList={address_list} />
         {children}
         <BootstrapClient />
-        <Footer />
+        <ServerFooter />
       </body>
     </html>
   );

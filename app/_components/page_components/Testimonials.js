@@ -154,7 +154,7 @@ const Testimonials = () => {
                                         width={50}
                                         height={50}
                                         src={`${item?.profile_photo_url}`}
-                                        alt={item?.author_name}
+                                        alt={item?.author_name || "Image"}
                                         sizes="100vw"
                                         className="image"
                                         // priority={false}

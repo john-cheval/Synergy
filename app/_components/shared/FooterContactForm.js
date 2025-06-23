@@ -277,7 +277,7 @@ const FooterContactForm = () => {
               </div>
               {Object?.keys(formErrors).length > 0 && (
                 <ul className="allErrs">
-                  {Object.keys(formErrors).map((key, index) => (
+                  {Object.keys(formErrors)?.map((key, index) => (
                     <li key={index}>
                       <strong>{key}:</strong> {formErrors[key]}
                     </li>

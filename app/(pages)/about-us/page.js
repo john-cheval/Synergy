@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
-const InnerBanner = dynamic(
-  () => import("@/app/_components/page_components/InnerBanner"),
-  { ssr: false }
+const InnerBanner = dynamic(() =>
+  import("@/app/_components/page_components/InnerBanner")
 );
 
 import Solution2 from "@/app/_components/page_components/Solution2";
@@ -76,7 +75,7 @@ export default async function PageAboutUs() {
                 ) : (
                   <Image
                     src={data?.section_list[0]?.image}
-                    alt={data?.section_list[0]?.section_title}
+                    alt={data?.section_list[0]?.section_title || "Image"}
                     className="image"
                     width={0}
                     height={0}
@@ -90,7 +89,7 @@ export default async function PageAboutUs() {
               <div className="box-content mission-content h-100">
                 {/* <h3>{data?.section_list[0]?.section_title}</h3> */}
                 <h3>
-                  Our <span class="color-text"> Mission&nbsp;</span>
+                  Our <span className="color-text"> Mission&nbsp;</span>
                 </h3>
                 <div
                   dangerouslySetInnerHTML={{
@@ -110,7 +109,7 @@ export default async function PageAboutUs() {
               <div className="mission-video h-100">
                 <Image
                   src={data?.section_list[1]?.image}
-                  alt={data?.section_list[1]?.section_title}
+                  alt={data?.section_list[1]?.section_title || "Image"}
                   className="image"
                   width={0}
                   height={0}
@@ -123,7 +122,7 @@ export default async function PageAboutUs() {
               <div className="box-content vission-content h-100">
                 {/* <h3>{data?.section_list[1]?.section_title}</h3> */}
                 <h3>
-                  Our <span class="color-text"> Vision&nbsp;</span>
+                  Our <span className="color-text"> Vision&nbsp;</span>
                 </h3>
                 <div
                   dangerouslySetInnerHTML={{

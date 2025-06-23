@@ -52,7 +52,7 @@ export default async function PageTransactions() {
                     {data?.image != "" && (
                       <Image
                         src={data?.top_banner}
-                        alt={data?.post_title}
+                        alt={data?.post_title || "Image"}
                         sizes="100vw"
                         width={0}
                         height={0}
@@ -84,7 +84,7 @@ export default async function PageTransactions() {
                 <div className="card-img">
                   <Image
                     src={item.image}
-                    alt={item?.section_title}
+                    alt={item?.section_title || "Image"}
                     sizes="100vw"
                     width={0}
                     height={0}

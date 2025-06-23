@@ -23,7 +23,7 @@ const Solution = ({ data }) => {
                 <h2 className="title mb-3">
                   <p>
                     One-Stop <br />
-                    <span class="color-text">Solution&nbsp;</span>
+                    <span className="color-text">Solution&nbsp;</span>
                   </p>
                 </h2>
                 {one_stop_solution_description && (
@@ -38,7 +38,7 @@ const Solution = ({ data }) => {
             </div>
             {one_stop_solution_list &&
               one_stop_solution_list.length > 0 &&
-              one_stop_solution_list.map((item, index) => {
+              one_stop_solution_list?.map((item, index) => {
                 return (
                   <>
                     {item?.file ? (
@@ -46,7 +46,7 @@ const Solution = ({ data }) => {
                         className="col-lg-3 col-md-12 d-flex flex-column text-left wow fadeInRight mb-4 wow fadeInUp"
                         data-wow-duration="1000ms"
                         data-wow-delay={`${index * 150}ms`}
-                        key={item.id}
+                        key={item?.id || index}
                       >
                         <div className="box-solution-img h-100">
                           {
@@ -87,7 +87,7 @@ const Solution = ({ data }) => {
                         className="col-lg-3 col-md-12 d-flex flex-column text-left wow fadeInRight mb-4 wow fadeInUp"
                         data-wow-duration="1000ms"
                         data-wow-delay={`${index * 150}ms`}
-                        key={item.id}
+                        key={item?.id || index}
                       >
                         <div className="box-solution h-100">
                           <h4 className="title mb-3"> {item?.title} </h4>

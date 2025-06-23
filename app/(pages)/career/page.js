@@ -54,7 +54,7 @@ export default async function PageCareer({ params }) {
                   <div className="inner-banner-img">
                     <Image
                       src={top_banner}
-                      alt={post_title}
+                      alt={post_title || "Image"}
                       sizes="100vw"
                       width={0}
                       height={0}
@@ -94,8 +94,8 @@ export default async function PageCareer({ params }) {
         <div className="container">
           {jobs.length == 0 && <h4>No jobs available at this moment!</h4>}
           {jobs.length > 0 &&
-            jobs.map((item) => {
-              return <JobItem key={item.ID} data={item} />;
+            jobs.map((item, index) => {
+              return <JobItem key={item?.ID || index} data={item} />;
             })}
         </div>
       </section>

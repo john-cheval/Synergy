@@ -29,7 +29,7 @@ const Solution2 = ({ data }) => {
                 ></h2> */}
 
                 <h3 className="title mb-3">
-                  Our <br /> <span class="color-text"> Values&nbsp;</span>
+                  Our <br /> <span className="color-text"> Values&nbsp;</span>
                 </h3>
 
                 {section_list[2]?.section_content && (
@@ -74,7 +74,7 @@ const Solution2 = ({ data }) => {
                             ) : (
                               <Image
                                 src={item?.image}
-                                alt={item?.heading}
+                                alt={item?.heading || "Image"}
                                 className="image"
                                 width={0}
                                 height={0}

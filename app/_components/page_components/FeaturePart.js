@@ -130,9 +130,9 @@ const FeaturePart = ({ data }) => {
                   <Slider {...settings}>
                     {collaborators_list &&
                       collaborators_list.length > 0 &&
-                      collaborators_list.map((item) => {
+                      collaborators_list?.map((item, index) => {
                         return (
-                          <div className="logos_item_i" key={item.id}>
+                          <div className="logos_item_i" key={item?.id || index}>
                             <div className="mr-4--" href="#">
                               <img
                                 src={`${item?.image}`}

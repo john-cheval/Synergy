@@ -22,7 +22,7 @@ const OurProcess = ({ data }) => {
                   >
                     <p>
                       Our <br />
-                      <span class="color-text">Process&nbsp;</span>
+                      <span className="color-text">Process&nbsp;</span>
                     </p>
                   </h2>
                   <div
@@ -37,10 +37,10 @@ const OurProcess = ({ data }) => {
             <div className="col-lg-8 col-md-12">
               {our_process_list &&
                 our_process_list.length > 0 &&
-                our_process_list.map((item, index) => {
+                our_process_list?.map((item, index) => {
                   return (
                     <div
-                      key={item.id}
+                      key={item?.id || index}
                       className="Process-list-col wow fadeInUp"
                       data-wow-duration="1000ms"
                       data-wow-delay={`${index * 100}ms`}

@@ -1,17 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import FooterContactForm from "./FooterContactForm";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const Footer = () => {
+const Footer = ({ services, slpservices, footerContent }) => {
   const [openMenus, setOpenMenus] = useState({});
-  const [services, setServices] = useState([]);
-  const [footerContent, setFooterContent] = useState([]);
-  const [slpservices, setslpServices] = useState([]);
+
   const pathname = usePathname();
 
-  let APIURL = process.env.NEXT_PUBLIC_API_BASE_URL;
   const toggleMenu = (index) => {
     setOpenMenus((prevState) => ({
       ...prevState,
@@ -19,25 +16,6 @@ const Footer = () => {
     }));
   };
 
-  useEffect(() => {
-    getServicesData();
-    getFooterContent();
-  }, []);
-
-  const getServicesData = async () => {
-    const data = await fetch(`${APIURL}/menu/footer`, {
-      cache: "no-store",
-    }).then((res) => res.json());
-    setServices(data["350"]);
-    setslpServices(data["351"]);
-  };
-
-  const getFooterContent = async () => {
-    const data = await fetch(`${APIURL}/full_details?ID=23`, {
-      cache: "no-store",
-    }).then((res) => res.json());
-    setFooterContent(data);
-  };
   const header = footerContent?.request_a_free_heading?.split("<br>");
 
   return (
@@ -114,9 +92,9 @@ const Footer = () => {
                   <div className={`footer-menu-vartical `}>
                     {services && services.length > 0 && (
                       <ul>
-                        {services.map((service) => {
+                        {services.map((service, index) => {
                           return (
-                            <li key={service.id}>
+                            <li key={service?.id || index}>
                               <a
                                 href={`${service.url}`}
                                 dangerouslySetInnerHTML={{
@@ -149,9 +127,9 @@ const Footer = () => {
                     )}
                     {slpservices && slpservices.length > 0 && (
                       <ul>
-                        {slpservices.map((service) => {
+                        {slpservices.map((service, index) => {
                           return (
-                            <li key={service.id}>
+                            <li key={service?.id || index}>
                               <a
                                 href={`${service.url}`}
                                 dangerouslySetInnerHTML={{

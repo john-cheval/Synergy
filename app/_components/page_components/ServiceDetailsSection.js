@@ -41,7 +41,7 @@ const ServiceDetailsSection = ({ data }) => {
   return (
     <div className="container">
       {allSections?.length > 0 &&
-        allSections.map((item, index) => {
+        allSections?.map((item, index) => {
           let pindex = index + 1;
           top = index > 0 ? top + 20 : top;
           left = index > 0 ? left + 50 : left;
@@ -60,7 +60,7 @@ const ServiceDetailsSection = ({ data }) => {
                 top: isSticky ? `${top}px` : "auto",
                 // zIndex: 11,
               }}
-              key={item?.ID}
+              key={item?.ID || index}
               data-wow-duration="1000ms"
               data-wow-delay={`${index + 1 * 300}ms`}
             >
@@ -86,7 +86,7 @@ const ServiceDetailsSection = ({ data }) => {
                     <div className="blog-banner h-100">
                       <Image
                         src={item?.image}
-                        alt={data?.section_title}
+                        alt={data?.section_title || "Image"}
                         width={0}
                         height={0}
                         sizes="100vw"

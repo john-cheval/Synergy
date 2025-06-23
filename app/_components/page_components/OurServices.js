@@ -86,7 +86,7 @@ const OurServices = ({ service }) => {
           </div>
           {services &&
             services.length > 0 &&
-            services.slice(0, 4).map((service, index) => {
+            services.slice(0, 4)?.map((service, index) => {
               top = index > 0 ? top + 50 : top;
               return (
                 <section
@@ -129,7 +129,7 @@ const OurServices = ({ service }) => {
                                 ) : (
                                   <Image
                                     src={service.image}
-                                    alt={service.post_title}
+                                    alt={service.post_title || "Image"}
                                     width={0}
                                     height={0}
                                     sizes="100vw"
@@ -222,7 +222,7 @@ const OurServices = ({ service }) => {
                                 ) : (
                                   <Image
                                     src={service.image}
-                                    alt={service.post_title}
+                                    alt={service.post_title || "Image"}
                                     width={0}
                                     height={0}
                                     sizes="100vw"

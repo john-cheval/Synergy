@@ -60,7 +60,7 @@ const Teams = () => {
                   {activeteam?.image != "" && (
                     <Image
                       src={activeteam?.image}
-                      alt={activeteam?.member_name}
+                      alt={activeteam?.member_name || "Image"}
                       className="img-fluid image"
                       width={0}
                       height={0}
@@ -112,10 +112,10 @@ const Teams = () => {
             {loading && <Loading />}
             {teams &&
               teams.length > 0 &&
-              teams.map((item, index) => {
+              teams?.map((item, index) => {
                 return (
                   <div
-                    key={item?.id}
+                    key={item?.id || index}
                     className="col-lg-4 col-md-6 mb-3 wow fadeInUp"
                     onClick={() => handleClick(item)}
                     data-wow-duration="1000ms"
@@ -130,7 +130,7 @@ const Teams = () => {
                         {item.image != "" && (
                           <Image
                             src={item?.image}
-                            alt={item?.member_name}
+                            alt={item?.member_name || "Image"}
                             className="img-fluid image"
                             width={0}
                             height={0}
