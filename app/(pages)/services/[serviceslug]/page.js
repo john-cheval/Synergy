@@ -33,6 +33,10 @@ export default async function PageCsr({ params }) {
     return "";
   };
 
+  if (!data) {
+    return <h2 className="flex items-center justify-center">No Data Found</h2>;
+  }
+
   return (
     <>
       <section className="banner-section wow fadeInUp">
@@ -58,100 +62,105 @@ export default async function PageCsr({ params }) {
                         Services
                       </h1>
                     </div>
-                    <Bredcumb title={data?.post_title} />
+                    {data && <Bredcumb title={data?.post_title} />}
                   </div>
                 </div>
               </div>
 
-              <div className="banner_image row justify-content-center text-white row-eq-height mt-5 ">
-                <div className="col-lg-7 p-lg-0--">
-                  <div className="blog-banner h-100">
-                    {[".mp4", ".mov"].some((ext) =>
-                      data?.image.endsWith(ext)
-                    ) ? (
-                      <video autoPlay loop className="video-solution" muted>
-                        <source
+              {data && (
+                <div className="banner_image row justify-content-center text-white row-eq-height mt-5 ">
+                  <div className="col-lg-7 p-lg-0--">
+                    <div className="blog-banner h-100">
+                      {[".mp4", ".mov"].some((ext) =>
+                        data?.image.endsWith(ext)
+                      ) ? (
+                        <video autoPlay loop className="video-solution" muted>
+                          <source
+                            src={data?.image}
+                            type={getVideoType(data?.image)}
+                          />
+                        </video>
+                      ) : (
+                        <Image
                           src={data?.image}
-                          type={getVideoType(data?.image)}
+                          alt={data?.post_title || "Image"}
+                          className="image"
+                          width={0}
+                          height={0}
+                          sizes="100vw"
+                          // priority={false}
                         />
-                      </video>
-                    ) : (
-                      <Image
-                        src={data?.image}
-                        alt={data?.post_title}
-                        className="image"
-                        width={0}
-                        height={0}
-                        sizes="100vw"
-                        // priority={false}
-                      />
-                    )}
-                  </div>
-                </div>
-                {data?.post_title && (
-                  <div className="col-lg-5 d-flex flex-column p-lg-0">
-                    <div className="service-content-title  service-content-page h-100">
-                      <h3
-                        dangerouslySetInnerHTML={{
-                          __html: data?.post_title,
-                        }}
-                      />
-                      <p
-                        dangerouslySetInnerHTML={{
-                          __html: data?.home_description,
-                        }}
-                      >
-                        {/* {data?.short_description} */}
-                      </p>
-                      <div className="service-content-top-btn">
-                        <a href="/contact" className="contact">
-                          Contact us
-                        </a>
-                        <a
-                          href={`tel:${data?.phone_number}`}
-                          className="contact-number"
-                        >
-                          Call Now: {formatPhoneNumber(data?.phone_number)}
-                        </a>
-                      </div>
+                      )}
                     </div>
                   </div>
-                )}
-              </div>
+                  {data && data?.post_title && (
+                    <div className="col-lg-5 d-flex flex-column p-lg-0">
+                      <div className="service-content-title  service-content-page h-100">
+                        <h3
+                          dangerouslySetInnerHTML={{
+                            __html: data?.post_title,
+                          }}
+                        />
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: data?.home_description,
+                          }}
+                        >
+                          {/* {data?.short_description} */}
+                        </p>
+                        <div className="service-content-top-btn">
+                          <a href="/contact" className="contact">
+                            Contact us
+                          </a>
+                          <a
+                            href={`tel:${data?.phone_number}`}
+                            className="contact-number"
+                          >
+                            Call Now: {formatPhoneNumber(data?.phone_number)}
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
       </section>
 
       {/* <!--====== Feature Part start ======--> */}
-      <section
-        className={`inner-content-section section-gap  wow fadeInUp ${
-          data?.section_list?.length > 0 ? "has_padding" : ""
-        }`}
-        data-wow-duration="1500ms"
-        data-wow-delay="500ms"
-      >
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-4">
-              <div className="inner-content-title">
-                <h5 dangerouslySetInnerHTML={{ __html: data?.post_title }} />
+
+      {data && (
+        <section
+          className={`inner-content-section section-gap  wow fadeInUp ${
+            data?.section_list?.length > 0 ? "has_padding" : ""
+          }`}
+          data-wow-duration="1500ms"
+          data-wow-delay="500ms"
+        >
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-lg-4">
+                <div className="inner-content-title">
+                  <h5 dangerouslySetInnerHTML={{ __html: data?.post_title }} />
+                </div>
               </div>
-            </div>
-            <div className="col-lg-8">
-              <div className="inner-content-box">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: data?.short_description,
-                  }}
-                ></div>
+              <div className="col-lg-8">
+                <div className="inner-content-box">
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: data?.short_description,
+                    }}
+                  ></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      <ServiceDetailsSection data={data} />
+      {data && <ServiceDetailsSection data={data} />}
     </>
   );
 }

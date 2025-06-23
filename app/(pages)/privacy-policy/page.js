@@ -50,7 +50,7 @@ export default async function PagePrivacyPolicy() {
                   <div className="inner-banner-img">
                     <Image
                       src={top_banner}
-                      alt={post_title}
+                      alt={post_title || "Image"}
                       sizes="100vw"
                       width={0}
                       height={0}

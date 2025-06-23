@@ -73,13 +73,13 @@ const Industries = ({ data }) => {
               <div id="Industries" className="slider">
                 <Slider {...settings}>
                   {industries_list.length > 0 &&
-                    industries_list.map((item) => {
+                    industries_list?.map((item, index) => {
                       return (
-                        <div key={item.id} className="slider-items">
+                        <div key={item.id || index} className="slider-items">
                           <div className="industries-col">
                             <Image
                               src={item?.file}
-                              alt={item?.title}
+                              alt={item?.title || "Image"}
                               className="img-fluid image"
                               width={0}
                               height={0}

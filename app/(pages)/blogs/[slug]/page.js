@@ -59,7 +59,7 @@ export default async function PageBlogDetails({ params }) {
                   <div className="inner-banner-img">
                     <Image
                       src={image}
-                      alt={post_title}
+                      alt={post_title || "Image"}
                       sizes="100vw"
                       width={0}
                       height={0}

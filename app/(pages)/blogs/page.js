@@ -65,7 +65,7 @@ export default async function PageBlogs({ params }) {
                   <div className="blog-banner h-100 ">
                     <Image
                       src={firstBlog?.image}
-                      alt={firstBlog?.post_title}
+                      alt={firstBlog?.post_title || "Image"}
                       sizes="100vw"
                       width={0}
                       height={0}
@@ -99,15 +99,15 @@ export default async function PageBlogs({ params }) {
           {blog.length == 1 && <h4>More Blogs Are Coming Soon!</h4>}
           <div className="row justify-content-left">
             {blog.length > 1 &&
-              blog.slice(1).map((item) => {
+              blog.slice(1).map((item, index) => {
                 return (
-                  <div key={item.id} className="col-lg-4">
+                  <div key={item?.id || index} className="col-lg-4">
                     <div className="blog-box">
                       <div className="blog-img">
                         <a href={`/blogs/${item.post_name}`}>
                           <Image
                             src={item?.image}
-                            alt={item.post_title}
+                            alt={item.post_title || "Image"}
                             sizes="100vw"
                             width={0}
                             height={0}

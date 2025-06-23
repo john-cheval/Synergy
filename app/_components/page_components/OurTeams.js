@@ -100,17 +100,17 @@ const OurTeams = ({ data }) => {
               <div id="team" className="slider">
                 <Slider ref={sliderRef} {...settings}>
                   {team_list.length > 0 &&
-                    team_list.map((item) => {
+                    team_list.map((item, index) => {
                       return (
                         <div
-                          key={item.id}
+                          key={item?.id || index}
                           onClick={() => handleClick(item)}
                           className="slider-items"
                         >
                           <div className="team-col">
                             <Image
                               src={item?.image}
-                              alt={item?.member_name}
+                              alt={item?.member_name || "Image"}
                               className="img-fluid image"
                               width={0}
                               height={0}
@@ -167,7 +167,7 @@ const OurTeams = ({ data }) => {
                           {activeteam?.image != "" && (
                             <Image
                               src={activeteam?.image}
-                              alt={activeteam?.member_name}
+                              alt={activeteam?.member_name || "Image"}
                               className="img-fluid image"
                               sizes="100vw"
                               width={0}

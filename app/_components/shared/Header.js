@@ -327,10 +327,10 @@ const Header = ({ addressList }) => {
                       </button>
                       {services && services.length > 0 && (
                         <ul>
-                          {services.map((service) => {
+                          {services.map((service, index) => {
                             return (
                               <li
-                                key={service.id}
+                                key={service?.id || index}
                                 className={
                                   pathname == `${service.url}` ? "active" : ""
                                 }
@@ -440,8 +440,8 @@ const Header = ({ addressList }) => {
                   <span className="sperator"></span>
 
                   <ul>
-                    {addressList.map((item) => (
-                      <li key={item.title}>
+                    {addressList?.map((item, index) => (
+                      <li key={item?.title || index}>
                         <Link href="#" onClick={() => handleClick(item.title)}>
                           {item.title}
                         </Link>
