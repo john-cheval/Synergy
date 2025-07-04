@@ -246,7 +246,7 @@ const Header = ({ addressList }) => {
                       >
                         About
                       </a>
-                      <button
+                      {/* <button
                         className={`dropArrow ${menu1 ? "rotated" : ""}`}
                         onClick={(e) => {
                           e.preventDefault();
@@ -256,8 +256,8 @@ const Header = ({ addressList }) => {
                         }}
                       >
                         <MdKeyboardArrowDown />
-                      </button>
-                      <ul>
+                      </button> */}
+                      <ul className="abt">
                         <li className={pathname == "/about-us" ? "active" : ""}>
                           <Link
                             // prefetch
@@ -314,7 +314,7 @@ const Header = ({ addressList }) => {
                       >
                         Services
                       </Link>
-                      <button
+                      {/* <button
                         className={`dropArrow ${menu2 ? "rotated" : ""}`}
                         onClick={(e) => {
                           e.preventDefault();
@@ -324,28 +324,52 @@ const Header = ({ addressList }) => {
                         }}
                       >
                         <MdKeyboardArrowDown />
-                      </button>
+                      </button> */}
                       {services && services.length > 0 && (
-                        <ul>
-                          {services.map((service, index) => {
-                            return (
-                              <li
-                                key={service?.id || index}
-                                className={
-                                  pathname == `${service.url}` ? "active" : ""
-                                }
-                              >
-                                <Link
-                                  onClick={handleCloseMenu}
-                                  // prefetch
-                                  href={`${service.url}`}
-                                  dangerouslySetInnerHTML={{
-                                    __html: service.title,
-                                  }}
-                                />
-                              </li>
-                            );
-                          })}
+                        <ul className="serv">
+                          <div>
+                            {services.slice(0, 5)?.map((service, index) => {
+                              return (
+                                <li
+                                  key={service?.id || index}
+                                  className={
+                                    pathname == `${service.url}` ? "active" : ""
+                                  }
+                                >
+                                  <Link
+                                    onClick={handleCloseMenu}
+                                    // prefetch
+                                    href={`${service.url}`}
+                                    dangerouslySetInnerHTML={{
+                                      __html: service.title,
+                                    }}
+                                  />
+                                </li>
+                              );
+                            })}
+                          </div>
+                          <div className="serv-seperator"></div>
+                          <div>
+                            {services.slice(5)?.map((service, index) => {
+                              return (
+                                <li
+                                  key={service?.id || index}
+                                  className={
+                                    pathname == `${service.url}` ? "active" : ""
+                                  }
+                                >
+                                  <Link
+                                    onClick={handleCloseMenu}
+                                    // prefetch
+                                    href={`${service.url}`}
+                                    dangerouslySetInnerHTML={{
+                                      __html: service.title,
+                                    }}
+                                  />
+                                </li>
+                              );
+                            })}
+                          </div>
                         </ul>
                       )}
                     </li>
