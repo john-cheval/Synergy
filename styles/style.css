@@ -45,7 +45,7 @@ body {
 
 @media (max-width: 575px) {
   body {
-    font-size: 17px;
+    font-size: 18px;
   }
 }
 
@@ -480,7 +480,7 @@ a:hover {
     font-size: 34px;
   }
   .footer_content_p {
-    font-size: 16px !important;
+    font-size: 18px !important;
   }
   .team-modal-right p {
     font-size: 14px;
@@ -494,7 +494,7 @@ a:hover {
   }
   .team-modal-right h6,
   .inner-content-title h5 {
-    font-size: 16px;
+    font-size: 18px;
   }
   ul.bredcumb-inline {
     font-size: 16px;
@@ -2302,7 +2302,7 @@ header.header-three .header-nav::before {
 
 @media (max-width: 575px) {
   .banner-section .single-banner {
-    padding: 80px 0;
+    padding: 60px 0;
   }
 }
 
@@ -4187,7 +4187,7 @@ footer .footer-widget-top .section-title .title {
 
 footer .footer-widget-top .section-title p {
   color: #fff;
-  font-size: 15px;
+  font-size: 18px;
   margin-top: 20px;
 }
 
@@ -4288,8 +4288,9 @@ footer .widget a.main-btn-3:hover {
 footer .widget,
 footer .widget a {
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
   text-align: left;
+  margin-bottom: 10px;
 }
 
 footer .widget a:hover {
@@ -4641,7 +4642,7 @@ footer.grey-bg-footer .footer-copyright .back-to-top:hover {
 }
 
 .inner-content-title h5 {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .box-content {
@@ -5109,7 +5110,7 @@ button:disabled {
 }
 
 .service-content ul li {
-  font-size: 17px;
+  font-size: 18px;
   position: relative;
   padding-left: 15px;
 }
@@ -6502,7 +6503,7 @@ ul.allErrs li {
   }
 
   footer .footer-widget-top .section-title p {
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
   }
 
@@ -6615,13 +6616,14 @@ ul.allErrs li {
   }
 
   .service-content-page p {
-    font-size: 17px;
+    font-size: 18px;
     line-height: 24px;
+    margin-bottom: 10px;
   }
 
   .service-content-top-btn a.contact,
   .service-content-top-btn a.contact-number {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
   }
 
