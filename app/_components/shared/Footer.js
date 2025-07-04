@@ -76,7 +76,7 @@ const Footer = ({ services, slpservices, footerContent }) => {
                     </a>
                   </div>
 
-                  <p style={{ fontSize: "13px" }}>
+                  <p className="footer_content_p">
                     {footerContent?.footer_desccription}
                   </p>
                 </div>
