@@ -45,7 +45,7 @@ body {
 
 @media (max-width: 575px) {
   body {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 
@@ -762,7 +762,7 @@ a:hover {
 }
 
 .service-content-page p {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 30px;
 }
 
@@ -5109,7 +5109,7 @@ button:disabled {
 }
 
 .service-content ul li {
-  font-size: 14px;
+  font-size: 17px;
   position: relative;
   padding-left: 15px;
 }
@@ -6615,7 +6615,7 @@ ul.allErrs li {
   }
 
   .service-content-page p {
-    font-size: 14px;
+    font-size: 17px;
     line-height: 24px;
   }
 
