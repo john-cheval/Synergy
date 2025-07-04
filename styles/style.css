@@ -485,6 +485,10 @@ a:hover {
   .team-modal-right p {
     font-size: 14px;
   }
+
+  ul.locationTabHeaders li {
+    font-size: 16px;
+  }
   .contact-col a {
     font-size: 16px !important;
   }
@@ -1291,7 +1295,7 @@ header .header-nav .nav-container .menu-items ul li.has-submemu ul::before {
 }
 
 header.sticky-on .header-nav .nav-container .menu-items ul li.has-submemu ul {
-  top: 85px;
+  top: 70px;
 }
 
 /* header .header-nav .nav-container .menu-items ul li.has-submemu:hover > ul {
@@ -2349,7 +2353,7 @@ ul.locationTabHeaders li {
   /* border: 1px solid; */
   border: 1px solid transparent;
   border-radius: 50px;
-  font-size: 16px;
+  font-size: 18px;
   text-transform: uppercase;
   padding: 10px 20px;
   min-width: 140px;
@@ -6727,7 +6731,7 @@ ul.allErrs li {
   }
 
   ul.locationTabHeaders li {
-    font-size: 12px;
+    font-size: 16px;
     padding: 10px 20px;
     min-width: auto;
     flex: 1;
