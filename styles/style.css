@@ -3547,7 +3547,7 @@ ul.locationTabHeaders li.active {
 
 .testimonial_box-text p {
   color: #293241;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 22px;
   margin-bottom: 0;
   overflow: hidden;
@@ -4657,7 +4657,7 @@ footer.grey-bg-footer .footer-copyright .back-to-top:hover {
 }
 
 .box-content p {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .mission-content {
@@ -4699,7 +4699,7 @@ footer.grey-bg-footer .footer-copyright .back-to-top:hover {
 }
 
 .blog-title-content p {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 26px;
   margin-bottom: 40px;
 }
@@ -5017,7 +5017,7 @@ button:disabled {
 }
 
 .careers-col ul li {
-  font-size: 14px;
+  font-size: 18px;
   position: relative;
   padding-left: 15px;
 }
@@ -6714,8 +6714,9 @@ ul.allErrs li {
   }
 
   .inner-banner-content p {
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
+    margin-top: 6px;
   }
 
   .locationTabHeaders {
@@ -6865,7 +6866,7 @@ ul.allErrs li {
   }
 
   .stickyWrapper:not(.detailssspage) .service-content p {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 24px;
   }
 
@@ -7356,7 +7357,7 @@ ul.allErrs li {
           font-size: 18px;
           font-weight: 400;
           line-height: 30.12px;
-          text-align: left;
+          text-align: center;
         }
 
         .button {
